@@ -1,0 +1,36 @@
+.home{
+    display: flex;
+}
+
+.homeContainer{
+    flex:4;
+
+    .chartHist{
+        display:flex;
+        padding: 25px;
+        gap:10px;
+    }
+
+    .totalMin{
+        display: flex;
+        margin-top: 90px;
+        padding: 10px;
+    }
+   
+
+}
+
+@media screen and (max-width: 868px) {
+    .chartHist {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width:868px) {
+    .totalMin{
+        display:flex;
+        flex-direction: column;
+
+    }
+}
+
