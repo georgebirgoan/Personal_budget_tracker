@@ -1,4 +1,4 @@
-import Home from "./pages/home/Home";
+import Home from "./pages/Home/Home";
 
 import {
   createBrowserRouter,
@@ -8,10 +8,11 @@ import {
   Link,
   BrowserRouter,
 } from "react-router-dom";
-import Login from "./pages/login/Login";
-import Transaction from "./pages/transaction/Transaction";
+import Login from "./pages/Login/Login";
+import Transaction from "./pages/Transaction/Transaction";
 import Income from "./pages/Income/Income";
-import profileDetails from './pages/ProfileDetails/ProfileDetails';
+import Expenses from "./pages/Expenses/Expenses";
+import SignUp from './pages/SignUp/SignUp'
 
 function App() {
   return (
@@ -20,16 +21,11 @@ function App() {
       <Route path="/" >
         <Route index element={<Home/>} />
         <Route path="login" element={<Login/>}/>
+        <Route path="signup" element={<SignUp/>}/>
         <Route path="transaction" element={<Transaction/>}/>
         <Route path="income" element={<Income/>}/>
-        <Route path="expenses" element={<Transaction/>}/>
-        <Route path="profile" element={<profileDetails/>}/>
-        
-  
-
-
+        <Route path="expenses" element={<Expenses/>}/>
       </Route>
-
     </Routes>
    
    </BrowserRouter>

@@ -1,0 +1,158 @@
+.sideContainer2 {
+    display: flex;
+}
+
+.navContainer2 {
+    flex: 4;
+    
+}
+
+.mainContainer2 {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 6px 1px rgba(173,157,173,0.81);
+    -moz-box-shadow: 0px 0px 6px 1px rgba(173,157,173,0.81);
+    box-shadow: 0px 0px 6px 1px rgba(173,157,173,0.81);
+    background-color: white;
+}
+
+.secondContainer2 {
+    display: flex;
+    flex-direction: column; /* Asigură afișarea pe coloane */
+   
+    width: 100%;
+    height: 100%;
+    border: 1px solid rgb(181, 181, 191);
+    border-radius: 7px;
+
+}
+
+
+
+
+.title2 {
+    font-size: 25px;
+    color: rgb(6, 6, 142);
+    font-weight: 800;
+    padding: 10px;
+    margin-left: 5px;
+}
+
+.totalIncome2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid rgb(196, 185, 185);
+    margin: 20px 12px;
+    padding: 10px;
+    border-radius: 5px;
+    -webkit-box-shadow: 1px -1px 6px 1px rgba(197, 189, 197, 0.81);
+    -moz-box-shadow: 1px -1px 6px 1px rgba(211, 200, 211, 0.81);
+    box-shadow: 1px -1px 6px 1px rgba(209, 199, 209, 0.81);
+
+
+
+    span:nth-child(1){
+        font-size: 28px;
+        color: rgb(6, 6, 142);
+        font-weight: 700;
+        padding: 3px;
+
+
+    }
+    span:nth-child(2){
+        font-size: 25px;
+        color: rgb(236, 75, 75);
+        font-weight: 700;
+        padding: 8px;
+    }
+
+}
+
+.inputCategories2{
+    display: flex;
+    
+
+    .inputContainer2{
+        flex: 3;
+        display: flex;
+        margin: 70px 5px;
+        flex-direction: column;
+        gap: 15px;
+        padding: 12px;
+        -webkit-box-shadow: 2px 2px 12px -4px rgba(0,0,0,0.75);
+        -moz-box-shadow: 2px 2px 12px -4px rgba(0,0,0,0.75);
+        box-shadow: 1px 1px 12px -4px rgba(0,0,0,0.75);
+            
+        .titleInput {
+            font-size: 25px;
+            color: rgb(254, 20, 20);
+            font-weight: 500;
+            text-decoration: underline; /* Adăugare subliniere la text */
+            text-transform: uppercase; /* Convertirea textului în majuscule */
+            letter-spacing: 1px; /* Spațiul între litere */
+            line-height: 1.5; /* Înălțimea liniei */
+            font-style: italic; /* Stilul fontului */
+        }
+
+        .input::placeholder{
+            color: rgb(233, 28, 28);
+        
+        }
+        
+        input:nth-child(4){
+            display: flex;
+            align-self: end;
+            width: 85px;
+            
+        }  
+
+        input:nth-child(5){
+            height: 55px;
+        }  
+    
+        input:nth-child(5)::placeholder {
+            font-size: 15px;
+        }
+         
+    input{
+        text-wrap: wrap;
+        border-radius: 7px;
+        padding: 10px;
+        -webkit-box-shadow: 1px 2px 6px 1px rgba(173,157,173,0.81);
+        -moz-box-shadow: 1px 2px 6px 1px rgba(173,157,173,0.81);
+        box-shadow: 1px 2px 6px 1px rgba(173,157,173,0.81);
+    }
+    }
+
+    .buttonCheck2{
+        display: flex;
+        justify-content: start;
+    
+        .submit2{
+           padding: 5px;
+           background-color: rgb(246, 87, 87);
+           border-radius: 10px;
+
+        span{
+            color: white;
+            font-weight: 500;     
+            }
+        }
+
+        .submit:hover {
+            background-color: rgb(238, 2, 2); /* Schimbarea culorii de fundal la hover */
+        }
+
+
+    }
+}
+
+
+@media screen and (max-width:867px) {
+    .inputCategories2{
+        display:flex;
+        flex-direction: column;
+    }
+}

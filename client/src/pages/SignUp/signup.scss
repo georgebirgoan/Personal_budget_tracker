@@ -8,9 +8,10 @@
 
 body {
     background-color: #080710;
+
 }
 
-.background {
+.background2 {
   width: 430px;
   height: 520px;
   position: absolute;
@@ -19,27 +20,27 @@ body {
   top: 50%;
 }
 
-.background .shape {
+.background2 .shape2 {
   height: 200px;
   width: 200px;
   position: absolute;
   border-radius: 50%;
 }
 
-.shape:first-child {
+.shape2:first-child {
   background: linear-gradient(#1845ad, #23a2f6);
   left: -80px;
   top: -80px;
 }
 
-.shape:last-child {
+.shape2:last-child {
   background: linear-gradient(to right, #ff512f, #f09819);
   right: -30px;
   bottom: -80px;
 }
 
-.form {
-  height: 550px;
+.form2 {
+  height: 580px;
   width: 400px;
   background-color: rgba(255, 255, 255, 0.13);
   position: absolute;
@@ -63,13 +64,13 @@ form * {
 form h3 {
   font-size: 32px;
   font-weight: 500;
-  line-height: 42px;
+  line-height: 20px;
   text-align: center;
 }
 
-.user {
+.user2 {
   display: block;
-  margin-top: 30px;
+  margin-top: 15px;
   font-size: 16px;
   font-weight: 500;
 }
@@ -81,7 +82,7 @@ input {
   background-color: rgba(255, 255, 255, 0.07);
   border-radius: 3px;
   padding: 0 10px;
-  margin-top: 8px;
+  margin-top: 5px;
   font-size: 14px;
   font-weight: 300;
 }
@@ -91,7 +92,7 @@ input {
 }
 
 button {
-  margin-top: 50px;
+  margin-top: 40px;
   width: 100%;
   background-color: #ffffff;
   color: #080710;
@@ -102,12 +103,12 @@ button {
   cursor: pointer;
 }
 
-.social {
+.social2 {
   margin-top: 30px;
   display: flex;
 }
 
-.social div {
+.social2 div {
   background: red;
   width: 150px;
   border-radius: 3px;
@@ -117,32 +118,32 @@ button {
   text-align: center;
 }
 
-.social div:hover {
+.social2 div:hover {
   background-color: rgba(255, 255, 255, 0.47);
 }
 
-.social .fb {
+.social2 .fb2 {
   margin-left: 25px;
 }
 
-.social i {
+.social2 i {
   margin-right: 4px;
 }
 
 
-.footerContainer{
+.footerContainer2{
     display: flex;
 }
 
-.footer{
+.footer2{
     display: flex;
     justify-content: start;
-    margin: 25px 10px;
+    margin: 20px 10px;
 }
 
-.signUp{
+.signUp2{
     display: flex;
-    margin: 25px 3px;
+    margin:20px 3px;
     color: #fbfbfb;
     font-weight: 900;
     text-decoration: none;
@@ -150,7 +151,9 @@ button {
 }
 
 
-.signUp:hover {
+.signUp2:hover {
     color: #176ef1;
   }
+
+  
   

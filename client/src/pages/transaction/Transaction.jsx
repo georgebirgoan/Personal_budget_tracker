@@ -3,7 +3,7 @@ import React from 'react'
 function Transaction() {
   return (
     <div>
-        Transaction
+        Transaction12
     </div>
   )
 }
