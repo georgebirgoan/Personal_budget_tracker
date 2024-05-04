@@ -70,6 +70,8 @@
 
 }
 
+
+
 .inputCategories2{
     display: flex;
     
@@ -96,27 +98,26 @@
             font-style: italic; /* Stilul fontului */
         }
 
-        .input::placeholder{
-            color: rgb(233, 28, 28);
-        
+        .input2::placeholder{
+            color: rgb(15, 11, 11);  
         }
         
-        input:nth-child(4){
+        .input2:nth-child(4){
             display: flex;
             align-self: end;
             width: 85px;
             
         }  
 
-        input:nth-child(5){
+        .input2:nth-child(5){
             height: 55px;
         }  
     
-        input:nth-child(5)::placeholder {
+        .input2:nth-child(5)::placeholder {
             font-size: 15px;
         }
          
-    input{
+    .input2{
         text-wrap: wrap;
         border-radius: 7px;
         padding: 10px;
@@ -141,12 +142,24 @@
             }
         }
 
-        .submit:hover {
+        .submit2:hover {
             background-color: rgb(238, 2, 2); /* Schimbarea culorii de fundal la hover */
         }
 
 
     }
+    
+    .formExpenses{
+        margin-top: 35px;
+        display: flex;
+        height:100%;
+        flex-direction: column;
+        position: relative;
+        gap:10px;
+    }
+
+
+
 }
 
 

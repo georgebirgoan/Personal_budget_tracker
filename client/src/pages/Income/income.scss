@@ -68,6 +68,11 @@
 
 }
 
+
+
+
+
+
 .inputCategories{
     display: flex;
     
@@ -82,34 +87,41 @@
         -webkit-box-shadow: 2px 2px 12px -4px rgba(0,0,0,0.75);
         -moz-box-shadow: 2px 2px 12px -4px rgba(0,0,0,0.75);
         box-shadow: 1px 1px 12px -4px rgba(0,0,0,0.75);
-        
-        .titleInput2 {
+            
+        .titleInput {
+            padding: 5px;
+            margin-top: 12px;
             font-size: 25px;
-            color: rgb(16, 181, 5);
+            color: rgb(37, 217, 1);
             font-weight: 500;
             text-decoration: underline; /* Adăugare subliniere la text */
             text-transform: uppercase; /* Convertirea textului în majuscule */
             letter-spacing: 1px; /* Spațiul între litere */
-            line-height: 1.5; /* Înălțimea liniei */
+            line-height:0; /* Înălțimea liniei */
             font-style: italic; /* Stilul fontului */
         }
-     
-        input:nth-child(4){
+
+        .input1::placeholder{
+            color: rgb(19, 17, 17);
+        
+        }
+        
+        .input1:nth-child(4){
             display: flex;
             align-self: end;
-            width: 85px;
+            width: 125px;
             
         }  
 
-        input:nth-child(5){
+        .input1:nth-child(5){
             height: 55px;
         }  
     
-        input:nth-child(5)::placeholder {
+        .input1:nth-child(5)::placeholder {
             font-size: 15px;
         }
          
-    input{
+    .input1{
         text-wrap: wrap;
         border-radius: 7px;
         padding: 10px;
@@ -117,30 +129,44 @@
         -moz-box-shadow: 1px 2px 6px 1px rgba(173,157,173,0.81);
         box-shadow: 1px 2px 6px 1px rgba(173,157,173,0.81);
     }
+
+
+
+
     }
 
     .buttonCheck{
         display: flex;
         justify-content: start;
     
-        .submit{
-           padding: 5px;
-           background-color: rgb(246, 87, 87);
-           border-radius: 10px;
-
-        span{
-            color: white;
-            font-weight: 500;     
-            }
+        button{
+            border: none;
+        text-decoration: none;
+        margin-top: 10px;
+        color: white;
+        padding: 5px;
+        background-color: rgb(246, 87, 87);
+        border-radius: 10px;
         }
 
-        .submit:hover {
-            background-color: rgb(238, 2, 2); /* Schimbarea culorii de fundal la hover */
+        button:hover {
+            background-color: rgb(238, 2, 2);
         }
-
 
     }
+  
+    .formIncome{
+    margin-top: 35px;
+    display: flex;
+    height:100%;
+    flex-direction: column;
+    position: relative;
+    gap:10px;
+    }
+
+
 }
+
 
 
 @media screen and (max-width:867px) {

@@ -1,9 +1,45 @@
+import { useState } from 'react';
 import Categories from '../../components/categories/Categories';
 import Navbar from '../../components/navbar/Navbar';
 import SideBar from '../../components/sidebar/SideBar';
 import './income.scss';
+import {startIncome,failureIncome,finalIncome,resetState} from '../../redux/cart/IncomeReducer.js'
+import {toast } from  'react-toastify';
+import  {useDispatch,useSelector} from 'react-redux';
+
 
 export default function Income() {
+  const [incomeData,setIncome]=useState({});
+  const {currentIncome}  = useSelector((state) => state.income);
+
+  console.log("currIncome from Reducer income",currentIncome);
+  const dispatch=useDispatch();
+  //dispatch(resetState());
+
+  const handleChange= ((e)=>{
+    setIncome({...incomeData,[e.target.id]:e.target.value});
+  })
+
+
+  
+    console.log("income inainte afara",incomeData);
+    
+    const handleSubmit=((e)=>{
+    e.preventDefault();
+    dispatch(startIncome()); 
+     
+    try{
+      console.log("raspuns from income/input",incomeData);
+
+        dispatch(finalIncome(incomeData));
+        
+      }catch(error){
+        dispatch(failureIncome(error));
+      }
+    })
+    console.log("current dupa",currentIncome);
+
+
   return (
     <>
     <div className='sideContainer'>
@@ -23,25 +59,38 @@ export default function Income() {
 
 
         <span>error</span>
+         
         <div className="inputCategories">
             <div className="inputContainer">
-            <span className='titleInput2'>Add your incomes</span>
-              <input  type='text' alt='title' placeholder='Salary title' />
-              <input type='text' alt='amount'  placeholder='Salary Amount' />
-              <input type='text' alt='date'  placeholder='Enter a date' />
-              <input type='text' alt='option'  placeholder='Select Option' />
-              <input type='text' alt='reference'  placeholder='Add a reference' />
+              <span className='titleInput'>Add your incomes</span>
+            <form onSubmit={handleSubmit} className='formIncome'>
+              <input onChange={handleChange} className='input1'  type='text' id='category' alt='category' placeholder='Salary title' />
+              <input onChange ={handleChange} className='input1'type='text' id='amount' alt='amount'  placeholder='Salary Amount' />
+              <input onChange={handleChange} className='input1' type='date' alt='date'  id='date'  placeholder='zz.mm.aaaa' />
+              
+              <select onChange={handleChange} className='input1' id="option">
+                      <option value="">Select option</option>
+                      <option value="job">Finding a new job</option>
+                      <option value="freelancing">Freelancing</option>
+                      <option value="investments">Investments</option>
+                      <option value="business">Starting a business</option>
+                      <option value="selling">Selling products or services</option>
+                      <option value="rental">Renting out property</option>
+                      <option value="online">Online earning</option>
+                      <option value="other">Other</option>
+              </select>
+              <input onChange={handleChange} className='input1' type='text' alt='reference' id='reference'  placeholder='Add a reference' />
+              
+                <div className="buttonCheck">
+                        <button>+ Add Income</button> 
+                </div>
             
-              <div className="buttonCheck">
-                  <div className="submit">
-                    <span>+ Add income</span>
-                  </div>   
-              </div>
-            
+              </form>
+  
             </div>
             <Categories/>
         </div>
-
+          
         </div>
       </div>
     </div>

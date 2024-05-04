@@ -1,3 +1,138 @@
 .containerProfile{
-    background-color: black;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f1f1f1;
 }
+
+
+
+.formProfile {
+    height: 600px;
+    width: 480px;
+    background-color: rgba(255, 255, 255, 0.227);
+    position: absolute;
+    transform: translate(-50%,-50%);
+    top: 50%;
+    left: 50%;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.642);
+    box-shadow: 0 0 40px rgba(191, 190, 203, 0.6);
+    padding: 50px 35px;
+     
+}
+.formProfile h3 {
+    color: #040404;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 25px;
+    text-align: center;
+}
+    
+
+.divspan2{
+    display: flex;
+    margin: 8px 0px;
+    
+    .user{
+      color: #020202;
+      font-weight: 900;
+    }
+  }
+
+  
+
+  
+.formProfile button {
+    margin-top: 28px ;
+    width: 100%;
+    background-color: #d4e4ff;  
+    font-weight: 800;  
+    color: #030202;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 5px;
+    border:none;
+    cursor: pointer;
+  }
+
+  .social3 {
+    display: flex;
+    margin: 35px 35px;
+  }
+  
+  .social3 div {
+    background: rgb(236, 11, 11);
+    width: 150px;
+    border-radius: 3px;
+    padding: 5px 10px 10px 5px;
+    background-color: #d4e4ff;
+    color: #336edc;
+    text-align: center;
+
+}
+  
+  .social3 div:hover {
+     background-color: rgb(252, 255, 235);
+  }
+  
+  .social3 .fb {
+      margin-left: 25px;
+  }
+  
+  .social3 i {
+      margin-right: 4px;
+  }
+
+
+  .circular-image {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    width: 100%; 
+    border-radius: 50%;
+    overflow: hidden; 
+  }
+  
+  .circular-image img {
+    display: flex;
+    align-items: center;
+    width: 80px ;
+    height: 80px;
+    margin: 12px 0px;
+    border-radius: 50%; 
+    overflow: hidden; 
+  }
+
+  
+.footerContainer3 {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .delete {
+    display: flex;
+    justify-content: start;
+    font-size: 17px;
+    margin: 25px 10px;
+    color: #ee5050;
+    font-weight: 900;
+  }
+  
+  .signOut3 {
+    display: flex;
+    margin: 25px 0px;
+    font-size: 17px;
+    color: #ee5050;
+    font-weight: 900;
+    text-decoration: none;
+  }
+  
+  .signOut3:hover,.delete:hover {
+    color: #e12d2d;
+  }
+  

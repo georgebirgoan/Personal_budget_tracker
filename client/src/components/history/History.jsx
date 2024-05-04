@@ -1,6 +1,9 @@
+import { useSelector } from 'react-redux';
 import './history.scss';
 
 export default function History() {
+
+   
   return (
     <div className='historyContainer'>
       
@@ -10,8 +13,6 @@ export default function History() {
 
       <div className='groupHistory'>
           <div className="history">
-            <span>primul history</span>
-            <span>price</span>
           </div>
 
           <div className="history">

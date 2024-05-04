@@ -5,20 +5,25 @@ import Navbar from '../../components/navbar/Navbar'
 import SideBar from '../../components/sidebar/SideBar'
 import Totals from '../../components/totals/Totals'
 import './home.scss'
+import { useSelector } from 'react-redux'
+
 
 function Home() {
+    
+ // const {currentIncome}=useSelector(state=>state.cart)
+
+
   return (
     <div className='home'>
       <SideBar/>
         <div className="homeContainer">
           <Navbar/>
         
-          
             <div className='chartHist'>
               <Chart/>
               <History/>
             </div>
-
+      
             <div className='totalMin'>
               <Totals/>
               <MinMax/>

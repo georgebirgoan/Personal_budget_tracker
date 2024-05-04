@@ -2,160 +2,67 @@ import './categories.scss';
 import SearchOutlined from '@mui/icons-material/SearchOutlined';
 import CircleIcon from '@mui/icons-material/Circle';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
+import { useLocation } from 'react-router-dom';
+import { useSelector,useDispatch } from 'react-redux';
+import { deleteIncome } from '../../redux/cart/IncomeReducer';
 
 export default function Categories() {
-  return (
-    <>
-    <div className="allCategories">
+    const location = useLocation();
+    const dispatch=useDispatch();
+    // const { currentExpense } = useSelector((state) => state.expenses);
+    const { currentIncome } = useSelector((state) => state.income);
+    console.log(Array.isArray(currentIncome));
+
+    //const isInIncome = location.pathname === '/income';
+    //const isInExpenses = location.pathname === '/expenses';
+
+    const handleDelete=(id)=>{
+        console.log("id in function",id);
+        dispatch(deleteIncome({id:id}));
+      }
 
 
-      
-      {/*container 1 */}
-        <div className="container">
-          <div className="logo">
-              <SearchOutlined/>
-          </div>
-
-        <div className="middle">
-            <div className="circleName">
-                <CircleIcon style={{color:'green',fontSize:13,marginTop:7}}/>
-                <span>nume</span>
-            </div>
-
-          <div className="list">
-              <div className="price">
-                <SearchOutlined/>
-                <span>12314</span>
-              </div>
-
-              <div className="data">
-                <SearchOutlined/>
-                <span>data</span>
-              </div>
-
-
-              <div className="descriere">
-                <SearchOutlined/>
-                <span>descriere</span>
-              </div>  
-          </div>
-        </div>
-        <div className="button">
-                  <DeleteSweepIcon style={{fontSize:35,color:'red'}}/>
-        </div>
-      </div>
-      
-
-      {/*container 2 */}
-      <div className="container">
-          <div className="logo">
-              <SearchOutlined/>
-          </div>
-
-        <div className="middle">
-            <div className="circleName">
-                <CircleIcon style={{color:'green',fontSize:13,marginTop:7}}/>
-                <span>nume</span>
-            </div>
-
-          <div className="list">
-              <div className="price">
-                <SearchOutlined/>
-                <span>12314</span>
-              </div>
-
-              <div className="data">
-                <SearchOutlined/>
-                <span>data</span>
-              </div>
-
-              <div className="descriere">
-                <SearchOutlined/>
-                <span>descriere</span>
-              </div>  
-          </div>
-        </div>
-        <div className="button">
-                  <DeleteSweepIcon style={{fontSize:35,color:'red'}}/>
-        </div>
-      </div>
-
+    console.log("current in categories",currentIncome);
+    return (
+        <>
+        <div className="allCategories">
+            { currentIncome.map((income, index) => (
+                <div className="container" key={index}>
+                    <div className="logo">
+                        <SearchOutlined />
+                        Logo
+                    </div>
     
-
+                    <div className="middle">
+                        <div className="circleName">
+                            <CircleIcon style={{ color: 'green', fontSize: 13, marginTop: 7 }} />
+                            <span>{income.category}</span>
+                        </div>
     
-      {/*container 3 */}
-      <div className="container">
-          <div className="logo">
-              <SearchOutlined/>
-          </div>
-
-        <div className="middle">
-            <div className="circleName">
-                <CircleIcon style={{color:'green',fontSize:13,marginTop:7}}/>
-                <span>nume</span>
-            </div>
-
-          <div className="list">
-              <div className="price">
-                <SearchOutlined/>
-                <span>12314</span>
-              </div>
-
-              <div className="data">
-                <SearchOutlined/>
-                <span>data</span>
-              </div>
-
-              <div className="descriere">
-                <SearchOutlined/>
-                <span>descriere</span>
-              </div>  
-          </div>
+                        <div className="list">
+                            <div className="price">
+                                <span>Price: {income.amount}</span>
+                            </div>
+                            <div className="data">
+                                <span>Date: {income.date}</span>
+                            </div>
+                            <div className="descriere">
+                                <span>Reference: {income.reference}</span>
+                            </div>
+                         
+                        </div>
+                    </div>
+    
+                    {/*Button de stergere*/}
+                    <div className="button">
+                        <button onClick={()=>handleDelete(income.id)}>
+                        <DeleteSweepIcon style={{ fontSize: 35, color: 'red' }} />
+                        </button>
+                    </div>
+                </div>
+            ))}
         </div>
-        <div className="button">
-                  <DeleteSweepIcon style={{fontSize:35,color:'red'}}/>
-        </div>
-      </div>
 
-
-    {/*CONTAINER */}
-      <div className="container">
-          <div className="logo">
-              <SearchOutlined/>
-          </div>
-
-        <div className="middle">
-            <div className="circleName">
-                <CircleIcon style={{color:'green',fontSize:13,marginTop:7}}/>
-                <span>nume</span>
-            </div>
-
-          <div className="list">
-              <div className="price">
-                <SearchOutlined/>
-                <span>12314</span>
-              </div>
-
-              <div className="data">
-                <SearchOutlined/>
-                <span>data</span>
-              </div>
-
-              <div className="descriere">
-                <SearchOutlined/>
-                <span>descriere</span>
-              </div>  
-          </div>
-        </div>
-        <div className="button">
-                  <DeleteSweepIcon style={{fontSize:35,color:'red'}}/>
-        </div>
-      </div>
-    </div>
-
-
-
-    </>
-  
-  )
+        </>
+    );
 }

@@ -2,8 +2,10 @@ import React from 'react'
 
 function Transaction() {
   return (
-    <div>
-        Transaction12
+    <div className='transaction container'>
+        
+
+
     </div>
   )
 }
