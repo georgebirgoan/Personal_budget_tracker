@@ -10,8 +10,7 @@ import { useSelector } from 'react-redux'
 
 function Home() {
     
- // const {currentIncome}=useSelector(state=>state.cart)
-
+  
 
   return (
     <div className='home'>

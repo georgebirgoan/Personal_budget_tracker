@@ -1,14 +1,10 @@
-//1.De facut in Categories daca locatia este in income sa se afiseze cele din income,
-//altfel cele din expense(cu useLocation cum am facut pt navbar) + de facut style pt fieccare
-//1.1 De facut logo pt fiecare descriere
 //2.De facut functii pt total income,expense,net
 //3.de pus in dashboard cele cu total income,expenses sus facute colorat frumos..4
 //de asemenea de facut cele 2 grafice unul stanga normal si unul dreapta
-//4.Pt salar minim,maxim de facut o functie care sa afle din income
-//5.De sterg produsele din income/expenses(cos de gunoi-functie)
-//6.De facut functie pt a edita produsele(update)
-//7.De facut serverul si api pt logare(cookie ,sesiune etc)
-//8.De lucrat la profil,style si update(la fel api pt update luat din proiect anterior);
+//4.Pt salar minim,/maxim de facut o functie care sa afle din income
+//5.De facut functie pt a edita produsele(update)
+//6.De facut serverul si api pt logare(cookie ,sesiune etc)
+//7.De lucrat la profil,style si update(la fel api pt update luat din proiect anterior);
 
 
 //apoi la lucrurile avansate

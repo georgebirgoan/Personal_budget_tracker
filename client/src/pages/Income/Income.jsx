@@ -3,41 +3,40 @@ import Categories from '../../components/categories/Categories';
 import Navbar from '../../components/navbar/Navbar';
 import SideBar from '../../components/sidebar/SideBar';
 import './income.scss';
-import {startIncome,failureIncome,finalIncome,resetState} from '../../redux/cart/IncomeReducer.js'
+import {startIncome,failureIncome,finalIncome,resetState,totIncome} from '../../redux/cart/IncomeReducer.js'
 import {toast } from  'react-toastify';
 import  {useDispatch,useSelector} from 'react-redux';
 
 
 export default function Income() {
   const [incomeData,setIncome]=useState({});
-  const {currentIncome}  = useSelector((state) => state.income);
+  const {totalIncome}  = useSelector((state) => state.income);
 
-  console.log("currIncome from Reducer income",currentIncome);
   const dispatch=useDispatch();
   //dispatch(resetState());
 
+  //for inputs
   const handleChange= ((e)=>{
     setIncome({...incomeData,[e.target.id]:e.target.value});
+    console.log("chage",incomeData);
   })
 
 
-  
-    console.log("income inainte afara",incomeData);
-    
+  //for submit form
     const handleSubmit=((e)=>{
-    e.preventDefault();
-    dispatch(startIncome()); 
-     
-    try{
-      console.log("raspuns from income/input",incomeData);
+      e.preventDefault();
+      dispatch(startIncome()); 
+      
+      try{
+        console.log("raspuns from income/input",incomeData);
 
-        dispatch(finalIncome(incomeData));
-        
-      }catch(error){
-        dispatch(failureIncome(error));
-      }
-    })
-    console.log("current dupa",currentIncome);
+          dispatch(finalIncome(incomeData));
+          dispatch(totIncome())
+          
+        }catch(error){
+          dispatch(failureIncome(error));
+        }
+      })
 
 
   return (
@@ -53,7 +52,7 @@ export default function Income() {
         
             <div className="totalIncome">
                 <span>Total income:</span>
-                <span className="price"> $1223</span>
+                <span className="price">$ {totalIncome} </span>
             </div>
         </div>
 
@@ -68,7 +67,7 @@ export default function Income() {
               <input onChange ={handleChange} className='input1'type='text' id='amount' alt='amount'  placeholder='Salary Amount' />
               <input onChange={handleChange} className='input1' type='date' alt='date'  id='date'  placeholder='zz.mm.aaaa' />
               
-              <select onChange={handleChange} className='input1' id="option">
+              <select  onChange={handleChange} className='input1' id="option">
                       <option value="">Select option</option>
                       <option value="job">Finding a new job</option>
                       <option value="freelancing">Freelancing</option>

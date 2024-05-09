@@ -1,68 +1,115 @@
+import React from 'react';
 import './categories.scss';
 import SearchOutlined from '@mui/icons-material/SearchOutlined';
 import CircleIcon from '@mui/icons-material/Circle';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import { useLocation } from 'react-router-dom';
-import { useSelector,useDispatch } from 'react-redux';
-import { deleteIncome } from '../../redux/cart/IncomeReducer';
+import { useSelector, useDispatch } from 'react-redux';
+import { deleteIncome } from '../../redux/cart/IncomeReducer'; // Asigură-te că această acțiune este importată corect
+import { deleteExpense } from '../../redux/cart/ExpenseReducer';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import DateRangeIcon from '@mui/icons-material/DateRange';
+import TextsmsRoundedIcon from '@mui/icons-material/TextsmsRounded';
+import CategoryIcon from '../categoryIcon/CategoryIcon';
+
 
 export default function Categories() {
     const location = useLocation();
-    const dispatch=useDispatch();
-    // const { currentExpense } = useSelector((state) => state.expenses);
-    const { currentIncome } = useSelector((state) => state.income);
-    console.log(Array.isArray(currentIncome));
+    const dispatch = useDispatch();
 
-    //const isInIncome = location.pathname === '/income';
-    //const isInExpenses = location.pathname === '/expenses';
+    const isIncome = location.pathname === '/income';
+  
+    const {currentIncome} =useSelector((state)=>state.income);
+    const {currentExpense} =useSelector((state)=>state.expense);
+    console.log("current expense",currentExpense);
 
-    const handleDelete=(id)=>{
-        console.log("id in function",id);
-        dispatch(deleteIncome({id:id}));
-      }
+    const handleDeleteIncome = (id) => {
+        console.log("id in function", id);
+        dispatch(deleteIncome({ id: id }));
+    }
 
+    const handleDeleteExpense= (id) => {
+        console.log("id in function", id);
+        dispatch(deleteExpense({ id: id }));
+        
+    }
 
-    console.log("current in categories",currentIncome);
     return (
-        <>
         <div className="allCategories">
-            { currentIncome.map((income, index) => (
-                <div className="container" key={index}>
-                    <div className="logo">
-                        <SearchOutlined />
-                        Logo
-                    </div>
-    
-                    <div className="middle">
-                        <div className="circleName">
-                            <CircleIcon style={{ color: 'green', fontSize: 13, marginTop: 7 }} />
-                            <span>{income.category}</span>
+            {isIncome ? 
+                currentIncome.map((income) => (
+                    <div className="container" key={income.id}>
+                        <div className="logo">
+                            {/* <li>{income.option}</li> */}
+                            <CategoryIcon optionIn={income.option} />
                         </div>
     
-                        <div className="list">
-                            <div className="price">
-                                <span>Price: {income.amount}</span>
+                        <div className="middle">
+                            <div className="circleName">
+                                <CircleIcon style={{ color: 'green', fontSize: 13, marginTop: 7 }} />
+                                <span>{income.category}</span>
                             </div>
-                            <div className="data">
-                                <span>Date: {income.date}</span>
-                            </div>
-                            <div className="descriere">
-                                <span>Reference: {income.reference}</span>
-                            </div>
-                         
-                        </div>
-                    </div>
     
-                    {/*Button de stergere*/}
-                    <div className="button">
-                        <button onClick={()=>handleDelete(income.id)}>
-                        <DeleteSweepIcon style={{ fontSize: 35, color: 'red' }} />
-                        </button>
-                    </div>
-                </div>
-            ))}
-        </div>
+                            <div className="list">
+                                <div className="price">
+                                    <AttachMoneyIcon style={{fontSize:"18px"}}/>
+                                    <span>{income.amount}</span>
+                                </div>
+                                <div className="data">
+                                    <DateRangeIcon style={{fontSize:"18px"}}/>
+                                    <span> {income.date}</span>
+                                </div>
+                                <div className="descriere">
+                                    <TextsmsRoundedIcon style={{fontSize:"18px"}}/>
+                                    <span> {income.reference}</span>
+                                </div>
+                            </div>
+                        </div>
+    
+                        {/*Button de stergere*/}
+                        <div className="button" onClick={() => handleDeleteIncome(income.id)}>
+                            <DeleteSweepIcon style={{ fontSize: 30, color: 'red', cursor: 'pointer' }} />
+                        </div>
 
-        </>
+                        
+                    </div>
+                )) : 
+                currentExpense.map((expense) => (
+                    <div className="container" key={expense.id}>
+                        <div className="logo">
+                            <CategoryIcon optionEx={expense.option}/>
+                        </div>
+    
+                        <div className="middle">
+                            <div className="circleName">
+                                <CircleIcon style={{ color: 'red', fontSize: 13, marginTop: 7 }} />
+                                <span>{expense.category}</span>
+                            </div>
+
+    
+                            <div className="list">
+                                <div className="price">
+                                    <AttachMoneyIcon style={{fontSize:"18px"}}/>
+                                    <span> {expense.amount}</span>
+                                </div>
+                                <div className="data">
+                                    <DateRangeIcon style={{fontSize:"18px"}}/>
+                                    <span> {expense.date}</span>
+                                </div>
+                                <div className="descriere">
+                                    <TextsmsRoundedIcon style={{fontSize:"18px"}}/>
+                                    <span>{expense.reference}</span>
+                                </div>
+                            </div>
+                        </div>
+    
+                        {/*Button de stergere*/}
+                        <div className="button" onClick={() => handleDeleteExpense(expense.id)}>
+                            <DeleteSweepIcon style={{ fontSize: 30, color: 'red', cursor: 'pointer' }} />
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
     );
 }

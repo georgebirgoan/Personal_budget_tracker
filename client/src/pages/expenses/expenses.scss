@@ -105,7 +105,7 @@
         .input2:nth-child(4){
             display: flex;
             align-self: end;
-            width: 85px;
+            width: 125px;
             
         }  
 
@@ -135,12 +135,13 @@
            padding: 5px;
            background-color: rgb(246, 87, 87);
            border-radius: 10px;
-
-        span{
-            color: white;
+           text-decoration: none;
+           border:none
+        }
+        .textBt{
+            color: rgb(255, 255, 255);
             font-weight: 500;     
             }
-        }
 
         .submit2:hover {
             background-color: rgb(238, 2, 2); /* Schimbarea culorii de fundal la hover */

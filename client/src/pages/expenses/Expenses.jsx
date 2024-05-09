@@ -4,14 +4,12 @@ import SideBar from '../../components/sidebar/SideBar';
 import Categories from '../../components/categories/Categories';
 import { useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import {startExpense,failureExpense,finalExpense,deleteExpense} from '../../redux/cart/ExpenseReducer.js'
+import {startExpense,failureExpense,finalExpense,deleteExpense, totExpense} from '../../redux/cart/ExpenseReducer.js'
 import { toast } from 'react-toastify';
 
 export default function Expenses() {
   const [expenseData,setExpense]=useState({});
-  const {currentExpense}=useSelector((state)=>state.expense)
-  //console.log(currentExpense);
-  console.log("expense current",currentExpense);
+  const {totalExpense}=useSelector((state)=>state.expense)
 
   const dispatch=useDispatch();
   
@@ -35,6 +33,7 @@ export default function Expenses() {
       }
 
         dispatch(finalExpense(response));
+        dispatch(totExpense());
         toast.success("Iieii data succes")
 
 
@@ -56,7 +55,7 @@ export default function Expenses() {
         
             <div className="totalIncome2">
                 <span>Total expenses:</span>
-                <span className="price2"> $1223</span>
+                <span className="price2"> {totalExpense} $</span>
             </div>
         </div>
 
@@ -66,17 +65,33 @@ export default function Expenses() {
             <div className="inputContainer2">
               <span className='titleInput'>Add your expenses</span>
           <form onSubmit={handleSubmit} className='formExpenses'>
-              <input onChange={handleChange} className='input2' id='category'  type='text' alt='title' placeholder='Salary title' />
-              <input onChange={handleChange} className='input2' id='amount'  type='text' alt='amount'  placeholder='Salary Amount' />
+              <input onChange={handleChange} className='input2' id='category'  type='text' alt='title' placeholder='Expense title' />
+              <input onChange={handleChange} className='input2' id='amount'  type='text' alt='amount'  placeholder='Expense Amount' />  
               <input onChange={handleChange} className='input2' id='date'  type='text' alt='date'  placeholder='Enter a date' />
-              <input onChange={handleChange} className='input2' id='option' type='text' alt='option'  placeholder='Select Option' />
+             
+              <select onChange={handleChange} className='input2' id="option">
+                <option value="">Select option</option>
+                <option value="food">Food</option>
+                <option value="housing">Housing</option>
+                <option value="transportation">Transportation</option>
+                <option value="utilities">Utilities</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="insurance">Insurance</option>
+                <option value="education">Education</option>
+                <option value="entertainment">Entertainment</option>
+                <option value="other">Other</option>
+              </select>
+
+              
+              
+              
               <input onChange={handleChange} className='input2' id='reference'  type='text' alt='reference'  placeholder='Add a reference' />
             
               <div className="buttonCheck2">
-                  <div className="submit2">
-                      <button>+ Add Expense</button>
-                  </div>   
-              </div>
+                <button type="submit" className="submit2">
+                 <span className='textBt'> + Add Expense</span>
+                </button>
+    </div>
           </form>
               
             </div>
