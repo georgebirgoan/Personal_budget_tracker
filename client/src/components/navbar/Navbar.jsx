@@ -4,6 +4,13 @@ import PersonIcon from '@mui/icons-material/Person';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import { Link, useLocation } from 'react-router-dom';
+import WalletIcon from '@mui/icons-material/Wallet';
+import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import chart from '../../images/chart.png'
+import loginImg from '../../images/loginImg.png'
+import signImg from '../../images/singImg.png'
+
+
 
 export default function Navbar() {
   const location = useLocation();
@@ -12,63 +19,52 @@ export default function Navbar() {
   const isLoginPage = location.pathname === '/login';
   const isSignUpPage = location.pathname === '/signup';
 
-  if (!isLoginPage && !isSignUpPage) {
+
     return (
-      <>
-        <div className='containerNav'>
-          <div className='wrapper'>
-            <span>George Dasboard</span>
-            <div className="middle">
-              <div className="dashboard">
-                <DashboardIcon/>
-                <Link to='/'>Dashboard</Link>
-              </div>
-              <div className="dashboard">
-                <PersonIcon/>
-                <Link to='/profile'>Profile</Link>
-              </div>
-              <div className="dashboard">
-                <AccountCircleIcon/>
-                <Link to='/signup'>SignUp</Link>
-              </div>
-              <div className="dashboard">
-                <VpnKeyIcon/>
-                <Link to='/login'>SignIn</Link>
-              </div>
-            </div>
-            <div className="items">
-              <div className="item">
-                <Link to="signin">
-                  <img src={"#"} alt='imagine' /> {/*imagine user */}
-                </Link>
-              </div>
-            </div>
+
+        <div className="navbar">
+
+          <div className="logo">
+              <WalletIcon/>
+              <span>Budget Wallet</span>
           </div>
-        </div>
-        <hr/>
-      </>
-    );
-  } else {
-    return (
-      <div className='containerNav2'>
-        <div className='wrapper2'>
-          <span>George Dasboard</span>
+      
+      
+          <div className="center">
+                <div className="sign">
+                <img src={signImg} alt='sign' />
+                  <span>SignIn</span>
+                </div>
+                <div className="login">
+                  <img src={loginImg} alt='login' />
+                  <span>Login</span>
+                </div>
+          </div>
+            
+            <div className="icons">
+
+              <div className="notification">
+                  <NotificationsNoneIcon/>
+              </div>
+
+              <div className="user">
+                  <img src={chart} alt='image'/>
+                  <span>Ion</span>
+              </div>
 
 
-          <div className="middle2">
-            <div className="dashboard2">
-              <DashboardIcon/>
-              <Link to='/'>Dashboard</Link>
             </div>
-    
-          </div>
-          <div className="items2">
-            <div className="item2">
-  
-            </div>
-          </div>
+
+
+
         </div>
-      </div>
-    );
+
+
+
+    )
+
+
   }
-}
+
+
+

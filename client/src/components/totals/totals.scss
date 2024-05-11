@@ -1,90 +1,115 @@
 .total {
-    flex:2;
-    margin-top: 15px;
-    .totalGroup {
-        display: flex;
-        width:99%; 
-        justify-content: space-between; /* Aliniere între elementele grupului */
-        margin-bottom: 10px; /* Spațiere între grupuri */
+    display: grid;
+    margin-top: 5px;
+}
 
-    .income{
+.totalGroup {
+    display: grid;
+   // grid-template-columns:repeat(4,1fr);
+    gap: 0.5rem;
+    //grid-template-columns: repeat(4,minmax(160px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(240px,1fr));;
+}
+
+
+.Eachbox{
+    display: flex;
+    border:1px solid rgb(233, 215, 215);
+    border-radius: 5px;
+    padding: 8px;
+
+
+    .logo{
         display: flex;
-        margin: 0px 7px;
+        align-items: start;
+        padding: 7px;
+        margin-left: 5px;
+
+        img{
+            width: 20px;
+            height: 20px;
+        }
+    }
+
+/*Income*/
+.mijloc{
+        display: flex;
         flex-direction: column;
-        padding: 5px;
-        border:2px solid rgb(126, 120, 120);
-        border-radius:5px ;
-        width: 50%;
-    
+        margin: 5px 5px;
+
     span:nth-child(1){
-        font-size: 20px;
-        color: rgb(176, 170, 170);
-        font: bold;
-        margin-bottom: 5px;
+        text-wrap: nowrap;
+        padding: 0px;
+        color: rgb(177, 167, 167);
+        margin: 0px 5px;
     }
-    
+
     span:nth-child(2){
-        font-size: 30px;
-        color: rgb(12, 147, 17);
-        font: bold;
-        }
-    
+        font-size: 20px;
+        color: rgb(25, 176, 2);
+        margin: 5px 5px;
     }
-
-    .expense{
-        display: flex;
-        flex-direction: column;
-        padding: 5px;
-        border:2px solid rgb(111, 107, 107);
-        border-radius:5px ;
-        width: 50%;
-
-        span:nth-child(1){
-            font-size: 20px;
-            color: rgb(176, 170, 170);
-            font: bold;
-            margin-bottom: 5px;
-        }
-        
-        span:nth-child(2){
-            font-size: 30px;
-            color: red;
-            font: bold;
-            }
-    }
-
-
-
-
-    
 }
 
 
-    .balance{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        border:1px solid rgb(111, 107, 107);
-        border-radius:5px ;
-        align-items: center;
-        padding: 4px;
-        margin: 35px 7px;
+/*Expense*/
+.mijloc2{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 5px;
 
-    
-        span:nth-child(1){
-            font-size: 25px;
-            color: rgb(127, 121, 121);
-            font: bold;
-            margin-bottom: 5px;
-        }
-        
-        span:nth-child(2){
-            font-size: 30px;
-            color: rgb(42, 158, 0);
-            font: bold;
-            }
-    }
+span:nth-child(1){
+    text-wrap: nowrap;
+    padding: 0px;
+    color: rgb(177, 167, 167);
+    margin: 0px 5px;
+}
 
-   
+span:nth-child(2){
+    font-size: 20px;
+    color: rgb(225, 14, 7);
+    margin: 5px 5px;
+}
 
 }
+    
+
+
+
+
+/*Balance*/
+.mijloc3{
+    display: flex;
+    flex-direction: column;
+    margin: 5px 5px;
+
+span:nth-child(1){
+    text-wrap: nowrap;
+    padding: 0px;
+    color: rgb(177, 167, 167);
+    margin: 0px 5px;
+}
+
+span:nth-child(2){
+    font-size: 20px;
+    color: rgba(16, 13, 13, 0.902);
+    margin: 5px 5px;
+}
+
+}
+
+//for all graphs
+.grafic{
+    display: flex;
+    align-items: center;
+    padding: 4px;
+    margin: 0px 20px;
+
+
+img{
+    width: 40px;
+    height: 40px;
+    margin-bottom: 5px;
+}}}
+
+

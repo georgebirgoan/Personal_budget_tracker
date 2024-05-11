@@ -8,12 +8,12 @@ import React from 'react';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-      <React.StrictMode>
-    <Provider store={store}>
-     <PersistGate persistor={persistor} loading={null}>
-    <App />
-    </PersistGate>
-    </Provider>
+    <React.StrictMode>
+      <Provider store={store}>
+      <PersistGate persistor={persistor} loading={null}>
+      <App />
+      </PersistGate>
+      </Provider>
     </React.StrictMode>
 );
 

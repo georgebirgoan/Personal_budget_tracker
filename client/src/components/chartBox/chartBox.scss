@@ -1,0 +1,51 @@
+.chartBox{
+    display: flex;
+    height: 100%;
+
+
+    .boxInfo{
+        flex:3;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .title{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+
+        span{
+            font-size: 15px;
+            color: aqua;
+           //text-wrap: nowrap;
+        }
+    
+    }
+
+.chartInfo{
+        flex:2;    
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+    .chart{
+        height: 100%;
+        width: 100%;
+
+    }
+
+
+    }
+
+    
+
+
+
+
+
+
+
+
+}

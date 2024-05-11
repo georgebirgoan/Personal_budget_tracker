@@ -42,9 +42,8 @@ export default function Income() {
   return (
     <>
     <div className='sideContainer'>
-    <SideBar/>
-    <div className="navContainer">
-      <Navbar/>
+
+  
 
     <div className="mainContainer">
       <div className="secondContainer">
@@ -92,7 +91,6 @@ export default function Income() {
           
         </div>
       </div>
-    </div>
 
     </>
   )

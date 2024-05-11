@@ -86,6 +86,7 @@ export default function Expenses() {
               
               
               <input onChange={handleChange} className='input2' id='reference'  type='text' alt='reference'  placeholder='Add a reference' />
+              <input onChange={handleChange} className='input2' id='goals'  type='text' alt='goals'  placeholder='Add budget goals' />
             
               <div className="buttonCheck2">
                 <button type="submit" className="submit2">
