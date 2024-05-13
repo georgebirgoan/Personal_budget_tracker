@@ -1,31 +1,49 @@
-import MinMax from '../../components/MinMax/MinMax'
 import Chart from '../../components/chart/Chart'
 import History from '../../components/history/History'
-import Navbar from '../../components/navbar/Navbar'
-import SideBar from '../../components/sidebar/SideBar'
-import Totals from '../../components/totals/Totals'
 import './dashboard.scss'
-import Income from '../Income/Income';
 import ChartBox from '../../components/chartBox/ChartBox'
+import { useSelector } from 'react-redux'
+import { MyComponent } from '../../utils/data'
+
 
 function Dasboard() {
-    
+  const {chartBoxIncome,chartBoxExpense,chartBoxBalance,chartBoxEconomy}=MyComponent();
   
 
   return (
     <div className='home'>
+    
+      
+
+      <div className="box box2">
+        <ChartBox
+        {...chartBoxIncome}/>
+      </div>
+
+      <div className="box box3">
+        <ChartBox
+          {...chartBoxExpense}
+          />
+      </div>
+
+      <div className="box box5"><ChartBox
+      {...chartBoxBalance}
+      /></div>
+
+      <div className="box box6"><ChartBox
+        {...chartBoxEconomy}
+      />
+      </div>
+
       <div className="box box1">
-        <Chart/>
-      </div>
-      <div className="box box"><ChartBox/>
+        Chart
       </div>
 
-      <div className="box box3"><ChartBox/></div>
-      <div className="box box4"></div>
-      <div className="box box5"><ChartBox/></div>
+      <div className="box box4">
+        <History/>
+      </div>
 
-
-      <div className="box box6"><ChartBox/></div>
+    
       <div className="box box7">Box7</div>
     </div>
      

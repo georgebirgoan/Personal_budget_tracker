@@ -9,16 +9,22 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import chart from '../../images/chart.png'
 import loginImg from '../../images/loginImg.png'
 import signImg from '../../images/singImg.png'
-
+import { useState } from 'react';
+import MenuIcon from '@mui/icons-material/Menu';
 
 
 export default function Navbar() {
   const location = useLocation();
 
+
   // Verifică dacă locația curentă este '/login' sau '/signup'
   const isLoginPage = location.pathname === '/login';
   const isSignUpPage = location.pathname === '/signup';
+  const [isOpen, setIsOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
     return (
 
@@ -31,6 +37,15 @@ export default function Navbar() {
       
       
           <div className="center">
+        
+            
+
+
+
+
+            
+
+
                 <div className="sign">
                 <img src={signImg} alt='sign' />
                   <span>SignIn</span>
@@ -54,6 +69,9 @@ export default function Navbar() {
 
 
             </div>
+
+
+        
 
 
 

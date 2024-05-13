@@ -2,8 +2,7 @@ import React from 'react';
 import "./categoryIcon.scss";
 
 
-import WorkIcon from '@mui/icons-material/Work';
-import LaptopChromebookOutlinedIcon from '@mui/icons-material/LaptopChromebookOutlined';
+import WorkOutlineIcon from '@mui/icons-material/WorkOutline';import LaptopChromebookOutlinedIcon from '@mui/icons-material/LaptopChromebookOutlined';
 import CardTravelIcon from '@mui/icons-material/CardTravel';
 import AddBusinessIcon from '@mui/icons-material/AddBusiness';
 import HandshakeIcon from '@mui/icons-material/Handshake';
@@ -13,8 +12,7 @@ import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { useLocation } from 'react-router-dom';
 
 import FastfoodIcon from '@mui/icons-material/Fastfood';
-import HouseIcon from '@mui/icons-material/House';
-import EmojiTransportationIcon from '@mui/icons-material/EmojiTransportation';
+import RoofingIcon from '@mui/icons-material/Roofing';import EmojiTransportationIcon from '@mui/icons-material/EmojiTransportation';
 import WaterDropIcon from '@mui/icons-material/WaterDrop';
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
@@ -24,31 +22,28 @@ import AddReactionIcon from '@mui/icons-material/AddReaction';
 function CategoryIcon(props) {
     const location=useLocation();
     const IsInIncome=location.pathname === '/income';
-    console.log(IsInIncome);
     const { optionIn, optionEx } = props;
-    console.log(optionIn);
 
     const ExpenseIcon = (optionEx) => {
         switch (optionEx) {
-            case "food":
-                console.log(optionEx);
-                return <FastfoodIcon/>;
-                case "house":
-                    return <HouseIcon/>;
-                    case "transportation":
-                        return <EmojiTransportationIcon/>;
-                        case "utilities":
-                            return <WaterDropIcon/>;
-                            case "healthcare":
-                return <HealthAndSafetyIcon/>;
+                case "food":
+                    return <FastfoodIcon/>;
+                case "housing":
+                    return <RoofingIcon/>;
+                case "transportation":
+                    return <EmojiTransportationIcon/>;
+                case "utilities":
+                    return <WaterDropIcon/>;
+                case "healthcare":
+                    return <HealthAndSafetyIcon/>;
                 case "insurance":
                     return <LocalHospitalIcon/>;
-            case "education":
-                return <SchoolIcon/>;
+                case "education":
+                    return <SchoolIcon/>;
                 case "entertainment":
                     return <AddReactionIcon/>;
-                    case "other":
-                        return <MoreHorizIcon/>;
+                case "other":
+                    return <MoreHorizIcon/>;
                         default:
                             return null;
                         }
@@ -58,8 +53,7 @@ function CategoryIcon(props) {
             const IncomeIcon = (optionIn) => {
                 switch (optionIn) {
                     case "job":
-                    console.log(optionIn);
-                    return <WorkIcon/>;
+                    return <WorkOutlineIcon/>;
                     case "freelancing":
                     return <LaptopChromebookOutlinedIcon/>;
                     case "investments":

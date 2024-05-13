@@ -6,6 +6,8 @@ import { useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
 import {startExpense,failureExpense,finalExpense,deleteExpense, totExpense} from '../../redux/cart/ExpenseReducer.js'
 import { toast } from 'react-toastify';
+import { Istoric } from '../../redux/cart/IncomeReducer.js';
+
 
 export default function Expenses() {
   const [expenseData,setExpense]=useState({});
@@ -34,6 +36,7 @@ export default function Expenses() {
 
         dispatch(finalExpense(response));
         dispatch(totExpense());
+        dispatch(Istoric());
         toast.success("Iieii data succes")
 
 
@@ -44,30 +47,26 @@ export default function Expenses() {
   })
   return (
     <>
-    <div className='sideContainer2'>
-    <SideBar/>
-    <div className="navContainer2">
-      <Navbar/>
+    <div className='Container2'>
 
-    <div className="mainContainer2">
-      <div className="secondContainer2">
-        <span className='title2'>Expenses</span>
-        
-            <div className="totalIncome2">
-                <span>Total expenses:</span>
-                <span className="price2"> {totalExpense} $</span>
-            </div>
-        </div>
+      <div className="box2 title2">
+        <span className='span-title2'>Expense</span>
+      </div>
+
+
+    <div className="box2 totalExpense2">
+        <span>Total expense:</span>
+        <span className="price2">$ {totalExpense} </span>
+    </div>
 
 
         
-        <div className="inputCategories2">
-            <div className="inputContainer2">
-              <span className='titleInput'>Add your expenses</span>
-          <form onSubmit={handleSubmit} className='formExpenses'>
+      <div className="box2 inputContainer2">
+              <span className='titleInput2'>Add your expenses</span>
+          <form onSubmit={handleSubmit} className='formExpense2'>
               <input onChange={handleChange} className='input2' id='category'  type='text' alt='title' placeholder='Expense title' />
               <input onChange={handleChange} className='input2' id='amount'  type='text' alt='amount'  placeholder='Expense Amount' />  
-              <input onChange={handleChange} className='input2' id='date'  type='text' alt='date'  placeholder='Enter a date' />
+              <input onChange={handleChange} className='input2' id='date'  type='date' alt='date' placeholder='zz.mm.aaaa' />
              
               <select onChange={handleChange} className='input2' id="option">
                 <option value="">Select option</option>
@@ -85,9 +84,7 @@ export default function Expenses() {
               
               
               
-              <input onChange={handleChange} className='input2' id='reference'  type='text' alt='reference'  placeholder='Add a reference' />
-              <input onChange={handleChange} className='input2' id='goals'  type='text' alt='goals'  placeholder='Add budget goals' />
-            
+              <input onChange={handleChange} className='input2' id='reference'  type='text' alt='reference'  placeholder='Add a reference' />            
               <div className="buttonCheck2">
                 <button type="submit" className="submit2">
                  <span className='textBt'> + Add Expense</span>
@@ -96,12 +93,13 @@ export default function Expenses() {
           </form>
               
             </div>
-            <Categories/>
+
+            <div className="box2 categories2">
+              <Categories/>
+            </div>
         </div>
 
-        </div>
-      </div>
-    </div>
+
 
     </>
 

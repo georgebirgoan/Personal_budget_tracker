@@ -1,48 +1,70 @@
 .historyContainer{
     display: flex;
     flex-direction: column;
-    flex: 2;
-    margin-top: 60px ;
     padding: 5px;
 
-
-    .top{
+.top{
         display: flex;
         text-wrap: nowrap;
         font-size: 25px;
-        color: rgb(2, 2, 112);
+        color: rgb(255, 255, 255);
         font-weight: bold;
         margin-bottom: 15px;
     }
 
-    .groupHistory{
+
+.groupHistory{
         display: flex;
         flex-direction: column;
+        border-radius: 5px;
+        flex-direction: column;
         align-items: start;
-        height: 100%;
+        width: 100%;
         justify-content: center;
         gap:15px;
         padding: 5px;
     }
-    
-    .history{
+
+    .ist{
         display: flex;
-        justify-content: center;
-        border: 0.5px solid gray;
-        width: 90%;
-        padding: 8px;
+        align-items: center;
         justify-content: space-between;
-        border-radius: 10px;
-        -webkit-box-shadow: 2px 2px 12px -4px rgba(0,0,0,0.75);
-        -moz-box-shadow: 2px 2px 12px -4px rgba(0,0,0,0.75);
-        box-shadow: 2px 2px 12px -4px rgba(0,0,0,0.75);
-        
+        width: 100%;
+        border: 0.5px solid white;
+        border-radius: 5px;
+    }
+
+   
     span{
-        color: red;
+        font-weight: bold;
         text-wrap: nowrap;
         padding:5px;
         margin: 0px 30px;
     }
 
-    }
+
+    .ist {
+        /* Stilurile comune pentru fiecare înregistrare din istoric */
+      }
+      
+      .red {
+        :nth-child(1){
+            color: white;
+        }
+        :nth-child(2){
+            color: red;
+        }
+      }
+      
+      .green {
+        :nth-child(1){
+            color: white;
+        }
+        :nth-child(2){
+            color: rgb(25, 242, 25);
+        }
+
+      }
+
+      
 }

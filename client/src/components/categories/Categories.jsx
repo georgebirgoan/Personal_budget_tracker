@@ -3,7 +3,7 @@ import './categories.scss';
 import SearchOutlined from '@mui/icons-material/SearchOutlined';
 import CircleIcon from '@mui/icons-material/Circle';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteIncome } from '../../redux/cart/IncomeReducer'; // Asigură-te că această acțiune este importată corect
 import { deleteExpense } from '../../redux/cart/ExpenseReducer';
@@ -21,7 +21,7 @@ export default function Categories() {
   
     const {currentIncome} =useSelector((state)=>state.income);
     const {currentExpense} =useSelector((state)=>state.expense);
-    console.log("current expense",currentExpense);
+    console.log("current income",currentIncome);
 
     const handleDeleteIncome = (id) => {
         console.log("id in function", id);
@@ -65,7 +65,12 @@ export default function Categories() {
                                 </div>
                             </div>
                         </div>
-    
+        
+                        {/* buton edit */}
+                        {/* <Link to={'/edit'} >
+                            <DeleteSweepIcon style={{ fontSize: 30, color: 'red', cursor: 'pointer' }} />
+                        </Link> */}
+
                         {/*Button de stergere*/}
                         <div className="button" onClick={() => handleDeleteIncome(income.id)}>
                             <DeleteSweepIcon style={{ fontSize: 30, color: 'red', cursor: 'pointer' }} />

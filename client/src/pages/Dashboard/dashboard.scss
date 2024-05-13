@@ -1,4 +1,5 @@
 @import "../../styles/variables.scss";
+@import "../../styles/responsive.scss";
 
 *{
     margin: 0;
@@ -14,25 +15,76 @@
     grid-auto-rows: minmax(100px,auto);
 
 .box{
-    padding: 20px;
+    padding: 5px;
     border-radius: 10px;
     border:1px solid $soft-bg;
-
-
 }
+
+.box2,.box3,.box5,.box6{
+        grid-column:span 1/2,2/3,3/4,4/5;
+        grid-row: span 1;
+
+    @include lg{
+        grid-column: span 2;
+        grid-row: span 1;
+    }
+    @include md{
+        grid-column: span 4;
+        grid-row: span 1;
+    }
+    @include sm{
+        grid-column: span 4;
+        grid-row: span 2;
+    }
+
+    }
+
+
 
 .box1{
-    grid-column:span 1; //width 1 unit
-    grid-row: span 3;
+    grid-column:span 2; //width 1 unit
+    grid-row: span 3;//coloana 3
+    
+    
+    @include lg{
+        grid-column: span 2;
+        grid-row: span 3;
+    }
+    @include md{
+        grid-column: span 4;
+        grid-row: span 2;
+    }
+    @include sm{
+        grid-column: span 4;
+        grid-row: span 2;
+    }
+
+
 }
 
+
 .box4{
-    grid-column: span 1;
-    grid-row: span 2;
+    grid-column: span 2;
+    grid-row: span 3;
+
+    @include lg{
+        grid-column: span 2;
+        grid-row: span 3;
+    }
+    @include md{
+        grid-column: span 4;
+        grid-row: span 2;
+    }
+    @include sm{
+        grid-column: span 4;
+        grid-row: span 2;
+    }
+
+
 }
 .box7{
-    grid-column: span 3;
-    grid-row: span 1;
+    grid-column: span 4;
+    grid-row: span 2;
 }
 
 }

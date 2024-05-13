@@ -24,7 +24,9 @@ const cartExpense=createSlice({
         finalExpense: (state, action) => {
             const newItem = {
                 ...action.payload,
-                id: uuidv4() // Generăm un ID unic pentru fiecare obiect adăugat
+                id: uuidv4(),
+                type:'expense',
+                createdAt:Date.now()
             };
             return {
                 ...state,

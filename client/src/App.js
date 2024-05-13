@@ -1,18 +1,13 @@
-//.de pus in dashboard cele cu total income,expenses sus facute colorat frumos 
-//
-
-
+//Toate paginile sa fie responsive
 //.De facut functie pt a edita produsele(update)
 //.Pt salar minim,/maxim de facut o functie care sa afle din income
-//De asemenea de facut cele 2 grafice unul stanga normal si unul dreapta
+//De asemenea de facut grafic
 //.De facut serverul si api pt logare(cookie ,sesiune etc)
 //.De lucrat la profil,style si update(la fel api pt update luat din proiect anterior);
-
 
 //apoi la lucrurile avansate
 
 
-import Home from "./pages/Dashboard/Dashboard";
 
 import {
   createBrowserRouter,
@@ -65,7 +60,7 @@ function App() {
           element: <Income />,
         },
         {
-          path: "/expenses",
+          path: "/expense",
           element: <Expenses />,
         },
 

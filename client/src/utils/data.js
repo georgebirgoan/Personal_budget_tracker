@@ -1,18 +1,22 @@
-import { styled } from '@mui/material';
 import homeImg from '../images/homeImg.png';
 import incomeImg from '../images/incomeImg.png';
 import expenseImg from '../images/expenseImg.png';
+import totalIncomeImg from '../images/totalIncome.png'
+import { useSelector } from 'react-redux';
+import totalExpenseImg from '../images/totalExpenseImg.png'
+import totalBalanceImg from '../images/totalBalanceImg.png'
+import totalEconomyImg from '../images/totalEconomyImg.png'
 
 
 export const menu = [
-    {
-      id: 1,
-      title: "main",
-      listItems: [
-        {
-          id: 1,
-          title: "Dashboard",
-          url: "/",
+  {
+    id: 1,
+    title: "main",
+    listItems: [
+      {
+        id: 1,
+        title: "Dashboard",
+        url: "/",
           icon: homeImg,
         },
         {
@@ -128,128 +132,112 @@ export const menu = [
   ];
   
 
-  
-  export const topDealUsers = [
-    {
-      id: 1,
-      img: "https://images.pexels.com/photos/8405873/pexels-photo-8405873.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load",
-      username: "Elva McDonald",
-      email: "elva@gmail.com",
-      amount: "3.668",
-    },
-    {
-      id: 2,
-      img: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      username: "Linnie Nelson",
-      email: "linnie@gmail.com",
-      amount: "3.256",
-    },
-    {
-      id: 3,
-      img: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      username: "Brent Reeves",
-      email: "brent@gmail.com",
-      amount: "2.998",
-    },
-    {
-      id: 4,
-      img: "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      username: "Adeline Watson",
-      email: "adeline@gmail.com",
-      amount: "2.512",
-    },
-    {
-      id: 5,
-      img: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      username: "Juan Harrington",
-      email: "juan@gmail.com",
-      amount: "2.134",
-    },
-    {
-      id: 6,
-      img: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      username: "Augusta McGee",
-      email: "augusta@gmail.com",
-      amount: "1.932",
-    },
-    {
-      id: 7,
-      img: "https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&w=1600",
-      username: "Angel Thomas",
-      email: "angel@gmail.com",
-      amount: "1.560",
-    },
-  ];
-  
-  export const chartBoxUser = {
-    color: "#8884d8",
-    icon: "/userIcon.svg",
-    title: "Total Users",
-    number: "11.238",
-    dataKey: "users",
-    percentage: 45,
-    chartData: [
-      { name: "Sun", users: 400 },
-      { name: "Mon", users: 600 },
-      { name: "Tue", users: 500 },
-      { name: "Wed", users: 700 },
-      { name: "Thu", users: 400 },
-      { name: "Fri", users: 500 },
-      { name: "Sat", users: 450 },
-    ],
-  };
-  
-  export const chartBoxProduct = {
-    color: "skyblue",
-    icon: "/productIcon.svg",
-    title: "Total Products",
-    number: "238",
-    dataKey: "products",
-    percentage: 21,
-    chartData: [
-      { name: "Sun", products: 400 },
-      { name: "Mon", products: 600 },
-      { name: "Tue", products: 500 },
-      { name: "Wed", products: 700 },
-      { name: "Thu", products: 400 },
-      { name: "Fri", products: 500 },
-      { name: "Sat", products: 450 },
-    ],
-  };
-  export const chartBoxRevenue = {
-    color: "teal",
-    icon: "/revenueIcon.svg",
-    title: "Total Revenue",
-    number: "$56.432",
-    dataKey: "revenue",
-    percentage: -12,
-    chartData: [
-      { name: "Sun", revenue: 400 },
-      { name: "Mon", revenue: 600 },
-      { name: "Tue", revenue: 500 },
-      { name: "Wed", revenue: 700 },
-      { name: "Thu", revenue: 400 },
-      { name: "Fri", revenue: 500 },
-      { name: "Sat", revenue: 450 },
-    ],
-  };
-  export const chartBoxConversion = {
-    color: "gold",
-    icon: "/conversionIcon.svg",
-    title: "Total Ratio",
-    number: "2.6",
-    dataKey: "ratio",
-    percentage: 12,
-    chartData: [
-      { name: "Sun", ratio: 400 },
-      { name: "Mon", ratio: 600 },
-      { name: "Tue", ratio: 500 },
-      { name: "Wed", ratio: 700 },
-      { name: "Thu", ratio: 400 },
-      { name: "Fri", ratio: 500 },
-      { name: "Sat", ratio: 450 },
-    ],
-  };
+export function MyComponent() {
+    const { totalIncome } = useSelector((state) => state.income);
+    const { totalExpense } = useSelector((state) => state.expense);
+    const { totalEconomy } = useSelector((state) => state.income);
+    const balance=(totalIncome-totalExpense)-totalEconomy;
+
+    const chartBoxIncome = {
+        color: "#8884d8",
+        icon: totalIncomeImg,
+        title: "Total income",
+        number: totalIncome,
+        dataKey: "income",
+        percentage: 24,
+        chartData: [
+            { name: "Sun", income: 200 },
+            { name: "Mon", income: 600 },
+            { name: "Tue", income: 500 },
+            { name: "Wed", income: 700 },
+            { name: "Thu", income: 400 },
+            { name: "Fri", income: 500 },
+            { name: "Sat", income: 450 },
+        ],
+    };
+
+    const chartBoxExpense = {
+        color: "#8884d8",
+        icon:totalExpenseImg ,
+        title: "Total Expenses",
+        number: totalExpense,
+        dataKey: "expense",
+        percentage: -11,
+        chartData: [
+            { name: "Sun", expense: 400 },
+            { name: "Mon", expense: 600 },
+            { name: "Tue", expense: 500 },
+            { name: "Wed", expense: 400 },
+            { name: "Thu", expense: 200 },
+            { name: "Fri", expense: 500 },
+            { name: "Sat", expense: 410 },
+        ],
+    };
+    
+
+
+ const chartBoxBalance = {
+  color: "#8884d8",
+  icon: totalBalanceImg,
+  title: "Total Balance",
+  number:balance,
+  dataKey: "balance",
+  percentage: -12,
+  chartData: [
+    { name: "Sun", balance: 400 },
+    { name: "Mon", balance: 860 },
+    { name: "Tue", balance: 400 },
+    { name: "Wed", balance: 110 },
+    { name: "Thu", balance: 400 },
+    { name: "Fri", balance: 500 },
+    { name: "Sat", balance: 450 },
+  ],
+};
+
+ 
+const chartBoxEconomy = {
+  color: "#8884d8",
+  icon: totalEconomyImg,
+  title: "Total Economy",
+  number:totalEconomy,
+  dataKey: "economy",
+  percentage: -12,
+  chartData: [
+    { name: "Sun", economy: 400 },
+    { name: "Mon", economy: 200 },
+    { name: "Tue", economy: 800 },
+    { name: "Wed", economy: 700 },
+    { name: "Thu", economy: 600 },
+    { name: "Fri", economy: 500 },
+    { name: "Sat", economy: 150 },
+  ],
+};
+
+    return { chartBoxIncome, chartBoxExpense,chartBoxEconomy,chartBoxBalance};
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   export const barChartBoxRevenue = {
     title: "Profit Earned",

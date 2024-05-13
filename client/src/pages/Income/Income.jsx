@@ -3,7 +3,7 @@ import Categories from '../../components/categories/Categories';
 import Navbar from '../../components/navbar/Navbar';
 import SideBar from '../../components/sidebar/SideBar';
 import './income.scss';
-import {startIncome,failureIncome,finalIncome,resetState,totIncome} from '../../redux/cart/IncomeReducer.js'
+import {startIncome,failureIncome,finalIncome,resetState,totIncome, Istoric, totEconomy} from '../../redux/cart/IncomeReducer.js'
 import {toast } from  'react-toastify';
 import  {useDispatch,useSelector} from 'react-redux';
 
@@ -31,7 +31,9 @@ export default function Income() {
         console.log("raspuns from income/input",incomeData);
 
           dispatch(finalIncome(incomeData));
-          dispatch(totIncome())
+          dispatch(totIncome());
+          dispatch(totEconomy());
+          dispatch(Istoric());
           
         }catch(error){
           dispatch(failureIncome(error));
@@ -41,25 +43,21 @@ export default function Income() {
 
   return (
     <>
-    <div className='sideContainer'>
+    <div className='Container'>
 
-  
+        <div className="box title">
+          <span className='span-title'>Incomes</span>
+        </div>
 
-    <div className="mainContainer">
-      <div className="secondContainer">
-        <span className='title'>Incomes</span>
         
-            <div className="totalIncome">
+            <div className="box totalIncome">
                 <span>Total income:</span>
                 <span className="price">$ {totalIncome} </span>
             </div>
-        </div>
 
 
-        <span>error</span>
          
-        <div className="inputCategories">
-            <div className="inputContainer">
+          <div className="box inputContainer">
               <span className='titleInput'>Add your incomes</span>
             <form onSubmit={handleSubmit} className='formIncome'>
               <input onChange={handleChange} className='input1'  type='text' id='category' alt='category' placeholder='Salary title' />
@@ -77,6 +75,7 @@ export default function Income() {
                       <option value="online">Online earning</option>
                       <option value="other">Other</option>
               </select>
+              <input onChange={handleChange} className='input1' id='goals'  type='text' alt='goals'  placeholder='Add budget goals' />
               <input onChange={handleChange} className='input1' type='text' alt='reference' id='reference'  placeholder='Add a reference' />
               
                 <div className="buttonCheck">
@@ -86,11 +85,13 @@ export default function Income() {
               </form>
   
             </div>
-            <Categories/>
+            <div className="box categories">
+              <Categories/>
+            </div>
         </div>
           
-        </div>
-      </div>
+
+
 
     </>
   )

@@ -1,17 +1,20 @@
-import {createSlice} from '@reduxjs/toolkit';
+import {createSlice, current} from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
-
+import { useSelector } from 'react-redux';
 
 
 const initialState={
     currentIncome:[],
     totalIncome:0,
+    totalEconomy:0,
+    currentIstoric:[],
     loading:false,
     error:false
 }
 
 
 console.log("state initial",initialState);
+
 
 const cartIncome=createSlice({
     name:'income',
@@ -28,7 +31,9 @@ const cartIncome=createSlice({
         finalIncome: (state, action) => {
             const newItem = {
                 ...action.payload,
-                id: uuidv4() // Generăm un ID unic pentru fiecare obiect adăugat
+                id: uuidv4(), // Generăm un ID unic pentru fiecare obiect adăugat
+                type:"income",
+                createdAt:Date.now()
             };
             return {
                 ...state,
@@ -71,6 +76,19 @@ const cartIncome=createSlice({
             }
         },
 
+        totEconomy:(state,action)=>{
+            const TotalEconomy=state.currentIncome.reduce((total,item)=>
+                total + parseFloat(item.goals),0);
+            console.log("totaleconomry",TotalEconomy);
+
+            return{
+                ...state,
+                totalEconomy:TotalEconomy
+            }
+        }
+
+
+
 
        
 
@@ -90,6 +108,8 @@ export const {
     deleteIncome,
     resetState,
     totIncome,
+    Istoric,
+    totEconomy
 }=cartIncome.actions;
 
 export default cartIncome.reducer;
