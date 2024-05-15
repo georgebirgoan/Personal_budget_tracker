@@ -6,8 +6,7 @@ import { useSelector } from 'react-redux';
 import totalExpenseImg from '../images/totalExpenseImg.png'
 import totalBalanceImg from '../images/totalBalanceImg.png'
 import totalEconomyImg from '../images/totalEconomyImg.png'
-
-
+import { useState,useEffect } from 'react';
 export const menu = [
   {
     id: 1,
@@ -133,11 +132,104 @@ export const menu = [
   
 
 export function MyComponent() {
+    const { currentIncome } = useSelector((state) => state.income);
+    const { currentExpense } = useSelector((state) => state.expense);
     const { totalIncome } = useSelector((state) => state.income);
     const { totalExpense } = useSelector((state) => state.expense);
     const { totalEconomy } = useSelector((state) => state.income);
     const balance=(totalIncome-totalExpense)-totalEconomy;
+    
+    const chartDataIncome = currentIncome.reduce((acc, item) => {
+      // Verifică dacă există deja o intrare pentru această dată în acc
+      const existingEntry = acc.find(entry => entry.name === item.date);
+      // Dacă există, adaugă suma la intrarea existentă
+      if (existingEntry) {
+          existingEntry.income += item.amount;
+      } else {
+          // Dacă nu există, creează o nouă intrare
+          acc.push({ name: item.date, income: item.amount });
+      }
+      return acc;
+  }, []);
 
+  const chartDataExpense = currentExpense.reduce((acc, item) => {
+    // Verifică dacă există deja o intrare pentru această dată în acc
+    const existingEntry = acc.find(entry => entry.name === item.date);
+    // Dacă există, adaugă suma la intrarea existentă
+    if (existingEntry) {
+        existingEntry.expense += item.amount;
+    } else {
+        // Dacă nu există, creează o nouă intrare
+        acc.push({ name: item.date, expense: item.amount });
+    }
+    return acc;
+}, []);
+
+
+
+/*
+const addDays = (date, days) => {
+  const newDate = new Date(date);
+  newDate.setDate(newDate.getDate() + days);
+  return newDate;
+};
+
+const initialDate = addDays(new Date(), 1); // Data actuală + 1 zi
+
+const [balanceData, setBalanceData] = useState({
+  balance: (totalIncome - totalExpense) - totalEconomy,
+  date: initialDate // Păstrează data inițială ca obiect Date
+});
+console.log(balanceData);
+
+const updateBalance = () => {
+  const newBalance = (totalIncome - totalExpense) - totalEconomy;
+  const newDate = addDays(balanceData.date, 1); // Nu mai este necesar să folosești toLocaleDateString()
+
+  setBalanceData({
+    balance: newBalance,
+    date: newDate
+  });
+};
+
+useEffect(() => {
+  updateBalance(); // Apelează updateBalance o singură dată după montarea componentei
+}, [totalIncome, totalExpense, totalEconomy]); // Efectul este apelat când se modifică veniturile, cheltuielile sau economiile
+*/
+
+const chartBoxBalance = {
+  color: "#8884d8",
+  icon: totalBalanceImg,
+  title: "Total Balance",
+  number:balance,
+  dataKey: "bal",
+  percentage: -12,
+  chartData:[
+    { name: "Sun", bal: 400 },
+    { name: "Mon", bal: 200 },
+    { name: "Tue", bal: 100 },
+    { name: "Wed", bal: 300 },
+    { name: "Thu", bal: 600 },
+    { name: "Fri", bal: 500 },
+    { name: "Sat", bal: 150 },
+  ]
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
     const chartBoxIncome = {
         color: "#8884d8",
         icon: totalIncomeImg,
@@ -145,16 +237,9 @@ export function MyComponent() {
         number: totalIncome,
         dataKey: "income",
         percentage: 24,
-        chartData: [
-            { name: "Sun", income: 200 },
-            { name: "Mon", income: 600 },
-            { name: "Tue", income: 500 },
-            { name: "Wed", income: 700 },
-            { name: "Thu", income: 400 },
-            { name: "Fri", income: 500 },
-            { name: "Sat", income: 450 },
-        ],
-    };
+        chartData: chartDataIncome
+    }
+   
 
     const chartBoxExpense = {
         color: "#8884d8",
@@ -163,37 +248,12 @@ export function MyComponent() {
         number: totalExpense,
         dataKey: "expense",
         percentage: -11,
-        chartData: [
-            { name: "Sun", expense: 400 },
-            { name: "Mon", expense: 600 },
-            { name: "Tue", expense: 500 },
-            { name: "Wed", expense: 400 },
-            { name: "Thu", expense: 200 },
-            { name: "Fri", expense: 500 },
-            { name: "Sat", expense: 410 },
-        ],
+        chartData:chartDataExpense
     };
     
 
 
- const chartBoxBalance = {
-  color: "#8884d8",
-  icon: totalBalanceImg,
-  title: "Total Balance",
-  number:balance,
-  dataKey: "balance",
-  percentage: -12,
-  chartData: [
-    { name: "Sun", balance: 400 },
-    { name: "Mon", balance: 860 },
-    { name: "Tue", balance: 400 },
-    { name: "Wed", balance: 110 },
-    { name: "Thu", balance: 400 },
-    { name: "Fri", balance: 500 },
-    { name: "Sat", balance: 450 },
-  ],
-};
-
+ 
  
 const chartBoxEconomy = {
   color: "#8884d8",

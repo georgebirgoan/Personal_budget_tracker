@@ -1,0 +1,96 @@
+
+@import "../../styles/responsive.scss";
+
+
+.grid2{
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 40px;
+width: 100%;
+
+.inputContainer2{
+    width: 80%;
+    display: flex;
+    text-decoration: none;
+    flex-direction: column;
+    gap: 15px;
+    padding: 5px;
+    margin-right: 10px;
+    
+
+    .titleInput2 {
+        padding: 5px;
+        margin-top: 12px;
+        text-wrap:nowrap;
+        font-size: 22px;
+        color: rgb(244, 247, 244);
+        font-weight: 500;
+        text-decoration: underline; 
+        text-transform: uppercase; 
+        letter-spacing: 1px;
+        line-height:0; 
+        font-style: italic;
+    }
+
+    .input2::placeholder{
+        color: rgb(0, 0, 0); 
+    }
+    
+    .input2:nth-child(4){
+        display: flex;
+        align-self: end;
+        width: 125px;     
+    }  
+
+  
+
+    .input2:nth-child(5)::placeholder {
+        font-size: 15px;
+    }
+     
+.input2{
+    text-wrap: wrap;
+    border-radius: 7px;
+    padding: 10px;
+  
+}
+
+
+
+
+}
+
+.buttonCheck2{
+    display: flex;
+    justify-content: start;
+
+    button{
+    border: none;
+    text-decoration: none;
+    margin-top: 10px;
+    color: white;
+    padding: 5px;
+    font-weight: bold;
+    background-color: rgb(246, 87, 87);
+    border-radius: 10px;
+    }
+
+    button:hover {
+        background-color: rgb(238, 2, 2);
+    }
+
+}
+
+.formIncome2{
+margin-top: 35px;
+display: flex;
+height:100%;
+flex-direction: column;
+position: relative;
+gap:10px;
+}
+
+
+
+}

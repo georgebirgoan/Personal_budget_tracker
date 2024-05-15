@@ -85,7 +85,40 @@ const cartIncome=createSlice({
                 ...state,
                 totalEconomy:TotalEconomy
             }
-        }
+        },
+
+
+        updateIncome: (state, action) => {
+            const { id, editIncome  } = action.payload;
+            console.log("payload",action.payload);
+            console.log("edit",editIncome );
+            
+            const indexToUpdate = state.currentIncome.findIndex(item => item.id === id);
+            if (indexToUpdate !== -1) {
+                // Creează o nouă listă de venituri actualizată folosind metoda slice și spread operator
+                const updatedIncome = [
+                    ...state.currentIncome.slice(0, indexToUpdate), // Părțile din lista originală înaintea elementului actualizat
+                    { ...state.currentIncome[indexToUpdate], ...editIncome }, // Obiectul actualizat
+                    ...state.currentIncome.slice(indexToUpdate + 1) // Părțile din lista originală după elementul actualizat
+                ];
+                return {
+                    ...state,
+                    currentIncome: updatedIncome
+                };
+            } else {
+                console.log("eroare reducer: Nu s-a găsit ID-ul specificat");
+                return state; // Returnați starea nemodificată dacă nu s-a găsit ID-ul specificat
+            }
+        },
+        
+
+
+
+        failureUpdate:(state,action)=>{
+            state.loading=false;
+            state.error=action.payload //incarca cu mesajul erorii
+        },
+    
 
 
 
@@ -109,7 +142,10 @@ export const {
     resetState,
     totIncome,
     Istoric,
-    totEconomy
+    totEconomy,
+    updateIncome,
+    failureUpdate
+
 }=cartIncome.actions;
 
 export default cartIncome.reducer;

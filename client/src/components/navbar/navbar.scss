@@ -1,14 +1,13 @@
 
 @import "../../styles/responsive.scss";
-
+@import "../../styles/variables.scss";
 
 .navbar{
-   width: 100%;
-   padding: 20px;
-   display: flex;
-   justify-content: space-between;
-
-
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid $soft-bg;
 .center{
     display: flex;
     gap: 55px;

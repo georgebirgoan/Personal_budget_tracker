@@ -159,11 +159,12 @@
 .footerContainer2 {
   display: flex;
   justify-content: center;
-}
+  align-items: center;
 
 .footer2 {
   display: flex;
   justify-content: start;
+  align-items: center;
   font-size: 17px;
   margin: 15px 10px;
   color: white;
@@ -172,6 +173,8 @@
 
 .signUp2 {
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 15px 0px;
   font-size: 17px;
   color: #fbfbfb;
@@ -181,4 +184,5 @@
 
 .signUp2:hover {
   color: #176ef1;
+}
 }

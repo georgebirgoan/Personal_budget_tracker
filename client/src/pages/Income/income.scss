@@ -108,15 +108,14 @@
             font-size: 22px;
             color: rgb(244, 247, 244);
             font-weight: 500;
-            text-decoration: underline; 
             text-transform: uppercase; 
             letter-spacing: 1px;
             line-height:0; 
             font-style: italic;
         }
 
-        .input1::placeholder{
-            color: rgb(0, 0, 0);
+        .input::placeholder{
+            color: rgb(223, 15, 15);
         
         }
         
@@ -134,6 +133,7 @@
         }
          
     .input1{
+        color: black;
         text-wrap: wrap;
         border-radius: 7px;
         padding: 10px;

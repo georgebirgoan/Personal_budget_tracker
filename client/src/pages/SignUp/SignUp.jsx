@@ -16,7 +16,6 @@ export default function SignUp() {
 
   return (
     <> 
-    <Navbar/>
 
     <div className='contSign'>
         <div className="background2">

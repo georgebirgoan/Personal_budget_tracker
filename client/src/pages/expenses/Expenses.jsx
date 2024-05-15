@@ -85,11 +85,12 @@ export default function Expenses() {
               
               
               <input onChange={handleChange} className='input2' id='reference'  type='text' alt='reference'  placeholder='Add a reference' />            
-              <div className="buttonCheck2">
+            
+             <div className="buttonCheck2">
                 <button type="submit" className="submit2">
                  <span className='textBt'> + Add Expense</span>
                 </button>
-    </div>
+            </div>
           </form>
               
             </div>

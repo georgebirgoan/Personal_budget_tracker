@@ -23,6 +23,9 @@ import Income from './pages/Income/Income'
 import Expenses from './pages/Expenses/Expenses'
 import Footer from './pages/Footer/Footer'
 import './styles/global.scss'
+import EditIncome from './pages/EditIncome/EditIncome';
+import EditExpense from './pages/EditExpense/EditExpense';
+import ProfileDetails from "./pages/ProfileDetails/ProfileDetails";
 
 
 function App() {
@@ -63,8 +66,26 @@ function App() {
           path: "/expense",
           element: <Expenses />,
         },
+        {
+          path: "/profile",
+          element: <ProfileDetails />,
+        },
 
 
+        {
+          path: "/edit",
+          element: <Outlet />,
+          children: [
+          {
+            path: "income/:id",
+            element: <EditIncome />, // Aici va fi componenta pentru editarea veniturilor
+          },
+          {
+            path: "expense/:id",
+            element: <EditExpense />, // Aici va fi componenta pentru editarea cheltuielilor
+          },
+        ],
+      },
        
       ],
     },

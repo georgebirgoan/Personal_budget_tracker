@@ -4,14 +4,38 @@
     padding: 5px;
 
 .top{
+    display: flex;
+    justify-content: start;
+
+    .histSpan{
         display: flex;
+        justify-content:start;
+        margin: 0px ;
         text-wrap: nowrap;
         font-size: 25px;
         color: rgb(255, 255, 255);
         font-weight: bold;
-        margin-bottom: 15px;
+    }
+    }
+.titleHist{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+
+    .categorie{
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
+    .pret{
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
+
+
+}
 
 .groupHistory{
         display: flex;

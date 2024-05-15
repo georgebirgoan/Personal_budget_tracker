@@ -11,7 +11,12 @@ export default function History() {
   return (
     <div className='historyContainer'>
       <div className='top'>
-        Recent History 
+        <span className='histSpan'>Recent History </span>
+      </div>
+
+      <div className="titleHist">
+        <span className='categorie'>Category</span>
+        <span className='pret'>Price</span>
       </div>
 
       <div className='groupHistory'>

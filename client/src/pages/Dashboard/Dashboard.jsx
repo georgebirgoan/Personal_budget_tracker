@@ -4,6 +4,8 @@ import './dashboard.scss'
 import ChartBox from '../../components/chartBox/ChartBox'
 import { useSelector } from 'react-redux'
 import { MyComponent } from '../../utils/data'
+import { MaxExpense, MaxSal, MinExpense, MinSal } from '../../components/helper/Istoric'
+import Chart2 from '../../components/Chart2/Chart2'
 
 
 function Dasboard() {
@@ -36,7 +38,7 @@ function Dasboard() {
       </div>
 
       <div className="box box1">
-        Chart
+        <Chart/>
       </div>
 
       <div className="box box4">
@@ -44,7 +46,35 @@ function Dasboard() {
       </div>
 
     
-      <div className="box box7">Box7</div>
+      <div className="box box7">
+          <div className="titleSalary">
+            <span>Min</span>
+            <span>Salary</span>
+            <span>Max</span>
+          </div>
+
+          <div className="MinMaxSal">
+            <span><MinSal/>$</span>
+            <span><MaxSal/>$</span>
+          
+          </div>
+
+          <div className="titleExpense">
+            <span>Min</span>
+            <span>Expense</span>
+            <span>Max</span>
+          </div>
+
+          <div className="MinMaxExpense">
+            <span><MinExpense/>$</span>
+            <span><MaxExpense/>$</span>
+          </div>
+
+
+      </div>
+
+      <div className="box box8"> </div>
+
     </div>
      
   )

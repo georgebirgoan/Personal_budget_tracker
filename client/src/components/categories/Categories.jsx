@@ -11,7 +11,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 import TextsmsRoundedIcon from '@mui/icons-material/TextsmsRounded';
 import CategoryIcon from '../categoryIcon/CategoryIcon';
-
+import EditIcon from '@mui/icons-material/Edit';
 
 export default function Categories() {
     const location = useLocation();
@@ -21,7 +21,7 @@ export default function Categories() {
   
     const {currentIncome} =useSelector((state)=>state.income);
     const {currentExpense} =useSelector((state)=>state.expense);
-    console.log("current income",currentIncome);
+    console.log("current expense",currentExpense);
 
     const handleDeleteIncome = (id) => {
         console.log("id in function", id);
@@ -65,17 +65,18 @@ export default function Categories() {
                                 </div>
                             </div>
                         </div>
-        
-                        {/* buton edit */}
-                        {/* <Link to={'/edit'} >
-                            <DeleteSweepIcon style={{ fontSize: 30, color: 'red', cursor: 'pointer' }} />
-                        </Link> */}
+                        
+                        <div className="right">
+                 
+                            <Link to={`/edit/income/${income.id}`}  >
+                                <EditIcon  style={{ fontSize: 25 }}  />
+                            </Link>
 
-                        {/*Button de stergere*/}
-                        <div className="button" onClick={() => handleDeleteIncome(income.id)}>
-                            <DeleteSweepIcon style={{ fontSize: 30, color: 'red', cursor: 'pointer' }} />
+                            {/*Button de stergere*/}
+                            <div className="button" onClick={() => handleDeleteIncome(income.id)}>
+                                <DeleteSweepIcon style={{ fontSize: 30 }} />
+                            </div>
                         </div>
-
                         
                     </div>
                 )) : 
@@ -109,9 +110,18 @@ export default function Categories() {
                         </div>
     
                         {/*Button de stergere*/}
-                        <div className="button" onClick={() => handleDeleteExpense(expense.id)}>
-                            <DeleteSweepIcon style={{ fontSize: 30, color: 'red', cursor: 'pointer' }} />
-                        </div>
+                        <div className="right">
+                 
+                    <Link to={`/edit/expense/${expense.id}`}  >
+                        <EditIcon  style={{ fontSize: 25 }}  />
+                    </Link>
+
+                    {/*Button de stergere*/}
+                    <div className="button" onClick={() => handleDeleteExpense(expense.id)}>
+                        <DeleteSweepIcon style={{ fontSize: 30 }} />
+                    </div>
+
+             </div>
                     </div>
                 ))
             }

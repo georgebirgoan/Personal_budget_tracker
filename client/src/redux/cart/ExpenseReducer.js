@@ -65,7 +65,54 @@ const cartExpense=createSlice({
                 ...state,
                 totalExpense:TotalExpense
             }
-        }
+        },
+
+
+        updateExpense: (state, action) => {
+            const { id, editExpense  } = action.payload;
+            console.log("payload",action.payload);
+            console.log("edit",editExpense );
+            
+            const indexToUpdate = state.currentExpense.findIndex(item => item.id === id);
+            if (indexToUpdate !== -1) {
+                // Creează o nouă listă de venituri actualizată folosind metoda slice și spread operator
+                const updatedExpense = [
+                    ...state.currentExpense.slice(0, indexToUpdate), // Părțile din lista originală înaintea elementului actualizat
+                    { ...state.currentExpense[indexToUpdate], ...editExpense }, // Obiectul actualizat
+                    ...state.currentExpense.slice(indexToUpdate + 1) // Părțile din lista originală după elementul actualizat
+                ];
+                return {
+                    ...state,
+                    currentExpense: updatedExpense
+                };
+            } else {
+                console.log("eroare reducer: Nu s-a găsit ID-ul specificat");
+                return state; // Returnați starea nemodificată dacă nu s-a găsit ID-ul specificat
+            }
+        },
+        
+
+
+
+        failureUpdateEx:(state,action)=>{
+            state.loading=false;
+            state.error=action.payload //incarca cu mesajul erorii
+        },
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -78,7 +125,10 @@ export const {
     failureExpense,
     finalExpense,
     deleteExpense,
-    totExpense
+    totExpense,
+    updateExpense,
+    failureUpdateEx
+
 }=cartExpense.actions;
 
 export default cartExpense.reducer;

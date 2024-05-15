@@ -22,9 +22,6 @@ export default function Navbar() {
   const isSignUpPage = location.pathname === '/signup';
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
 
     return (
 
@@ -37,22 +34,13 @@ export default function Navbar() {
       
       
           <div className="center">
-        
-            
-
-
-
-
-            
-
-
                 <div className="sign">
                 <img src={signImg} alt='sign' />
-                  <span>SignIn</span>
+                  <Link to={'/signup'}>SignIn</Link>
                 </div>
                 <div className="login">
                   <img src={loginImg} alt='login' />
-                  <span>Login</span>
+                  <Link to={'/login'}>Login</Link>
                 </div>
           </div>
             
@@ -64,7 +52,7 @@ export default function Navbar() {
 
               <div className="user">
                   <img src={chart} alt='image'/>
-                  <span>Ion</span>
+                  <Link to={'/profile'}>Ion</Link>
               </div>
 
 
@@ -73,7 +61,7 @@ export default function Navbar() {
 
         
 
-
+  
 
         </div>
 

@@ -33,7 +33,7 @@ export default function ProfileDetails() {
       
         //dispatch(dataSucces());
         toast.success("Ieii date primite cu succes")
-    
+  
 
       }catch(error){
         //dispatch(dataFailure(error.message));

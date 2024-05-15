@@ -23,7 +23,7 @@ export default function Login() {
 
   return (
     <>
-    <Navbar/>
+
 
     <div className='contLogin'>
         <div className="background">
