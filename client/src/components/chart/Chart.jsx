@@ -4,7 +4,6 @@ import { Chart as ChartJS } from 'chart.js/auto'; // Importă ChartJS din 'chart
 
 export default function Chart() {
   const { currentExpense } = useSelector(state => state.expense);
-  console.log("expense chart", currentExpense);
 
   const categories = currentExpense.map(expense => expense.category);
   const amounts = currentExpense.map(expense => expense.amount);

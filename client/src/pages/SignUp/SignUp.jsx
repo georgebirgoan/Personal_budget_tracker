@@ -1,19 +1,48 @@
 import './signup.scss';
 import {Link} from 'react-router-dom'
-import Navbar from '../../components/navbar/Navbar';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+
 
 export default function SignUp() {
-  const [dataFormSign,setDataSign]=useState({});
-  
-  const handleChange=(e)=>{
-    setDataSign({...dataFormSign,[e.target.id]:e.target.value});
-  }
-  
-  const handleSubmit=(e)=>{}
-  console.log('data sign in',dataFormSign);
-    
+  const navigate=useNavigate();
+  const [isLoading,setLoading]=useState(false);
+  const [error,setError]=useState(false);
 
+  const [formData,setFormData] = useState({})
+
+  const handleChange=(e)=>{
+    setFormData({...formData,[e.target.id]:e.target.value})
+  }
+
+
+  const handleSubmit=async (e) =>{
+    e.preventDefault();//dont refrest page until have data
+    try{
+      setLoading(true);
+      setError(false)
+      const data=await axios.post('http://localhost:3001/api/auth/signup',formData);
+      console.log("data client",data);
+      
+      if(data){
+        setLoading(false);
+        setError(false);
+        toast.success("Va-ti inregistrat cu succes!")
+        navigate('/login')
+      }else{
+        toast.error("Nu exista date primite de la client!")
+      }
+    
+    }catch(error){
+      setLoading(false);
+      setError(true)
+      toast.error("Something went wrong!");
+    }
+
+  };
+  
   return (
     <> 
 
@@ -41,10 +70,12 @@ export default function SignUp() {
           <div className="divspan">
               <span className='user2' >Password</span>
             </div>   
-          <input onSubmit={handleChange} className='inputSignIn' type="password" placeholder="Password" id="password" />
+          <input onChange={handleChange} className='inputSignIn' type="password" placeholder="Password" id="password" />
 
 
           <button >Sign Up</button>
+
+          
           <div className="social2">
             <div className="go2"><i className="fab fa-google"></i> Google</div>
             <div className="fb2"><i className="fab fa-facebook"></i> Facebook</div>

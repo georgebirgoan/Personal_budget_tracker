@@ -21,7 +21,6 @@ export const MinSal = () => {
     const { currentIncome } = useSelector(state => state.income);
     
     const findMin = () => {
-        console.log("in min function");
         if (currentIncome.length === 0) {
             return 0;
         }
@@ -50,7 +49,6 @@ export const MaxSal = () => {
     const { currentIncome } = useSelector(state => state.income);
     
     const findMax = () => {
-        console.log("in max function");
         if (currentIncome.length === 0) {
             return 0;
         }
@@ -80,7 +78,6 @@ export const MinExpense = () => {
     const { currentExpense } = useSelector(state => state.expense);
     
     const findMin = () => {
-        console.log("in min function");
         if (currentExpense.length === 0) {
             return 0;
         }
@@ -109,7 +106,6 @@ export const MaxExpense = () => {
     const { currentExpense } = useSelector(state => state.expense);
     
     const findMax = () => {
-        console.log("in max function");
         if (currentExpense.length === 0) {
             return 0;
         }

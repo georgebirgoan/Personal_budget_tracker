@@ -1,8 +1,4 @@
 import './navbar.scss';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import PersonIcon from '@mui/icons-material/Person';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import VpnKeyIcon from '@mui/icons-material/VpnKey';
 import { Link, useLocation } from 'react-router-dom';
 import WalletIcon from '@mui/icons-material/Wallet';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
@@ -10,12 +6,13 @@ import chart from '../../images/chart.png'
 import loginImg from '../../images/loginImg.png'
 import signImg from '../../images/singImg.png'
 import { useState } from 'react';
-import MenuIcon from '@mui/icons-material/Menu';
+import { useSelector } from 'react-redux';
 
 
 export default function Navbar() {
   const location = useLocation();
-
+  const {currentUser}=useSelector(state=>state.user);
+  console.log('usercurrent',currentUser);
 
   // Verifică dacă locația curentă este '/login' sau '/signup'
   const isLoginPage = location.pathname === '/login';
@@ -32,18 +29,6 @@ export default function Navbar() {
               <span>Budget Wallet</span>
           </div>
       
-      
-          <div className="center">
-                <div className="sign">
-                <img src={signImg} alt='sign' />
-                  <Link to={'/signup'}>SignIn</Link>
-                </div>
-                <div className="login">
-                  <img src={loginImg} alt='login' />
-                  <Link to={'/login'}>Login</Link>
-                </div>
-          </div>
-            
             <div className="icons">
 
               <div className="notification">
@@ -51,9 +36,29 @@ export default function Navbar() {
               </div>
 
               <div className="user">
-                  <img src={chart} alt='image'/>
-                  <Link to={'/profile'}>Ion</Link>
+                {currentUser ? (
+                  <>
+                    <Link to='/profile'>
+                      <img src={currentUser.profilePicture} alt='User profile' />
+                      <span className='nume' >  {currentUser.username}</span>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                  <div className="sign">
+                    <img src={signImg} alt='sign' />
+                    <Link to='/login'>Login</Link>
+                  </div>
+
+                  <div className="log">
+                    <img src={loginImg} alt='login' />
+                    <Link to='/signup'>Sign Up</Link>
+                  </div>
+                  </>
+                )}
               </div>
+  
+
 
 
             </div>

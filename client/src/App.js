@@ -1,11 +1,9 @@
-//Toate paginile sa fie responsive
-//.De facut functie pt a edita produsele(update)
-//.Pt salar minim,/maxim de facut o functie care sa afle din income
-//De asemenea de facut grafic
-//.De facut serverul si api pt logare(cookie ,sesiune etc)
-//.De lucrat la profil,style si update(la fel api pt update luat din proiect anterior);
+//image profil
+//login cu google and facebook
+//grahs
 
-//apoi la lucrurile avansate
+//csv
+
 
 
 
@@ -26,7 +24,7 @@ import './styles/global.scss'
 import EditIncome from './pages/EditIncome/EditIncome';
 import EditExpense from './pages/EditExpense/EditExpense';
 import ProfileDetails from "./pages/ProfileDetails/ProfileDetails";
-
+import PrivateRoutes from './pages/PrivateRoute/PrivateRoutes'
 
 function App() {
 
@@ -68,7 +66,7 @@ function App() {
         },
         {
           path: "/profile",
-          element: <ProfileDetails />,
+          element: <PrivateRoutes />, // Utilizează componenta pentru rutele private
         },
 
 

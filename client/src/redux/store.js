@@ -4,6 +4,7 @@ import cartExpense from './cart/ExpenseReducer'
 import {persistReducer} from 'redux-persist';
 import storage from "redux-persist/lib/storage";
 import persistStore from "redux-persist/es/persistStore";
+import  userReducer  from "./user/userSlice";
 
 
 const persistConfig={
@@ -15,7 +16,8 @@ const persistConfig={
 //we have more reducer
 const rootReducer=combineReducers({
     income:cartReducer,
-    expense:cartExpense
+    expense:cartExpense,
+    user:userReducer
 });
 const persistedReducer =persistReducer(persistConfig,rootReducer);
 

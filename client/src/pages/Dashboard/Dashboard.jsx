@@ -2,10 +2,8 @@ import Chart from '../../components/chart/Chart'
 import History from '../../components/history/History'
 import './dashboard.scss'
 import ChartBox from '../../components/chartBox/ChartBox'
-import { useSelector } from 'react-redux'
 import { MyComponent } from '../../utils/data'
-import { MaxExpense, MaxSal, MinExpense, MinSal } from '../../components/helper/Istoric'
-import Chart2 from '../../components/Chart2/Chart2'
+import { MaxExpense, MaxSal, MinExpense, MinSal } from "../../helper/Istoric"
 
 
 function Dasboard() {

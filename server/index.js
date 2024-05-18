@@ -1,30 +1,60 @@
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
-import dotenv from 'dotenv';
 import express from 'express';
 import mongoose from 'mongoose';
-import cartRoutes from './routes/cartRoutes.js'
+import dotenv from 'dotenv';
+import userRoutes from './routes/user.routes.js';
+import authRoutes from './routes/auth.routes.js';
+import path from 'path';
+import cors from 'cors';
+import cookieParser from 'cookie-parser';
 
+//const __dirname = path.resolve();
+
+// Acces env
 dotenv.config();
+const app = express();
 
-const app=express();
+const port = process.env.PORT || 8000;
+console.log('portul', port);
 
-const port=process.env.PORT || 8000;
-console.log("port",port);
-
+// Middleware pentru cookie parser
 app.use(cookieParser());
 
+// Middleware pentru parsarea JSON
+app.use(express.json());
+
+// Configurare CORS
 app.use(cors({
-    origin:"http://localhost:5173",
-    credentials:true
-}))
+    credentials: true,
+}));
+
+
+// Conectare la baza de date
+mongoose.connect(process.env.DATABASE, {
+}).then(() => {
+    console.log('DATABASE CONNECTED MONGO');
+}).catch((err) => {
+    console.log('Not connected to database', err);
+});
+
+// Montare rute
+app.use('/api/user', userRoutes);
+app.use('/api/auth', authRoutes);
 
 
 
-app.use("/api/cart",cartRoutes);
+// Middleware pentru gestionarea erorilor
+app.use((err, req, res, next) => {
+    console.log("middleware eoraere")
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal server error';
+    return res.status(statusCode).json({
+        success: false,
+        message,
+        statusCode
+    });
+});
 
-
-const server=app.listen(port,()=>{
-    console.log("Server is runnig on port: ",port);
-})
-
+// Pornire server
+const server = app.listen(port, () => {
+    console.log(`Server is live on port ${port}`);
+});

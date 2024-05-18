@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './history.scss';
-import { Istoric } from '../helper/Istoric';
+import {Istoric} from "../../helper/Istoric"
 
 export default function History() {
   const istoric = Istoric(); // Inițializează istoricul cu cele mai recente 4 tranzacții
