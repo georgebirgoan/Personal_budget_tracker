@@ -5,16 +5,17 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
 const firebaseConfig = {
-  apiKey:" AIzaSyAeUbKQ9nXw9pOPc1oivrH4-T_WkwIqyiE",
-  authDomain: "dashboard-4ed5b.firebaseapp.com",
-  projectId: "dashboard-4ed5b",
-  storageBucket: "dashboard-4ed5b.appspot.com",
-  messagingSenderId: "923378382760",
-  appId: "1:923378382760:web:91d5f82608c527a25d0f9d",
-  measurementId: "G-G34KQEG0ZM"
+  apiKey: "AIzaSyDy_4PlB7DOm3lykoFKRW4eTUpyXQKKFRA",
+  authDomain: "budgettracker-27485.firebaseapp.com",
+  projectId: "budgettracker-27485",
+  storageBucket: "budgettracker-27485.appspot.com",
+  messagingSenderId: "685718299469",
+  appId: "1:685718299469:web:9d2306b26afd77b6f88d04",
+  measurementId: "G-JF4BDZLYTZ"
 };
 
-// Initialize Firebase
 
+// Initialize Firebase
 export const app = initializeApp(firebaseConfig);

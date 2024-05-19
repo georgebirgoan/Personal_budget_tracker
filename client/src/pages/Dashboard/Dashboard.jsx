@@ -4,6 +4,7 @@ import './dashboard.scss'
 import ChartBox from '../../components/chartBox/ChartBox'
 import { MyComponent } from '../../utils/data'
 import { MaxExpense, MaxSal, MinExpense, MinSal } from "../../helper/Istoric"
+import Chart2 from '../../components/Chart2/Chart2'
 
 
 function Dasboard() {
@@ -45,18 +46,22 @@ function Dasboard() {
 
     
       <div className="box box7">
-          <div className="titleSalary">
-            <span>Min</span>
-            <span>Salary</span>
-            <span>Max</span>
+
+          <div className="salar">
+            <div className="titleSalary">
+              <span>Min</span>
+              <span>Salary</span>
+              <span>Max</span>
+            </div>
+
+            <div className="MinMaxSal">
+              <span><MinSal/>$</span>
+              <span><MaxSal/>$</span>
+            </div>
+
           </div>
 
-          <div className="MinMaxSal">
-            <span><MinSal/>$</span>
-            <span><MaxSal/>$</span>
-          
-          </div>
-
+      <div className="cheltuieli">
           <div className="titleExpense">
             <span>Min</span>
             <span>Expense</span>
@@ -67,11 +72,11 @@ function Dasboard() {
             <span><MinExpense/>$</span>
             <span><MaxExpense/>$</span>
           </div>
-
+        </div>
 
       </div>
 
-      <div className="box box8"> </div>
+      <div className="box box8"><Chart2/> </div>
 
     </div>
      

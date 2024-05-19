@@ -46,8 +46,11 @@ export const signIn = async (req, res, next) => {
 
 //RES OAuth server
 export const google = async (req, res, next) => {
+  console.log("ajunge in Google")
   try {
     const user = await User.findOne({ email: req.body.email });
+    console.log("user gog",user);
+
     if (user) {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
       const { password: hashedPassword, ...rest } = user._doc;
@@ -73,6 +76,7 @@ export const google = async (req, res, next) => {
         password: hashedPassword,
         profilePicture: req.body.photo,
       });
+      console.log("new user gog",newUser);
       await newUser.save();
       const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
       const { password: hashedPassword2, ...rest } = newUser._doc;

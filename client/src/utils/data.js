@@ -202,30 +202,19 @@ const chartBoxBalance = {
   icon: totalBalanceImg,
   title: "Total Balance",
   number:balance,
-  dataKey: "bal",
+  dataKey: "balance",
   percentage: -12,
   chartData:[
-    { name: "Sun", bal: 400 },
-    { name: "Mon", bal: 200 },
-    { name: "Tue", bal: 100 },
-    { name: "Wed", bal: 300 },
-    { name: "Thu", bal: 600 },
-    { name: "Fri", bal: 500 },
-    { name: "Sat", bal: 150 },
+    { name: "Sun", balance: 400 },
+    { name: "Mon", balance: 200 },
+    { name: "Tue", balance: 100 },
+    { name: "Wed", balance: 300 },
+    { name: "Thu", balance: 600 },
+    { name: "Fri", balance: 500 },
+    { name: "Sat", balance: 150 },
   ]
 
 };
-
-
-
-
-
-
-
-
-
-
-
 
 
 

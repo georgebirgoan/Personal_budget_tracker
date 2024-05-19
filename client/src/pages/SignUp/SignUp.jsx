@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import OAuth from '../../components/OAuth/OAuth';
 
 
 export default function SignUp() {
@@ -76,9 +77,8 @@ export default function SignUp() {
           <button >Sign Up</button>
 
           
-          <div className="social2">
-            <div className="go2"><i className="fab fa-google"></i> Google</div>
-            <div className="fb2"><i className="fab fa-facebook"></i> Facebook</div>
+          <div className="social1">
+            <OAuth/> 
           </div>
 
           <div className='footerContainer2'>

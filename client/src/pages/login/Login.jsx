@@ -8,10 +8,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 import { signInStart,signInFailure,signInSuccess } from "../../redux/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import OAuth from '../../components/OAuth/OAuth';
 
 export default function Login() {
   const [formData,setFormData] = useState({})
-  console.log("login form",formData);
   //useSelector bucati specifice de stare din store(Redux) pt aplicatie
   const {isLoading,error}=useSelector((state)=>state.user);
 
@@ -31,34 +31,27 @@ export default function Login() {
       const response= await axios.post('http://localhost:3001/api/auth/signin', formData,
       {withCredentials:true}
     );
-      console.log("response from server",response);
-      //const data = await response.json(); // Conversia răspunsului în format JSON
       
       if(response.success === false){
         console.log(response.message);
         dispatch(signInFailure(response.message))
         return;
       }
-      dispatch(signInSuccess(response));
+
+      console.log("raspuns login",response);
+      dispatch(signInSuccess(response.data));
+      console.log("ajunge");
       toast.success("Va-ti inregistrat cu succes!");
       navigate('/')
     }catch(error){
       dispatch(signInFailure(error.message))
       toast.error("Something went wrong!");
     }
-    
-
   };
     
 
-
-
-
-
   return (
     <>
-
-
     <div className='contLogin'>
         <div className="background">
           <div className="shape"></div>
@@ -84,9 +77,8 @@ export default function Login() {
 
           <button >Login</button>
           
-          <div className="social">
-            <div className="go"><i className="fab fa-google"></i> Google</div>
-            <div className="fb"><i className="fab fa-facebook"></i> Facebook</div>
+          <div className="social2">
+            <OAuth/> 
           </div>
 
           <div className='footerContainer'>
