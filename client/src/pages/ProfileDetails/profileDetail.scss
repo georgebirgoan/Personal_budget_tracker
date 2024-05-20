@@ -113,11 +113,38 @@
 
   .circular-image {
     display: flex;
+    flex-direction: column;
     justify-content: center; 
     align-items: center; 
-    width: 100%; 
-    border-radius: 50%;
-    overflow: hidden; 
+    width: 100%;
+    overflow: hidden;
+    text-wrap: nowrap;
+
+  }
+
+  .imageUpload{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+
+   }
+
+   .succes{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  .ErMesaj{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
   }
   
   .circular-image img {
@@ -172,3 +199,5 @@
   .signOut3:hover {
     background-color: #e41313;
   }
+
+

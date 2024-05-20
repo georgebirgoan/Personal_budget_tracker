@@ -13,16 +13,19 @@ export const  user=(req,res)=>{
 
 //update user
 export const updateUser=async (req,res,next)=>{
-    console.log("in update",req.user.username)
+    console.log("in update username",req.user.username)
+    console.log("in update id",req.user.id)
+
     if(req.user.id !== req.params.id){
         return next(errorHandler(401,"You can update only your account!"));
     } 
+
     try{
-        console.log("wm",req.body.email);
+        console.log("email",req.body.password);
         if(req.body.password){
             req.body.password=bycriptjs.hashSync(req.body.password,10);
-
         }
+        
         const updatedUser=await User.findByIdAndUpdate(
             req.params.id,{
                 $set:{

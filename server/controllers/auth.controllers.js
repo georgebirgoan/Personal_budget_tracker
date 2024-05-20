@@ -21,7 +21,7 @@ export const signUp = async (req, res, next) => {
 export const signIn = async (req, res, next) => {
   console.log("ajunge sign in")
   const { email, password } = req.body;
-  console.log(email,password);
+  console.log("email,pas back",email,password);
   try {
     const validUser = await User.findOne({ email });
     console.log("valid",validUser);

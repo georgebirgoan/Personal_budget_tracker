@@ -1,11 +1,11 @@
 import React, { useRef, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJS, registerables } from 'chart.js'; // Import ChartJS and the registerables
 import { Line } from 'react-chartjs-2';
 import './chart2.scss'; // Import the CSS file for styling
 
 // Register the necessary components with ChartJS
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
+ChartJS.register(...registerables);
 
 export default function Chart2() {
     const { currentExpense } = useSelector(state => state.expense);
@@ -13,11 +13,14 @@ export default function Chart2() {
 
     // Aggregate data by date
     const aggregatedData = currentExpense.reduce((acc, expense) => {
-        const date = expense.date.split('T')[0]; // Assuming 'date' is in ISO format
-        if (!acc[date]) {
-            acc[date] = 0;
+        // Check if expense.date is defined before splitting
+        if (expense.date) {
+            const date = expense.date.split('T')[0]; // Assuming 'date' is in ISO format
+            if (!acc[date]) {
+                acc[date] = 0;
+            }
+            acc[date] += expense.amount;
         }
-        acc[date] += expense.amount;
         return acc;
     }, {});
 

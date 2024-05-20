@@ -5,6 +5,7 @@ import ChartBox from '../../components/chartBox/ChartBox'
 import { MyComponent } from '../../utils/data'
 import { MaxExpense, MaxSal, MinExpense, MinSal } from "../../helper/Istoric"
 import Chart2 from '../../components/Chart2/Chart2'
+import CsvData from '../../components/CSV/CsvData'
 
 
 function Dasboard() {
@@ -77,7 +78,6 @@ function Dasboard() {
       </div>
 
       <div className="box box8"><Chart2/> </div>
-
     </div>
      
   )

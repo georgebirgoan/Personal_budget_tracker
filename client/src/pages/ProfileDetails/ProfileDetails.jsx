@@ -24,6 +24,8 @@ export default function ProfileDetails() {
   const navigate=useNavigate();
   console.log("sunt in profile");
   const dispatch = useDispatch();
+
+
   const fileRef=useRef(null);
     //state pt aplicatie
     const [image,setImage]=useState(undefined);
@@ -40,8 +42,12 @@ export default function ProfileDetails() {
       console.log("imagine efect0",image);
     }
   },[image])
+
+  useEffect(() => {
+    console.log(`imagePercent updated: ${imagePercent}`);
+  }, [imagePercent]);
   
-  //charge image in firebase ->get URL for the image
+  //change image in firebase ->get URL for the image
     const handleFileUpload = async(image) =>{
       const storage=getStorage(app);
       const fileName=new Date().getTime() + image.name;
@@ -136,7 +142,8 @@ const handleSubmit= async (e)=>{
     })
 
     const data=await res.json();
-  
+    console.log("data update",data);
+    
     if(data.success === false){
       dispatch(updateUserFailure(data));
       return;
@@ -166,26 +173,26 @@ const handleSubmit= async (e)=>{
                 
                   {/*imagine profil mijloc*/}
                   <img src={formData.profilePicture || currentUser.profilePicture} alt="profile" 
-                  className="h-24 w-24 self-center
-                  cursor-pointer rounded-full object-cover  mt-2  " 
+                  className="" 
                   onClick={()=>fileRef.current.click()}
                   />
 
                       {/*process upload imagine*/}
-                <p className='text-sm self-center'>
+                <div className="imageUpload">
+          
                   {imageError ? (
-                    <span className='text-red-700'>
+                    <span className='ErMesaj'>
                       Error uploading image (file size must be less than 2 MB)
                     </span>
                   ) : imagePercent > 0 && imagePercent < 100 ? (
-                    <span className='text-slate-700'>{`Uploading: ${imagePercent} %`}</span>
+                    <span className='Uploading'>{`Uploading: ${imagePercent} %`}</span>
                   ) : imagePercent === 100 ? (
-                    <span className='text-green-700'>Image uploaded successfully</span>
+                    <span className='succes'>Image uploaded successfully</span>
                   ) : (
                     ''
                   )}
-                </p>
-        
+    
+                </div>
         
             </div>
 

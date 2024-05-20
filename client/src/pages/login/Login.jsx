@@ -28,9 +28,7 @@ export default function Login() {
     e.preventDefault();//dont refrest page until have data
     try{
       dispatch(signInStart());
-      const response= await axios.post('http://localhost:3001/api/auth/signin', formData,
-      {withCredentials:true}
-    );
+      const response= await axios.post('http://localhost:3001/api/auth/signin', formData,{withCredentials:true});
       
       if(response.success === false){
         console.log(response.message);

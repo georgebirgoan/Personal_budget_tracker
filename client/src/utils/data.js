@@ -1,5 +1,5 @@
 import homeImg from '../images/homeImg.png';
-import incomeImg from '../images/incomeImg.png';
+import incomeImg3 from '../images/incomeImg3.png';
 import expenseImg from '../images/expenseImg.png';
 import totalIncomeImg from '../images/totalIncome.png'
 import { useSelector } from 'react-redux';
@@ -7,6 +7,7 @@ import totalExpenseImg from '../images/totalExpenseImg.png'
 import totalBalanceImg from '../images/totalBalanceImg.png'
 import totalEconomyImg from '../images/totalEconomyImg.png'
 import { useState,useEffect } from 'react';
+
 export const menu = [
   {
     id: 1,
@@ -22,7 +23,7 @@ export const menu = [
           id: 2,
           title: "Income",
           url: "/income",
-          icon: incomeImg,
+          icon: incomeImg3
         },
         {
           id: 2,
@@ -165,37 +166,6 @@ export function MyComponent() {
     return acc;
 }, []);
 
-
-
-/*
-const addDays = (date, days) => {
-  const newDate = new Date(date);
-  newDate.setDate(newDate.getDate() + days);
-  return newDate;
-};
-
-const initialDate = addDays(new Date(), 1); // Data actuală + 1 zi
-
-const [balanceData, setBalanceData] = useState({
-  balance: (totalIncome - totalExpense) - totalEconomy,
-  date: initialDate // Păstrează data inițială ca obiect Date
-});
-console.log(balanceData);
-
-const updateBalance = () => {
-  const newBalance = (totalIncome - totalExpense) - totalEconomy;
-  const newDate = addDays(balanceData.date, 1); // Nu mai este necesar să folosești toLocaleDateString()
-
-  setBalanceData({
-    balance: newBalance,
-    date: newDate
-  });
-};
-
-useEffect(() => {
-  updateBalance(); // Apelează updateBalance o singură dată după montarea componentei
-}, [totalIncome, totalExpense, totalEconomy]); // Efectul este apelat când se modifică veniturile, cheltuielile sau economiile
-*/
 
 const chartBoxBalance = {
   color: "#8884d8",

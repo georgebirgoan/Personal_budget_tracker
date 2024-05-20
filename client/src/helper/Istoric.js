@@ -15,6 +15,30 @@ export const Istoric = () => {
     return history.slice(0, 4);
 }
 
+export const IstoricExport = () => {
+    const { currentIncome } = useSelector(state => state.income);
+    const { currentExpense } = useSelector(state => state.expense);
+    //const dispatch=useDispatch();
+    //dispatch(resetState());
+    // Concatenează tranzacțiile din currentIncome și currentExpense
+    const history = [...currentIncome, ...currentExpense];
+    
+    // Sortează istoricul în ordinea descrescătoare a datelor de creare
+    history.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+    const formattedHistory = history.map(item => ({
+        date: item.date, // Assuming `date` is a field in the item
+        type:item.type,
+        category: item.category, // Assuming `category` is a field in the item
+        amount: item.amount,
+        option: item.option, // Assuming `option` is a field in the item
+        reference: item.reference, // Assuming `reference` is a field in the item
+      }));
+    
+      // Return the formatted history
+      return formattedHistory
+}
+
 
 
 export const MinSal = () => {

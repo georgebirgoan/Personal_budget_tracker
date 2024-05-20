@@ -8,11 +8,13 @@ import signImg from '../../images/singImg.png'
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
+import CsvData from '../CSV/CsvData';
 
 export default function Navbar() {
   const location = useLocation();
   const {currentUser}=useSelector(state=>state.user);
   console.log('usercurrent',currentUser);
+
 
   // Verifică dacă locația curentă este '/login' sau '/signup'
   const isLoginPage = location.pathname === '/login';
@@ -33,6 +35,10 @@ export default function Navbar() {
 
               <div className="notification">
                   <NotificationsNoneIcon/>
+              </div>
+
+              <div className="csv">
+                  <CsvData/>
               </div>
 
               <div className="user">
