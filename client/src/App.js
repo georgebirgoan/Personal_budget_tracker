@@ -4,7 +4,7 @@ import {
   Outlet,
 } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
-import Login from "./pages/Login/Login";
+import Login from "./pages/login/Login";
 import SideBar from "./components/sidebar/SideBar";
 import Dasboard from "./pages/Dashboard/Dashboard";
 import SignUp from './pages/SignUp/SignUp'
