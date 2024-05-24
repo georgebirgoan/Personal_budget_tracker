@@ -9,7 +9,7 @@ import SideBar from "./components/sidebar/SideBar";
 import Dasboard from "./pages/Dashboard/Dashboard";
 import SignUp from './pages/SignUp/SignUp'
 import Income from './pages/Income/Income'
-import Expenses from './pages/Expenses/Expenses'
+import Expenses from './pages/expenses/Expenses'
 import Footer from './pages/Footer/Footer'
 import './styles/global.scss'
 import EditIncome from './pages/EditIncome/EditIncome';
