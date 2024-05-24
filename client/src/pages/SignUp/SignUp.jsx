@@ -24,7 +24,7 @@ export default function SignUp() {
     try{
       setLoading(true);
       setError(false)
-      const data=await axios.post('http://localhost:3001/api/signup',formData);
+      const data=await axios.post('https://personal-budget-tracker-ser.onrender.com/api/signup',formData);
       console.log("data client",data);
       
       if(data){
