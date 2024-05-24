@@ -8,6 +8,7 @@ export const  user=(req,res)=>{
     res.json({
         message:"in user function"
     })
+    res.send("daaa");
 }
 
 

@@ -45,11 +45,11 @@ mongoose.connect(process.env.DATABASE, {
     app.use('/',(req,res)=>{
        res.send("App work!"); 
     })
-    app.use('/api/user', userRoutes);
-    app.use('/api/auth', authRoutes);
+ //app.use('/api/user', userRoutes);
+//app.use('/api/auth', authRoutes);
 // route
 
-/*
+
 const routesPath = "./routes";
 readdirSync(routesPath).forEach(file => {
     if (file.endsWith('.js')) {
@@ -63,7 +63,7 @@ readdirSync(routesPath).forEach(file => {
             });
     }
 });
-*/
+
 // Middleware pentru gestionarea erorilor
 app.use((err, req, res, next) => {
     console.log("middleware eoraere")
