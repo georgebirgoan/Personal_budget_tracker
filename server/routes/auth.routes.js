@@ -6,8 +6,14 @@ const {
     signOutUser
 } = require('../controllers/auth.controllers.js');
 
-const router = express.Router();
+const {
+    user,
+  
+} = require('../controllers/user.controllers.js');
 
+
+const router = express.Router();
+router.get('/da',user);
 router.post('/signup', signUp);
 router.post('/signin', signIn);
 router.post('/google', google);

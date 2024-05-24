@@ -20,12 +20,12 @@ export default function OAuth() {
             const provider=new GoogleAuthProvider();
             const auth=getAuth(app);
             const result=await signInWithPopup(auth,provider);  
-            const res=await fetch("http://localhost:3001/api/auth/google",{
+            const res=await fetch("http://localhost:3001/api/google",{
                 method:'POST',
                 headers:{
                     "Content-Type":"application/json",
                 },
-
+            
                 body:JSON.stringify({
                     name:result.user.displayName,
                     email:result.user.email,

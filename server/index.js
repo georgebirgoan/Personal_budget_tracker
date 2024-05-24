@@ -37,13 +37,13 @@ app.use(express.json());
 
 // Configurare CORS
 app.use(cors({
-    origin:"personal-budget-tracker-12.vercel.app",
+    origin:"http://localhost:3000",
     credentials: true,
 }));
 
 
 // Conectare la baza de date
-mongoose.connect(process.env.DATABASE, {
+mongoose.connect(process.env.MONGODB_URI, {
 }).then(() => {
     console.log('DATABASE CONNECTED MONGO');
 }).catch((err) => {
@@ -54,10 +54,8 @@ mongoose.connect(process.env.DATABASE, {
 
 
 
-  
     // app.use('/api/user', userRoutes);
-     //app.use('/api/auth', authRoutes);
-
+     //app.use('/api/auth', authRoutes);     app.use("/", (req, res) => res.send("Express on Vercel"));
 
 readdirSync("./routes").map((r) => app.use("/api", require(`./routes/${r}`)));
 
@@ -77,7 +75,7 @@ readdirSync(routesPath).forEach(file => {
 });
 */
 // Middleware pentru gestionarea erorilor
-/*
+
 app.use((err, req, res, next) => {
     console.log("middleware eoraere")
     const statusCode = err.statusCode || 500;
@@ -87,7 +85,8 @@ app.use((err, req, res, next) => {
         message,
         statusCode
     });
-});*/
+});
+
 
 // Pornire server
 const server = app.listen(port, () => {
