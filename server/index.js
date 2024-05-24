@@ -77,6 +77,7 @@ readdirSync(routesPath).forEach(file => {
 });
 */
 // Middleware pentru gestionarea erorilor
+/*
 app.use((err, req, res, next) => {
     console.log("middleware eoraere")
     const statusCode = err.statusCode || 500;
@@ -86,7 +87,7 @@ app.use((err, req, res, next) => {
         message,
         statusCode
     });
-});
+});*/
 
 // Pornire server
 const server = app.listen(port, () => {
