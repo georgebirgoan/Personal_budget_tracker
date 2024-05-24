@@ -26,7 +26,7 @@ app.use(express.json());
 
 // Configurare CORS
 app.use(cors({
-    origin:"http://localhost:3000",
+    origin:"personal-budget-tracker-12.vercel.app",
     credentials: true,
 }));
 
