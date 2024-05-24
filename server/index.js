@@ -47,11 +47,18 @@ mongoose.connect(process.env.DATABASE, {
     })
 
 
-app.use('/api/user', userRoutes,(req,res)=>{
-    res.send("da merge");
-});
-app.use('/api/auth', authRoutes);
-// route
+    app.use('/api',(req,res)=>{
+        res.send("App merge!"); 
+     })
+
+     const routesPath = "./routes";
+
+     readdirSync(routesPath).forEach(file => {
+         if (file.endsWith('.js')) {
+             const route = require(path.join(__dirname, routesPath, file));
+             app.use("/api", route);
+         }
+     });
 
 /*
 const routesPath = "./routes";
