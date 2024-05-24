@@ -42,8 +42,11 @@ mongoose.connect(process.env.DATABASE, {
 });
 
 // Montare rute
+    app.use('/',(req,res)=>{
+       res.send("App work!"); 
+    })
     app.use('/api/user', userRoutes);
- app.use('/api/auth', authRoutes);
+    app.use('/api/auth', authRoutes);
 // route
 
 /*
