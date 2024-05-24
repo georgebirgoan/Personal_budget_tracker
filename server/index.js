@@ -54,13 +54,13 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // Montare rute
 
+readdirSync("./routes").map((r) => app.use("/api", require(`./routes/${r}`)));
 app.use("/", (req, res) => res.send("Express on Vercel"));
 
 
     // app.use('/api/user', userRoutes);
-     //app.use('/api/auth', authRoutes);     app.use("/", (req, res) => res.send("Express on Vercel"));
+     //app.use('/api/auth', authRoutes);    
 
-readdirSync("./routes").map((r) => app.use("/api", require(`./routes/${r}`)));
 
 /*
 const routesPath = "./routes";
@@ -79,6 +79,7 @@ readdirSync(routesPath).forEach(file => {
 */
 // Middleware pentru gestionarea erorilor
 
+/*
 app.use((err, req, res, next) => {
     console.log("middleware eoraere")
     const statusCode = err.statusCode || 500;
@@ -88,7 +89,7 @@ app.use((err, req, res, next) => {
         message,
         statusCode
     });
-});
+});*/
 
 
 // Pornire server
