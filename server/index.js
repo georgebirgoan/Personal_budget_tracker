@@ -37,9 +37,11 @@ app.use(express.json());
 
 // Configurare CORS
 app.use(cors({
-    origin:"http://localhost:3000",
-    credentials: true,
+    origin: "*", // Permit accesul de la orice origin
+    methods: "GET,PUT,POST,DELETE,PATCH,OPTIONS", // Specifică metodele acceptate
+    credentials: true, // Permit trimiterea cookie-urilor de autentificare
 }));
+
 
 
 // Conectare la baza de date
