@@ -54,6 +54,7 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // Montare rute
 
+app.use("/", (req, res) => res.send("Express on Vercel"));
 
 
     // app.use('/api/user', userRoutes);
