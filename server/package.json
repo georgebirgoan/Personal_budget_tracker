@@ -2,11 +2,12 @@
   "name": "server",
   "version": "1.0.0",
   "type": "module",
-  "description": "",
+  "description": "server",
   "main": "index.js",
   "scripts": {
     "dev": " nodemon server/index.js",
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "build":"npm insatll"
   },
   "author": "",
   "license": "ISC",

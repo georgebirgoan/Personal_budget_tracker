@@ -1,9 +1,3 @@
-//image profil solve problem
-//csv pt history to be offline
-
-
-
-
 import {
   createBrowserRouter,
   RouterProvider,
@@ -22,7 +16,6 @@ import EditIncome from './pages/EditIncome/EditIncome';
 import EditExpense from './pages/EditExpense/EditExpense';
 import ProfileDetails from "./pages/ProfileDetails/ProfileDetails";
 import PrivateRoutes from './pages/PrivateRoute/PrivateRoutes'
-import ExpenseNotification from "./components/Notification/Notification";
 import { useEffect } from "react";
 import { generateToken, messaging } from "./firebase";
 import { onMessage } from "firebase/messaging";
@@ -53,7 +46,6 @@ function App() {
               <Outlet />
           </div>
         </div>
-          <ExpenseNotification/>
           <Footer/>
       </div>
     );
