@@ -70,14 +70,39 @@
             justify-content: space-between;
             align-items: end;
             margin-top: auto;
-            padding: 3px;
+            padding: 2px;
+            gap: 30px;
             margin-bottom: 10px;
+            margin-right: 10px;
+
+            @include xl {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                /// gap: 25px;
+             }
+
+             @include xxl{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                 gap: 10px;
+             }
+        
+
+            @include lg {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                 gap: 10px;
+             }
 
             @include md{
                display: flex;
+               align-items: start;
                flex-direction: column;
-               justify-content: center;
-               align-items: center;
+               align-items: start;
                 gap: 7px;
             }
 

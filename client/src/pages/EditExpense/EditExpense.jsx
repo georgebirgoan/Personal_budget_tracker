@@ -28,7 +28,6 @@ export default function EditExpense() {
         amount: expenseRecord.amount || '',
         date: expenseRecord.date || '',
         option: expenseRecord.option || '',
-        goals: expenseRecord.goals || '',
         reference: expenseRecord.reference || ''
       });
     }
@@ -93,14 +92,7 @@ export default function EditExpense() {
             <option value="online">Online earning</option>
             <option value="other">Other</option>
           </select>
-          <input
-            onChange={handleChange}
-            className="input2"
-            id="goals"
-            value={editExpense.goals}
-            type="text"
-            placeholder="Add budget goals"
-          />
+    
           <input
             onChange={handleChange}
             className="input2"

@@ -29,6 +29,9 @@
     @include md{
       display: none;
     }
+    @include sm{
+      display: none;
+    }
   }
 }
 
@@ -48,6 +51,7 @@
     .csv{
       display: flex;
       align-items: center;
+     
     }
 
     .user{
@@ -68,6 +72,10 @@
           align-items: center;
           justify-content: center;
           gap: 5px;
+
+          @include sm{
+            display: none;
+          }
         }
 
         .log{
@@ -75,6 +83,10 @@
           align-items: center;
           justify-content: center;
           gap: 5px;
+
+          @include sm{
+            display: none;
+          }
         }
 
         img{

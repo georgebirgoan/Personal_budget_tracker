@@ -26,8 +26,10 @@ import ExpenseNotification from "./components/Notification/Notification";
 import { useEffect } from "react";
 import { generateToken, messaging } from "./firebase";
 import { onMessage } from "firebase/messaging";
+import CsvData from "./components/CSV/CsvData";
+ 
 
-  function App() {
+function App() {
 
     useEffect(()=>{
       console.log('efectt')
@@ -51,8 +53,8 @@ import { onMessage } from "firebase/messaging";
               <Outlet />
           </div>
         </div>
-          <Footer/>
           <ExpenseNotification/>
+          <Footer/>
       </div>
     );
   };
@@ -94,6 +96,7 @@ import { onMessage } from "firebase/messaging";
           },
         ],
       },
+    
        
       ],
     },

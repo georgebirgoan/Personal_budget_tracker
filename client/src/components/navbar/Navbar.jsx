@@ -33,9 +33,9 @@ export default function Navbar() {
       
             <div className="icons">
 
-              <div className="notification">
+              {/* <div className="notification">
                   <NotificationsNoneIcon/>
-              </div>
+              </div> */}
 
               <div className="csv">
                   <CsvData/>

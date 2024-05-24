@@ -3,9 +3,8 @@ import './history.scss';
 import {Istoric} from "../../helper/Istoric"
 
 export default function History() {
-  const istoric = Istoric(); // Inițializează istoricul cu cele mai recente 4 tranzacții
+  const istoric = Istoric(); 
  
-  // Efect pentru adăugarea unei noi tranzacții la încărcarea componentei
 
   
   return (
@@ -20,7 +19,7 @@ export default function History() {
       </div>
 
       <div className='groupHistory'>
-        {/* Verifică dacă istoricul este gol */}
+
         {istoric.length === 0 ? (
           // Afișează mesajul corespunzător în cazul în care istoricul este gol
           <div className="emptyHistoryMessage">Nu există înregistrări în istoric</div>

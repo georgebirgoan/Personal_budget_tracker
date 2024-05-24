@@ -118,9 +118,10 @@ const handleSignOut=async () =>{
       })
       dispatch(signOut());
       console.log("res from back",res);
-      toast.success('SignOut success front');
+      toast.success('Delogare cu succes!');
     }
     catch(error){
+      toast.error("Delogare esuata!")
       console.log(error);
     }
 }
@@ -145,12 +146,13 @@ const handleSubmit= async (e)=>{
     console.log("data update",data);
     
     if(data.success === false){
+      toast.error("Datele exista deja,pune-ti altele.")
       dispatch(updateUserFailure(data));
       return;
     }
     dispatch(updateUserSuccess(data));
     setUpdateSuccess(true);
-    toast.success("Updated data with success");
+    toast.success("Updated data with success!");
   }catch(error){
     dispatch(updateUserFailure(error));
   }

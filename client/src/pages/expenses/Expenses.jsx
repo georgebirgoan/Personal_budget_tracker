@@ -4,17 +4,18 @@ import SideBar from '../../components/sidebar/SideBar';
 import Categories from '../../components/categories/Categories';
 import { useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import {startExpense,failureExpense,finalExpense,deleteExpense, totExpense} from '../../redux/cart/ExpenseReducer.js'
+import {startExpense,failureExpense,finalExpense,deleteExpense, totExpense, updateExpense} from '../../redux/cart/ExpenseReducer.js'
 import { toast } from 'react-toastify';
-import { Istoric } from '../../redux/cart/IncomeReducer.js';
-
+import { Istoric, failureUpdate } from '../../redux/cart/IncomeReducer.js';
+import { resetState } from '../../redux/cart/IncomeReducer.js';
 
 export default function Expenses() {
   const [expenseData,setExpense]=useState({});
   const {totalExpense}=useSelector((state)=>state.expense)
 
   const dispatch=useDispatch();
-  
+  //dispatch(resetState());
+
   const handleChange= ((e)=>{
     setExpense({...expenseData,[e.target.id]:e.target.value});
   })
@@ -36,13 +37,13 @@ export default function Expenses() {
 
         dispatch(finalExpense(response));
         dispatch(totExpense());
-        dispatch(Istoric());
+       // dispatch(Istoric());
         toast.success("Iieii data succes")
 
 
     }catch(error){
       dispatch(failureExpense(error));
-      toast.error("eroare date");
+      toast.error("Eroare date!");
     }
   })
   return (

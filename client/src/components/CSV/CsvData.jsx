@@ -3,7 +3,8 @@ import { CSVLink } from 'react-csv';
 import { Istoric as IstoricExport } from '../../helper/Istoric';
 import CsvIcon from '../../images/csvIcon5.png'
 export default function CsvData() {
-  // Use IstoricExport to get the full transaction history
+  console.log("in CsvData")
+
   const history = IstoricExport();
 
   // Define CSV headers
@@ -26,7 +27,6 @@ export default function CsvData() {
         className="btn btn-primary"
       >
         <img src={CsvIcon}  alt='CsvIcon'/>
-        
       </CSVLink>
 ):(
     <p>No transaction entry</p>

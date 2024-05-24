@@ -1,41 +1,42 @@
 import { useSelector} from "react-redux";
+import { useDispatch } from "react-redux";
+import { resetState } from "../redux/cart/IncomeReducer";
+
+
 
 export const Istoric = () => {
     const { currentIncome } = useSelector(state => state.income);
+    console.log(currentIncome);
     const { currentExpense } = useSelector(state => state.expense);
-    //const dispatch=useDispatch();
+    console.log(currentExpense)
+   // const dispatch=useDispatch();
     //dispatch(resetState());
-    // Concatenează tranzacțiile din currentIncome și currentExpense
+
+    
     const history = [...currentIncome, ...currentExpense];
     
-    // Sortează istoricul în ordinea descrescătoare a datelor de creare
     history.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
-    // Returnează primele 3 tranzacții din istoric
     return history.slice(0, 4);
 }
 
 export const IstoricExport = () => {
     const { currentIncome } = useSelector(state => state.income);
+    console.log(currentIncome);
     const { currentExpense } = useSelector(state => state.expense);
-    //const dispatch=useDispatch();
-    //dispatch(resetState());
-    // Concatenează tranzacțiile din currentIncome și currentExpense
     const history = [...currentIncome, ...currentExpense];
     
-    // Sortează istoricul în ordinea descrescătoare a datelor de creare
     history.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
     const formattedHistory = history.map(item => ({
-        date: item.date, // Assuming `date` is a field in the item
+        date: item.date, 
         type:item.type,
-        category: item.category, // Assuming `category` is a field in the item
+        category: item.category, 
         amount: item.amount,
-        option: item.option, // Assuming `option` is a field in the item
-        reference: item.reference, // Assuming `reference` is a field in the item
+        option: item.option, 
+        reference: item.reference, 
       }));
     
-      // Return the formatted history
       return formattedHistory
 }
 
@@ -152,4 +153,9 @@ export const MaxExpense = () => {
             </div>
         </div>
     );
+
 };
+
+
+
+

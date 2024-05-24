@@ -39,7 +39,7 @@ export default function SignUp() {
     }catch(error){
       setLoading(false);
       setError(true)
-      toast.error("Something went wrong!");
+      toast.error("Inregistrare esuata!");
     }
 
   };

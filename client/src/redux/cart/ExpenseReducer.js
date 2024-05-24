@@ -67,27 +67,31 @@ const cartExpense=createSlice({
             }
         },
 
-
         updateExpense: (state, action) => {
-            const { id, editExpense  } = action.payload;
-            console.log("payload",action.payload);
-            console.log("edit",editExpense );
-            
+            const { id, editExpense } = action.payload;
+            console.log("payload", action.payload);
+            console.log("edit", editExpense);
+
             const indexToUpdate = state.currentExpense.findIndex(item => item.id === id);
             if (indexToUpdate !== -1) {
-                // Creează o nouă listă de venituri actualizată folosind metoda slice și spread operator
+                // Create an updated list of expenses using slice and spread operator
                 const updatedExpense = [
-                    ...state.currentExpense.slice(0, indexToUpdate), // Părțile din lista originală înaintea elementului actualizat
-                    { ...state.currentExpense[indexToUpdate], ...editExpense }, // Obiectul actualizat
-                    ...state.currentExpense.slice(indexToUpdate + 1) // Părțile din lista originală după elementul actualizat
+                    ...state.currentExpense.slice(0, indexToUpdate), // Parts of the original list before the updated item
+                    { ...state.currentExpense[indexToUpdate], ...editExpense }, // Updated object
+                    ...state.currentExpense.slice(indexToUpdate + 1) // Parts of the original list after the updated item
                 ];
+
+                // Recalculate the total expense after updating the list
+                const newTotalExpense = updatedExpense.reduce((total, item) => total + parseFloat(item.amount), 0);
+
                 return {
                     ...state,
-                    currentExpense: updatedExpense
+                    currentExpense: updatedExpense,
+                    totalExpense: newTotalExpense // Update the total expense in the state
                 };
             } else {
                 console.log("eroare reducer: Nu s-a găsit ID-ul specificat");
-                return state; // Returnați starea nemodificată dacă nu s-a găsit ID-ul specificat
+                return state; // Return the unmodified state if the specified ID was not found
             }
         },
         

@@ -29,18 +29,21 @@
 
     @include lg{
         grid-column: span 2;
-        grid-row: span 1;
+        grid-row: span 2;
+
     }
     @include md{
         grid-column: span 4;
-        grid-row: span 1;
+        grid-row: span 2;
     }
     @include sm{
         grid-column: span 4;
         grid-row: span 2;
     }
+    
 
-    }
+
+}
 
 
 

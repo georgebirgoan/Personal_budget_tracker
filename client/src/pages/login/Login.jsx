@@ -39,11 +39,11 @@ export default function Login() {
       console.log("raspuns login",response);
       dispatch(signInSuccess(response.data));
       console.log("ajunge");
-      toast.success("Va-ti inregistrat cu succes!");
+      toast.success("Logare cu succes!");
       navigate('/')
     }catch(error){
       dispatch(signInFailure(error.message))
-      toast.error("Something went wrong!");
+      toast.error("Logare esuata,inregistrati-va intai! !");
     }
   };
     
@@ -79,8 +79,8 @@ export default function Login() {
             <OAuth/> 
           </div>
 
-          <div className='footerContainer'>
-            <span className='footer'>Don't have an account?</span>
+          <div className='footerContainer12'>
+            <span className='footer12'>Don't have an account?</span>
             <Link to='/signup' className='signUp'>Sign Up</Link>
           </div>
 

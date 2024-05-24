@@ -7,7 +7,8 @@ const initialState={
     currentIncome:[],
     totalIncome:0,
     totalEconomy:0,
-    currentIstoric:[],
+    economyChanges:[],
+    balanceChanges:[],
     loading:false,
     error:false
 }
@@ -21,7 +22,7 @@ const cartIncome=createSlice({
     initialState,
     reducers:{
     
-        resetState:()=>initialState,
+       // resetState:()=>initialState,
 
         startIncome:(state,action)=>{
             state.loading=true;
@@ -70,44 +71,80 @@ const cartIncome=createSlice({
             const TotalIncome=state.currentIncome.reduce((total,item)=>
             total + parseFloat(item.amount),0);
             console.log("total income",TotalIncome);
+
             return{
                 ...state,
                 totalIncome:TotalIncome
             }
         },
 
+
         totEconomy:(state,action)=>{
             const TotalEconomy=state.currentIncome.reduce((total,item)=>
                 total + parseFloat(item.goals),0);
             console.log("totaleconomry",TotalEconomy);
 
+    
+
+            const newChange = {
+                date: new Date(),
+                amount: TotalEconomy 
+            };
+            console.log(newChange);
+            console.log("state economy changes",state.economyChanges);
+
             return{
                 ...state,
-                totalEconomy:TotalEconomy
+                totalEconomy:TotalEconomy,
+                economyChanges:[...state.economyChanges,newChange]
             }
         },
 
 
-        updateIncome: (state, action) => {
-            const { id, editIncome  } = action.payload;
-            console.log("payload",action.payload);
-            console.log("edit",editIncome );
+        histBalance:(state,action)=>{
+            const {amount,date}=action.payload;
+            console.log(action.payload);
+            console.log("payload",amount,date);
+            const newChange = {
+                date:date,
+                amount: amount 
+            };
+            console.log(newChange);
+            console.log(state.balanceChanges);
             
+            return{
+                ...state,
+                balanceChanges:[...state.balanceChanges,newChange]
+            }
+
+        },
+
+
+        updateIncome: (state, action) => {
+            const { id, editIncome } = action.payload;
+            console.log("payload", action.payload);
+            console.log("edit", editIncome);
+        
             const indexToUpdate = state.currentIncome.findIndex(item => item.id === id);
             if (indexToUpdate !== -1) {
-                // Creează o nouă listă de venituri actualizată folosind metoda slice și spread operator
+                // Create an updated list of incomes using slice and spread operator
                 const updatedIncome = [
-                    ...state.currentIncome.slice(0, indexToUpdate), // Părțile din lista originală înaintea elementului actualizat
-                    { ...state.currentIncome[indexToUpdate], ...editIncome }, // Obiectul actualizat
-                    ...state.currentIncome.slice(indexToUpdate + 1) // Părțile din lista originală după elementul actualizat
+                    ...state.currentIncome.slice(0, indexToUpdate), // Parts of the original list before the updated item
+                    { ...state.currentIncome[indexToUpdate], ...editIncome }, // Updated object
+                    ...state.currentIncome.slice(indexToUpdate + 1) // Parts of the original list after the updated item
                 ];
+        
+                // Recalculate the total income after updating the list
+                const newTotalIncome = updatedIncome.reduce((total, item) => total + parseFloat(item.amount), 0);
+        
                 return {
                     ...state,
-                    currentIncome: updatedIncome
+                    currentIncome: updatedIncome,
+                    totalIncome: newTotalIncome // Update the total income in the state
                 };
             } else {
                 console.log("eroare reducer: Nu s-a găsit ID-ul specificat");
-                return state; // Returnați starea nemodificată dacă nu s-a găsit ID-ul specificat
+                return state; // Return the unmodified state if the specified ID was not found
             }
         },
         
@@ -141,10 +178,10 @@ export const {
     deleteIncome,
     resetState,
     totIncome,
-    Istoric,
     totEconomy,
     updateIncome,
-    failureUpdate
+    failureUpdate,
+    histBalance
 
 }=cartIncome.actions;
 

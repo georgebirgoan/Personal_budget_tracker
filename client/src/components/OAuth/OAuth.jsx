@@ -5,6 +5,8 @@ import { signInSuccess } from '../../redux/user/userSlice';
 import { useDispatch,useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import './oAuth.scss';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from "react-toastify";
 
 export default function OAuth() {
     const dispatch=useDispatch();
@@ -33,16 +35,17 @@ export default function OAuth() {
             }) 
 
 
-            console.log("raasp",res);
 
             const data =await res.json();
             console.log('data auth',data);
 
 
             dispatch(signInSuccess(data));
+            toast.success("Logare cu succes!");
             navigate("/");
 
         }catch(error){
+            toast.error("Logare eusata Google!");
             console.log('could not login with google', error);
             }
         

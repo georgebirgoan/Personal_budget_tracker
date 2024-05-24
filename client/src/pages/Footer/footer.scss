@@ -1,11 +1,23 @@
 .footer{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 20px;
+    background-color:#384256;
+    height: 180px;
+    margin-top: 25px;
+    width: 100%;
+
 
 span{
 
-    &:first-child{
+    &:nth-child(1){
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    &:nth-child(2){
+        font-size:18px;
         font-weight: bold;
     }
 }

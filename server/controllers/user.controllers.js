@@ -51,7 +51,6 @@ export const deleteUser=async (req,res,next)=>{
         return next(errorHandler(401,"You cand delete only your account"));
     }
     try{
-        //search all user and delete with specific id
         await User.findByIdAndDelete(req.params.id);
         res.status(200).json("User has been deleted with succes")
     }catch(error){

@@ -1,25 +1,47 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Categories from '../../components/categories/Categories';
 import Navbar from '../../components/navbar/Navbar';
 import SideBar from '../../components/sidebar/SideBar';
 import './income.scss';
-import {startIncome,failureIncome,finalIncome,resetState,totIncome, Istoric, totEconomy} from '../../redux/cart/IncomeReducer.js'
+import {startIncome,failureIncome,finalIncome,resetState,totIncome, totEconomy, histBalance} from '../../redux/cart/IncomeReducer.js'
 import {toast } from  'react-toastify';
 import  {useDispatch,useSelector} from 'react-redux';
-
+import { useMemo } from 'react';
 
 export default function Income() {
   const [incomeData,setIncome]=useState({});
-  const {totalIncome}  = useSelector((state) => state.income);
+
+
+  const { totalIncome, totalExpense, totalEconomy } = useSelector((state) => ({
+    totalIncome: state.income.totalIncome,
+    totalExpense: state.expense.totalExpense,
+    totalEconomy: state.income.totalEconomy,
+}));
+
+
+  console.log(totalIncome);
+  console.log(totalExpense);
+  console.log(totalEconomy);
+
+  
+  const currentDate=new Date();
+  const balance = useMemo(() => totalIncome - totalExpense - totalEconomy, [totalIncome, totalExpense, totalEconomy]);
+
+
 
   const dispatch=useDispatch();
   //dispatch(resetState());
 
-  //for inputs
-  const handleChange= ((e)=>{
-    setIncome({...incomeData,[e.target.id]:e.target.value});
-    console.log("chage",incomeData);
-  })
+
+
+  const handleChange = (e) => {
+    setIncome((prevData) => ({
+        ...prevData,
+        [e.target.id]: e.target.value,
+    }));
+    console.log("change", incomeData);
+};
+
 
 
   //for submit form
@@ -32,11 +54,13 @@ export default function Income() {
 
           dispatch(finalIncome(incomeData));
           dispatch(totIncome());
+          console.log("dupa tot income");
           dispatch(totEconomy());
-          dispatch(Istoric());
+          console.log(balance);
+          dispatch(histBalance({amount:balance,date:currentDate}));
           
         }catch(error){
-          dispatch(failureIncome(error));
+          dispatch(failureIncome(error.message));
         }
       })
 
