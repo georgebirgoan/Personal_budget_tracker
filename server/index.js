@@ -50,15 +50,12 @@ mongoose.connect(process.env.DATABASE, {
     app.use('/api',(req,res)=>{
         res.send("App merge!"); 
      })
+    
+     app.use('/api/user', userRoutes);
+     app.use('/api/auth', authRoutes);
 
-     const routesPath = "./routes";
 
-     readdirSync(routesPath).forEach(file => {
-         if (file.endsWith('.js')) {
-             const route = require(path.join(__dirname, routesPath, file));
-             app.use("/api", route);
-         }
-     });
+    // readdirSync("./routes").map((r) => app.use("/api", require(`./routes/${r}`)));
 
 /*
 const routesPath = "./routes";
