@@ -55,10 +55,9 @@ mongoose.connect(process.env.MONGODB_URI, {
 // Montare rute
 
 readdirSync("./routes").map((r) => app.use("/api", require(`./routes/${r}`)));
-app.use("/", (req, res) => res.send("Express on Vercel"));
 
 
-    // app.use('/api/user', userRoutes);
+    //app.use('/api/user', userRoutes);
      //app.use('/api/auth', authRoutes);    
 
 
