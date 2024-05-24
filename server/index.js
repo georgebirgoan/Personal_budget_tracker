@@ -42,9 +42,11 @@ mongoose.connect(process.env.DATABASE, {
 });
 
 // Montare rute
-// app.use('/api/user', userRoutes);
-// app.use('/api/auth', authRoutes);
+    app.use('/api/user', userRoutes);
+ app.use('/api/auth', authRoutes);
 // route
+
+/*
 const routesPath = "./routes";
 readdirSync(routesPath).forEach(file => {
     if (file.endsWith('.js')) {
@@ -58,7 +60,7 @@ readdirSync(routesPath).forEach(file => {
             });
     }
 });
-
+*/
 // Middleware pentru gestionarea erorilor
 app.use((err, req, res, next) => {
     console.log("middleware eoraere")
