@@ -51,9 +51,7 @@ mongoose.connect(process.env.DATABASE, {
 });
 
 // Montare rute
-     app.use('/',(req,res)=>{
-    //    res.send("App work!"); 
-     })
+
 
 
   
