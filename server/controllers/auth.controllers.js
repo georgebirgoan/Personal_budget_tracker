@@ -1,11 +1,16 @@
 
-import User from '../models/model.user.js';
-import bcryptjs from 'bcryptjs';
-import { errorHandler } from '../utils/error.js';
-import jwt from 'jsonwebtoken';
+// import User from '../models/model.user.js';
+// import bcryptjs from 'bcryptjs';
+// import { errorHandler } from '../utils/error.js';
+// import jwt from 'jsonwebtoken';
 
-export const signUp = async (req, res, next) => {
-  console.log('ajune in signUp');
+const bcryptjs = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const User = require('../models/model.user.js');
+const { errorHandler } = require('../utils/error.js');
+
+const signUp = async (req, res, next) => {
+  console.log('ajunge in signUp');
   const { username, email, password } = req.body;
   const hashedPassword = bcryptjs.hashSync(password, 10);
   const newUser = new User({ username, email, password: hashedPassword });
@@ -17,14 +22,14 @@ export const signUp = async (req, res, next) => {
   }
 };
 
-export const signIn = async (req, res, next) => {
+const signIn = async (req, res, next) => {
   console.log("ajunge sign in")
   const { email, password } = req.body;
-  console.log("email,pas back",email,password);
+  console.log("email, pas back", email, password);
 
   try {
     const validUser = await User.findOne({ email });
-    console.log("valid",validUser);
+    console.log("valid", validUser);
 
     if (!validUser) {
       return next(errorHandler(404, 'User not found'));
@@ -48,19 +53,17 @@ export const signIn = async (req, res, next) => {
   }
 };
 
-
-//RES OAuth server
-export const google = async (req, res, next) => {
+const google = async (req, res, next) => {
   console.log("ajunge in Google")
   try {
     const user = await User.findOne({ email: req.body.email });
-    console.log("user gog",user);
+    console.log("user gog", user);
 
     if (user) {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
       const { password: hashedPassword, ...rest } = user._doc;
       const expiryDate = new Date(Date.now() + 3600000); // 1 hour
-      
+
       res
         .cookie('access_token', token, {
           httpOnly: true,
@@ -81,7 +84,7 @@ export const google = async (req, res, next) => {
         password: hashedPassword,
         profilePicture: req.body.photo,
       });
-      console.log("new user gog",newUser);
+      console.log("new user gog", newUser);
       await newUser.save();
       const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET);
       const { password: hashedPassword2, ...rest } = newUser._doc;
@@ -99,10 +102,16 @@ export const google = async (req, res, next) => {
   }
 };
 
-
-//res server signOUT from authController
-export const signOutUser = (req, res) => {
+const signOutUser = (req, res) => {
   console.log("ajunge in signout back")
   res.clearCookie('access_token').status(200).json('Signout success back!');
 };
+
+module.exports = {
+  signUp,
+  signIn,
+  google,
+  signOutUser
+};
+
 

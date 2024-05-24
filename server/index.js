@@ -1,12 +1,21 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
-import userRoutes from './routes/user.routes.js';
-import authRoutes from './routes/auth.routes.js';
-import path from 'path';
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
-import { readdirSync } from "fs";
+// import express from 'express';
+// import mongoose from 'mongoose';
+// import dotenv from 'dotenv';
+// import userRoutes from './routes/user.routes.js';
+// import authRoutes from './routes/auth.routes.js';
+// import path from 'path';
+// import cors from 'cors';
+// import cookieParser from 'cookie-parser';
+// import { readdirSync } from "fs";
+const express = require('express');
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const userRoutes = require('./routes/user.routes.js');
+const authRoutes = require('./routes/auth.routes.js');
+const path = require('path');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const { readdirSync } = require("fs");
 
 
 
@@ -42,20 +51,17 @@ mongoose.connect(process.env.DATABASE, {
 });
 
 // Montare rute
-    app.use('/',(req,res)=>{
-       res.send("App work!"); 
-    })
-
-
-    app.use('/api',(req,res)=>{
-        res.send("App merge!"); 
+     app.use('/',(req,res)=>{
+    //    res.send("App work!"); 
      })
-    
-     app.use('/api/user', userRoutes);
-     app.use('/api/auth', authRoutes);
 
 
-    // readdirSync("./routes").map((r) => app.use("/api", require(`./routes/${r}`)));
+  
+    // app.use('/api/user', userRoutes);
+     //app.use('/api/auth', authRoutes);
+
+
+readdirSync("./routes").map((r) => app.use("/api", require(`./routes/${r}`)));
 
 /*
 const routesPath = "./routes";

@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "server",
-  "type": "module",
+  "type": "commonjs",
   "main": "index.js",
   "scripts": {
     "dev": " nodemon server/index.js",
