@@ -6,12 +6,15 @@ import authRoutes from './routes/auth.routes.js';
 import path from 'path';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
+import { readdirSync } from "fs";
 
-//const __dirname = path.resolve();
+
+
 
 // Acces env
 dotenv.config();
 const app = express();
+
 
 
 const port = process.env.PORT || 8000;
@@ -39,10 +42,22 @@ mongoose.connect(process.env.DATABASE, {
 });
 
 // Montare rute
-app.use('/api/user', userRoutes);
-app.use('/api/auth', authRoutes);
-
-
+// app.use('/api/user', userRoutes);
+// app.use('/api/auth', authRoutes);
+// route
+const routesPath = "./routes";
+readdirSync(routesPath).forEach(file => {
+    if (file.endsWith('.js')) {
+        import(path.join(routesPath, file))
+            .then(module => {
+                const route = module.default;
+                app.use("/api", route);
+            })
+            .catch(error => {
+                console.error('Error loading route:', error);
+            });
+    }
+});
 
 // Middleware pentru gestionarea erorilor
 app.use((err, req, res, next) => {
