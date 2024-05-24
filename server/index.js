@@ -13,7 +13,6 @@ import cookieParser from 'cookie-parser';
 dotenv.config();
 const app = express();
 
-app.use(express.static('public'))
 
 const port = process.env.PORT || 8000;
 console.log('portul', port);
