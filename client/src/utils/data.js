@@ -10,8 +10,6 @@ import { useState,useEffect } from 'react';
 import { histBalance } from '../redux/cart/IncomeReducer';
 import loginImg from '../images/loginImg.png'
 import signImg from '../images/singImg.png'
-import CsvIcon from '../images/csvIcon5.png'
-import CsvData from '../components/CSV/CsvData';
 
 export const menu = [
   {

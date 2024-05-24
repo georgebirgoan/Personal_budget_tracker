@@ -3,8 +3,8 @@ import {
   RouterProvider,
   Outlet,
 } from "react-router-dom";
-import Login from "./pages/Login/Login";
 import Navbar from "./components/navbar/Navbar";
+import Login from "./pages/Login/Login";
 import SideBar from "./components/sidebar/SideBar";
 import Dasboard from "./pages/Dashboard/Dashboard";
 import SignUp from './pages/SignUp/SignUp'
@@ -14,12 +14,10 @@ import Footer from './pages/Footer/Footer'
 import './styles/global.scss'
 import EditIncome from './pages/EditIncome/EditIncome';
 import EditExpense from './pages/EditExpense/EditExpense';
-import ProfileDetails from "./pages/ProfileDetails/ProfileDetails";
 import PrivateRoutes from './pages/PrivateRoute/PrivateRoutes'
 import { useEffect } from "react";
 import { generateToken, messaging } from "./firebase";
 import { onMessage } from "firebase/messaging";
-import CsvData from "./components/CSV/CsvData";
  
 
 function App() {
