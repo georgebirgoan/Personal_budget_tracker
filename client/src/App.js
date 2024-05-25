@@ -56,8 +56,9 @@ function App() {
       children: [
         {
           path: "/",
-          element: <Dasboard />,
+          element: <PrivateRoutes />,
         },  
+        
         {
           path: "/income",
           element: <Income />,

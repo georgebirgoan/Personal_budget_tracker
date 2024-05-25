@@ -29,9 +29,10 @@ export default function Login() {
     try{
       dispatch(signInStart());
         const response= await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/signin`, formData,{withCredentials:true});
-      
+        
       if(response.success === false){
         console.log(response.message);
+        toast.error("Token invalid");
         dispatch(signInFailure(response.message))
         return;
       }
@@ -40,6 +41,7 @@ export default function Login() {
       if(response != null){
       dispatch(signInSuccess(response.data));
       console.log("ajunge");
+
       toast.success("Logare cu succes!");
       navigate('/')
       }

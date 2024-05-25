@@ -125,7 +125,7 @@ const handleSignOut=async () =>{
       console.log(error);
     }
 }
-
+console.log(process.env.REACT_APP_BACKEND_URL);
 
 
 //update data from profile
