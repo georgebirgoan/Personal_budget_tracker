@@ -24,11 +24,11 @@ const { readdirSync } = require("fs");
 dotenv.config();
 const app = express();
 console.log(__dirname);
-
+/*
 app.use(express.static(path.join(__dirname,'/client/public')));
 app.get("*",(req,res)=>{
    res.sendFile(path.join(__dirname,'/client/public/index.html'))
-})
+})*/
 
 const port = process.env.PORT || 8000;
 console.log('portul', port);
@@ -41,7 +41,7 @@ app.use(express.json());
 
 // Configurare CORS
 app.use(cors({
-    origin: "https://personal-budget-tracker-front.vercel.app", // Permit accesul de la orice origin
+    origin: "*", // Permit accesul de la orice origin
     methods: "GET,PUT,POST,DELETE,PATCH,OPTIONS", // Specifică metodele acceptate
     credentials: true, // Permit trimiterea cookie-urilor de autentificare
 }));
@@ -61,7 +61,9 @@ mongoose.connect(process.env.MONGODB_URI, {
 readdirSync("./routes").map((r) => app.use("/api", require(`./routes/${r}`)));
 
 
-    //app.use('/api/user', userRoutes);
+    app.use('/', (req,res)=>{
+        res.send("iei");
+    });
      //app.use('/api/auth', authRoutes);    
 
 
