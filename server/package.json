@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "dev": " nodemon server/index.js",
-    "build":"npm install --prefix ../ && npm run build --prefix ../ && npm install"
+    "build":"npm install --prefix ../client && npm run build --prefix ../client && npm install"
   },
   "author": "",
   "license": "ISC",
