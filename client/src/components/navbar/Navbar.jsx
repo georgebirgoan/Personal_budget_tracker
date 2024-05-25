@@ -13,7 +13,7 @@ import CsvData from '../CSV/CsvData';
 export default function Navbar() {
   const location = useLocation();
   const {currentUser}=useSelector(state=>state.user);
-  console.log('usercurrent',currentUser);
+  console.log('usercurrent in navbar',currentUser);
 
 
   // Verifică dacă locația curentă este '/login' sau '/signup'

@@ -37,10 +37,13 @@ export default function Login() {
       }
 
       console.log("raspuns login",response);
+      if(response != null){
       dispatch(signInSuccess(response.data));
       console.log("ajunge");
       toast.success("Logare cu succes!");
       navigate('/')
+      }
+      
     }catch(error){
       dispatch(signInFailure(error.message))
       toast.error("Logare esuata,inregistrati-va intai! !");

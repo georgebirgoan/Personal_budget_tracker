@@ -27,7 +27,7 @@ export default function SignUp() {
       const data=await axios.post(`${process.env.BACKEND_URL}/api/signup`,formData);
       console.log("data client",data);
       
-      if(data){
+      if(data != null){
         setLoading(false);
         setError(false);
         toast.success("Va-ti inregistrat cu succes!")
