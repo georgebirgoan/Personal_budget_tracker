@@ -85,7 +85,7 @@ const handleDeleteAccount=async () =>{
   try{
     console.log("delete user with",currentUser._id);
     dispatch(deleteUserStart());
-    const res=await fetch(`http://localhost:3001/api/user/delete/${currentUser._id}`,{
+    const res=await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/delete/${currentUser._id}`,{
       method:'DELETE',
       headers:{
         'Content-Type':'application/json'
@@ -113,7 +113,7 @@ const handleSignOut=async () =>{
     try{
       //we don t need response
       console.log("in signout  front")
-      const res=await fetch("http://localhost:3001/api/auth/signout",{
+      const res=await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/signout`,{
         method:'GET',
       })
       dispatch(signOut());
@@ -133,7 +133,7 @@ const handleSubmit= async (e)=>{
   e.preventDefault();
   try{
       dispatch(updateUserStart());
-      const res=await fetch(`http://localhost:3001/api/user/update/${currentUser._id}`,{
+      const res=await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/update/${currentUser._id}`,{
       method:'POST',
       headers:{
         'Content-Type':'application/json'
