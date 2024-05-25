@@ -7,13 +7,12 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 import { signInStart,signInFailure,signInSuccess } from "../../redux/user/userSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import OAuth from '../../components/OAuth/OAuth';
 
 export default function Login() {
   const [formData,setFormData] = useState({})
   //useSelector bucati specifice de stare din store(Redux) pt aplicatie
-  const {isLoading,error}=useSelector((state)=>state.user);
   console.log(process.env.REACT_APP_BACKEND_URL); 
   const navigate=useNavigate();
 

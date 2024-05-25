@@ -11,6 +11,7 @@ export default function SignUp() {
   const navigate=useNavigate();
   const [isLoading,setLoading]=useState(false);
   const [error,setError]=useState(false);
+  console.log(isLoading,error);
   console.log(process.env.REACT_APP_BACKEND_URL)
   const [formData,setFormData] = useState({})
 

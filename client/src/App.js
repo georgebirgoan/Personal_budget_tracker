@@ -6,7 +6,6 @@ import {
 import Navbar from "./components/navbar/Navbar";
 import Login from "./pages/login/Login";
 import SideBar from "./components/sidebar/SideBar";
-import Dasboard from "./pages/Dashboard/Dashboard";
 import SignUp from './pages/SignUp/SignUp'
 import Income from './pages/Income/Income'
 import Expenses from './pages/expenses/Expenses'

@@ -16,12 +16,9 @@ import {
   signOut
   } from "../../redux/user/userSlice.js"
 import {toast} from 'react-toastify'
-import { useNavigate } from "react-router-dom";
-
 
 
 export default function ProfileDetails() {
-  const navigate=useNavigate();
   console.log("sunt in profile");
   const dispatch = useDispatch();
 
@@ -33,7 +30,7 @@ export default function ProfileDetails() {
     const [imageError,setImageError]=useState(false);
     const [formData,setFormData]=useState({});
     const [updateSuccess,setUpdateSuccess]=useState(false);
-    const {currentUser,loading,error}=useSelector(state=>state.user); 
+    const {currentUser}=useSelector(state=>state.user); 
 
   //useefect for image after change
   useEffect(()=>{
