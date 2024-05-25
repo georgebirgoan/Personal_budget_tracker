@@ -20,7 +20,7 @@ export default function OAuth() {
             const provider=new GoogleAuthProvider();
             const auth=getAuth(app);
             const result=await signInWithPopup(auth,provider);  
-            const res=await fetch("https://personal-budget-tracker-back.onrender.com/api/google",{
+            const res=await fetch(`${process.env.BACKEND_URL}/api/google`,{
                 method:'POST',
                 headers:{
                     "Content-Type":"application/json",
