@@ -25,9 +25,9 @@ dotenv.config();
 const app = express();
 console.log(__dirname);
 
-app.use(express.static(path.join(__dirname,'./client/public')));
+app.use(express.static(path.join(__dirname,'/client/public')));
 app.get("*",(req,res)=>{
-   res.sendFile(path.join(__dirname,'./client/public/index.html'))
+   res.sendFile(path.join(__dirname,'/client/public/index.html'))
 })
 
 const port = process.env.PORT || 8000;
