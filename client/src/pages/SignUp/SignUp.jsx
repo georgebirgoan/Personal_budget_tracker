@@ -11,7 +11,7 @@ export default function SignUp() {
   const navigate=useNavigate();
   const [isLoading,setLoading]=useState(false);
   const [error,setError]=useState(false);
-
+  console.log(process.env.REACT_APP_BACKEND_URL)
   const [formData,setFormData] = useState({})
 
   const handleChange=(e)=>{
@@ -22,9 +22,10 @@ export default function SignUp() {
   const handleSubmit=async (e) =>{
     e.preventDefault();//dont refrest page until have data
     try{
+
       setLoading(true);
       setError(false)
-      const data=await axios.post(`${process.env.BACKEND_URL}/api/signup`,formData);
+      const data=await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/signup`,formData);
       console.log("data client",data);
       
       if(data != null){

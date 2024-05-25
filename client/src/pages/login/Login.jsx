@@ -14,7 +14,7 @@ export default function Login() {
   const [formData,setFormData] = useState({})
   //useSelector bucati specifice de stare din store(Redux) pt aplicatie
   const {isLoading,error}=useSelector((state)=>state.user);
-
+  console.log(process.env.REACT_APP_BACKEND_URL); 
   const navigate=useNavigate();
 
   //dispatch-reactualizeaza starea aplicatie folosind reduceri din redux
@@ -28,7 +28,7 @@ export default function Login() {
     e.preventDefault();//dont refrest page until have data
     try{
       dispatch(signInStart());
-        const response= await axios.post(`${process.env.BACKEND_URL}/api/signin`, formData,{withCredentials:true});
+        const response= await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/signin`, formData,{withCredentials:true});
       
       if(response.success === false){
         console.log(response.message);
@@ -43,7 +43,7 @@ export default function Login() {
       toast.success("Logare cu succes!");
       navigate('/')
       }
-      
+
     }catch(error){
       dispatch(signInFailure(error.message))
       toast.error("Logare esuata,inregistrati-va intai! !");
