@@ -41,7 +41,7 @@ app.use(express.json());
 
 // Configurare CORS
 app.use(cors({
-    origin: "*", // Permit accesul de la orice origin
+    origin: "https://personal-budget-tracker-d.onrender.com/", // Permit accesul de la orice origin
     methods: "GET,PUT,POST,DELETE,PATCH,OPTIONS", // Specifică metodele acceptate
     credentials: true, // Permit trimiterea cookie-urilor de autentificare
 }));
