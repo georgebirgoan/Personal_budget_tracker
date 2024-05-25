@@ -22,9 +22,13 @@ const { readdirSync } = require("fs");
 
 // Acces env
 dotenv.config();
+console.log(__dirname);
 const app = express();
 
-
+app.use(express.static(path.join(__dirname,'../client/public')));
+app.get("*",(req,res)=>{
+   res.sendFile(path.join(__dirname,'../client/public/index.html'))
+})
 
 const port = process.env.PORT || 8000;
 console.log('portul', port);
