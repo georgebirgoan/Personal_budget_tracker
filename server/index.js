@@ -22,8 +22,8 @@ const { readdirSync } = require("fs");
 
 // Acces env
 dotenv.config();
-console.log(__dirname);
 const app = express();
+console.log(__dirname);
 
 app.use(express.static(path.join(__dirname,'../client/public')));
 app.get("*",(req,res)=>{
