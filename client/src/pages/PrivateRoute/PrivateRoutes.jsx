@@ -11,22 +11,22 @@ export default function PrivateRoute() {
     const location = useLocation();
     const { currentUser } = useSelector(state => state.user);
     const {loading}=useSelector((state)=>state.income);
+    console.log(loading);
 
     const navigate = useNavigate();
     const dispatch=useDispatch();
 
     useEffect(()=>{
         dispatch(setLoading(true));  
+        
       if (currentUser && (location.pathname === "/login" || location.pathname === "/signup")) {
             navigate('/');
-        }else {
-            // Altfel, închide starea de încărcare
-            dispatch(setLoading(false));
         }
     },[currentUser,dispatch,navigate,location.pathname]);
 
     
     if(loading){
+        console.log("merge")
         return <Loading/>
     }
     
