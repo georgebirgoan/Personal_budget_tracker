@@ -68,16 +68,17 @@ function App() {
               path: "/",
               element: <Dasboard/>, // Aici va fi componenta pentru dashboard
             },
-            {
-              path: "/income",
-              element: <Income />,
-            },
-            {
-              path: "/expense",
-              element: <Expenses />,
-            },
+         
             
           ]
+        },
+        {
+          path: "/income",
+          element: <Income />,
+        },
+        {
+          path: "/expense",
+          element: <Expenses />,
         },  
      
        
