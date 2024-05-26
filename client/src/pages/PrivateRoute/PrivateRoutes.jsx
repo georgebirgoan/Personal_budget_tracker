@@ -22,7 +22,7 @@ export default function PrivateRoute() {
       if (currentUser && (location.pathname === "/login" || location.pathname === "/signup")) {
             navigate('/');
         }else{
-            dispatch(setLoading(true)); 
+            dispatch(setLoading(false)); 
         }
     },[currentUser,dispatch,navigate,location.pathname]);
 
