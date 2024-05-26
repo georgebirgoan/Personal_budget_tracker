@@ -21,6 +21,8 @@ export default function PrivateRoute() {
         
       if (currentUser && (location.pathname === "/login" || location.pathname === "/signup")) {
             navigate('/');
+        }else{
+            dispatch(setLoading(true)); 
         }
     },[currentUser,dispatch,navigate,location.pathname]);
 
