@@ -34,6 +34,6 @@ export default function PrivateRoute() {
     
     // Dacă este autentificat, afișează conținutul privat
     return (
-        currentUser ? <Outlet/> : <Navigate to={'/income'}/>  
+        currentUser ? <Outlet/> : <Navigate to={'/login'}/>  
     );
 }
