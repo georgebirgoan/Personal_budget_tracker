@@ -37,12 +37,12 @@ console.log('portul', port);
 app.use(cookieParser());
 
 // Middleware pentru parsarea JSON
-//https://personal-budget-tracker-d.onrender.com
+https://personal-budget-tracker-d.onrender.com
 app.use(express.json());
 
 // Configurare CORS
 app.use(cors({
-    origin: "http://localhost:3000", // Permit accesul de la orice origin
+    origin: "https://personal-budget-tracker-d.onrender.com", // Permit accesul de la orice origin
     methods: "GET,PUT,POST,DELETE", // Specifică metodele acceptate
     credentials: true, // Permit trimiterea cookie-urilor de autentificare
 }));
