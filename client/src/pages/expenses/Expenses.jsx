@@ -1,13 +1,9 @@
 import './expenses.scss';
-import Navbar from '../../components/navbar/Navbar.jsx';
-import SideBar from '../../components/sidebar/SideBar.jsx';
 import Categories from '../../components/categories/Categories.jsx';
 import { useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import {startExpense,failureExpense,finalExpense,deleteExpense, totExpense, updateExpense} from '../../redux/cart/ExpenseReducer.js'
+import {startExpense,failureExpense,finalExpense, totExpense} from '../../redux/cart/ExpenseReducer.js'
 import { toast } from 'react-toastify';
-import { Istoric, failureUpdate } from '../../redux/cart/IncomeReducer.js';
-import { resetState } from '../../redux/cart/IncomeReducer.js';
 
 export default function Expenses() {
   const [expenseData,setExpense]=useState({});

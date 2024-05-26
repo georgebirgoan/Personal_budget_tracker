@@ -18,13 +18,17 @@ const user = (req, res) => {
 const updateUser = async (req, res, next) => {
     console.log("in update username", req.user.username);
     console.log("in update id", req.user.id);
+    console.log("req params id", req.params.id);
 
     if (req.user.id !== req.params.id) {
         return next(errorHandler(401, "You can update only your account!"));
     }
 
     try {
+        console.log("user", req.body.username);
+        console.log("email", req.body.email);
         console.log("email", req.body.password);
+        
         if (req.body.password) {
             req.body.password = bcryptjs.hashSync(req.body.password, 10);
         }
@@ -39,13 +43,16 @@ const updateUser = async (req, res, next) => {
                 }
             }, {
                 new: true
-            }
+                }
         );
         const {
             password,
             ...rest
         } = updatedUser._doc;
-        res.status(200).json(rest);
+
+        console.log("restttttttttt",rest);
+
+        res.status(200).json({data:rest });
     } catch (error) {
         next(error);
     }

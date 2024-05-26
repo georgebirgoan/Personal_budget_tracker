@@ -5,13 +5,11 @@ import ChartBox from '../../components/chartBox/ChartBox'
 import { MyComponent } from '../../utils/data'
 import { MaxExpense, MaxSal, MinExpense, MinSal } from "../../helper/Istoric"
 import Chart2 from '../../components/Chart2/Chart2'
-import CsvData from '../../components/CSV/CsvData'
-import { useDispatch } from 'react-redux'
 import { resetState } from '../../redux/cart/IncomeReducer'
 
 function Dasboard() {
   const {chartBoxIncome,chartBoxExpense,chartBoxBalance,chartBoxEconomy}=MyComponent();
-  const dispatch=useDispatch();
+ // const dispatch=useDispatch();
   //dispatch(resetState());
 
   return (

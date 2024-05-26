@@ -1,10 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Categories from '../../components/categories/Categories';
-import Navbar from '../../components/navbar/Navbar';
-import SideBar from '../../components/sidebar/SideBar';
 import './income.scss';
 import {startIncome,failureIncome,finalIncome,resetState,totIncome, totEconomy, histBalance} from '../../redux/cart/IncomeReducer.js'
-import {toast } from  'react-toastify';
 import  {useDispatch,useSelector} from 'react-redux';
 import { useMemo } from 'react';
 
@@ -17,21 +14,13 @@ export default function Income() {
     totalExpense: state.expense.totalExpense,
     totalEconomy: state.income.totalEconomy,
 }));
-
-
-  console.log(totalIncome);
-  console.log(totalExpense);
-  console.log(totalEconomy);
-
   
   const currentDate=new Date();
   const balance = useMemo(() => totalIncome - totalExpense - totalEconomy, [totalIncome, totalExpense, totalEconomy]);
 
 
-
   const dispatch=useDispatch();
   //dispatch(resetState());
-
 
 
   const handleChange = (e) => {
@@ -39,26 +28,19 @@ export default function Income() {
         ...prevData,
         [e.target.id]: e.target.value,
     }));
-    console.log("change", incomeData);
 };
 
-
-
-  //for submit form
     const handleSubmit=((e)=>{
       e.preventDefault();
       dispatch(startIncome()); 
       
       try{
-        console.log("raspuns from income/input",incomeData);
 
           dispatch(finalIncome(incomeData));
           dispatch(totIncome());
-          console.log("dupa tot income");
           dispatch(totEconomy());
-          console.log(balance);
           dispatch(histBalance({amount:balance,date:currentDate}));
-          
+
         }catch(error){
           dispatch(failureIncome(error.message));
         }
@@ -78,8 +60,6 @@ export default function Income() {
                 <span>Total income:</span>
                 <span className="price">$ {totalIncome} </span>
             </div>
-
-
          
           <div className="box inputContainer">
               <span className='titleInput'>Add your incomes</span>

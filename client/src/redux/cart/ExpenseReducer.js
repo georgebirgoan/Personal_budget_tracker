@@ -9,7 +9,6 @@ const initialState={
     error:false
 }
 
-console.log("current Expenses",initialState);
 
 const cartExpense=createSlice({
     name:'expense',
@@ -44,7 +43,6 @@ const cartExpense=createSlice({
 
         deleteExpense: (state, action) => {
             const { id } = action.payload;
-            console.log("id reducer", id);
             const updateExpense = state.currentExpense.filter(item => item.id !== id);
 
             const newTotalExpense=updateExpense.reduce((total,item)=>
@@ -69,8 +67,6 @@ const cartExpense=createSlice({
 
         updateExpense: (state, action) => {
             const { id, editExpense } = action.payload;
-            console.log("payload", action.payload);
-            console.log("edit", editExpense);
 
             const indexToUpdate = state.currentExpense.findIndex(item => item.id === id);
             if (indexToUpdate !== -1) {
@@ -102,25 +98,6 @@ const cartExpense=createSlice({
             state.loading=false;
             state.error=action.payload //incarca cu mesajul erorii
         },
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     }
 })
 

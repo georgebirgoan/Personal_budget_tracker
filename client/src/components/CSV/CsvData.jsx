@@ -3,7 +3,7 @@ import { CSVLink } from 'react-csv';
 import { Istoric as IstoricExport } from '../../helper/Istoric';
 import CsvIcon from '../../images/csvIcon5.png'
 export default function CsvData() {
-  console.log("in CsvData")
+ // console.log("in CsvData")
 
   const history = IstoricExport();
 

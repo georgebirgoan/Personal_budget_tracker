@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import "./sidebar.scss";
 import {menu} from '../../utils/data'
-import CsvData from "../CSV/CsvData";
 
 const Sidebar = () => {
   return (

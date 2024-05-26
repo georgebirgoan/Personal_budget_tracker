@@ -1,7 +1,4 @@
 //protected routes for signup/in
-//Button loading
-//responsive for phone
-//update for user take token and put in local storage
 
 
 
@@ -31,7 +28,7 @@ import Dasboard from "./pages/Dashboard/Dashboard";
 function App() {
 
     useEffect(()=>{
-      console.log('efectt')
+     // console.log('efectt')
       generateToken();
       onMessage(messaging,(payload)=>{
         console.log(payload);
@@ -61,13 +58,19 @@ function App() {
     {
       path: "/",
       element: <Layout />,
-      children: [
+      children: 
+      [
         {
           path: "/",
-          element: <Dasboard />,
+          element: <PrivateRoutes />,
+          children: [
+            {
+              path: "/",
+              element: <Dasboard/>, // Aici va fi componenta pentru dashboard
+            },
+          ]
         },  
-        
-        {
+      {
           path: "/income",
           element: <Income />,
         },
@@ -75,16 +78,14 @@ function App() {
           path: "/expense",
           element: <Expenses />,
         },
-        {
-          element: <PrivateRoutes />,
-          children:[
+        
+       
             {
               path:'/profile',
               element:<ProfileDetails/>
-            }
-          ]
-        },
-
+            },
+    
+      
 
         {
           path: "/edit",
@@ -94,6 +95,7 @@ function App() {
             path: "income/:id",
             element: <EditIncome />, // Aici va fi componenta pentru editarea veniturilor
           },
+
           {
             path: "expense/:id",
             element: <EditExpense />, // Aici va fi componenta pentru editarea cheltuielilor

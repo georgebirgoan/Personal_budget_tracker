@@ -12,14 +12,15 @@ export default function OAuth() {
     const dispatch=useDispatch();
     const navigate=useNavigate();
     const {currentUser}=useSelector(state=>state.user);
-    console.log("user",currentUser);
-
+    console.log(currentUser);
 
     const handleGoogleClick=async ()=>{
         try{
             const provider=new GoogleAuthProvider();
             const auth=getAuth(app);
             const result=await signInWithPopup(auth,provider);  
+
+            
             const res=await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/google`,{
                 method:'POST',
                 headers:{
@@ -34,13 +35,14 @@ export default function OAuth() {
                 credentials: 'include'
             }) 
 
-
-
             const data =await res.json();
             console.log('data auth',data);
 
+            const token = data.token;
+            console.log(token);
+            localStorage.setItem('Bearer', token);
 
-            dispatch(signInSuccess(data));
+            dispatch(signInSuccess(data.user));
             toast.success("Logare cu succes!");
             navigate("/");
 

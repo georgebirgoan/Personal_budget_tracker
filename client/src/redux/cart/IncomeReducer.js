@@ -14,9 +14,6 @@ const initialState={
 }
 
 
-console.log("state initial",initialState);
-
-
 const cartIncome=createSlice({
     name:'income',
     initialState,
@@ -94,8 +91,6 @@ const cartIncome=createSlice({
                 date: new Date(),
                 amount: TotalEconomy 
             };
-            console.log(newChange);
-            console.log("state economy changes",state.economyChanges);
 
             return{
                 ...state,
@@ -107,14 +102,11 @@ const cartIncome=createSlice({
 
         histBalance:(state,action)=>{
             const {amount,date}=action.payload;
-            console.log(action.payload);
-            console.log("payload",amount,date);
+
             const newChange = {
                 date:date,
                 amount: amount 
             };
-            console.log(newChange);
-            console.log(state.balanceChanges);
             
             return{
                 ...state,
@@ -126,8 +118,6 @@ const cartIncome=createSlice({
 
         updateIncome: (state, action) => {
             const { id, editIncome } = action.payload;
-            console.log("payload", action.payload);
-            console.log("edit", editIncome);
         
             const indexToUpdate = state.currentIncome.findIndex(item => item.id === id);
             if (indexToUpdate !== -1) {
@@ -159,18 +149,6 @@ const cartIncome=createSlice({
             state.loading=false;
             state.error=action.payload //incarca cu mesajul erorii
         },
-    
-
-
-
-
-       
-
-
-
-
-
-        
     }
 
 })

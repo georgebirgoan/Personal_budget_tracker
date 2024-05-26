@@ -1,5 +1,5 @@
 import './signup.scss';
-import {Link} from 'react-router-dom'
+import {Link, Navigate} from 'react-router-dom'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -13,8 +13,7 @@ export default function SignUp() {
   const [error,setError]=useState(false);
   const {loading}=useSelector((state)=>state.income);
   const [formData,setFormData] = useState({})
-
-
+  const { currentUser } = useSelector(state => state.user);
   
   const handleChange=(e)=>{
     setFormData({...formData,[e.target.id]:e.target.value})
@@ -43,6 +42,10 @@ export default function SignUp() {
     }
 
   };
+
+  if (currentUser) {
+    return <Navigate to="/" />;
+  }
   
   return (
     <> 

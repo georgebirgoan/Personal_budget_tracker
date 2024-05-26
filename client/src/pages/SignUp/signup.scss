@@ -1,3 +1,9 @@
+
+@import "../../styles/responsive.scss";
+
+
+
+
 *,
 *:before,
 *:after {
@@ -28,6 +34,16 @@
     transform: translate(-50%,-50%);
     left: 50%;
     top: 50%;
+
+
+    @include sm{
+      width: 200px;
+      height: 430px;
+      position: absolute;
+      transform: translate(-50%,-50%);
+      left: 50%;
+      top: 50%;
+    }
 }
 
 .background2 .shape {
@@ -70,6 +86,10 @@
     padding: 50px 35px;
     
 
+    @include sm{
+      height: 540px;
+      width: 330px;
+    }
   
 }
 
@@ -142,6 +162,7 @@
   display: flex;
   justify-content: start;
   align-items: center;
+  text-wrap: nowrap;
   font-size: 17px;
   margin: 15px 10px;
   color: white;

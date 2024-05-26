@@ -1,8 +1,7 @@
 import './login.scss';
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
+import { Link, Navigate } from "react-router-dom"
 import  axios  from "axios"
-//pt toastify we need the library from react and css
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
@@ -10,17 +9,18 @@ import { signInStart,signInFailure,signInSuccess } from "../../redux/user/userSl
 import { useDispatch, useSelector } from "react-redux";
 import OAuth from '../../components/OAuth/OAuth';
 import { setLoading } from '../../redux/cart/IncomeReducer';
-import Loading from '../Loading/Loading';
 
 
 export default function Login() {
-  console.log("sunt in login");
   const [formData,setFormData] = useState({})
   const {loading}=useSelector((state)=>state.income);
-
+  const { currentUser } = useSelector(state => state.user);
   const navigate=useNavigate();
   const dispatch=useDispatch();
   
+ 
+
+
  useEffect(() => {
     dispatch(setLoading(false));
   }, [dispatch]);
@@ -36,23 +36,22 @@ export default function Login() {
     try{
       dispatch(signInStart());
         const response= await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/signin`, formData,{withCredentials:true});
-        
+        const { token } = response.data;
+
       if(response.success === false){
-        console.log(response.message);
         toast.error("Token invalid");
         dispatch(setLoading(false));
         dispatch(signInFailure(response.message))
         return;
       }
 
-      console.log("raspuns login",response);
-      if(response != null){
-      console.log("load inside",loading);
-      dispatch(setLoading(false));
-      dispatch(signInSuccess(response.data));
 
-      toast.success("Logare cu succes!");
-      navigate('/')
+      if(response != null){
+        dispatch(setLoading(false));
+        dispatch(signInSuccess(response.data.user));
+        localStorage.setItem("Bearer",token);
+        toast.success("Logare cu succes!");
+        navigate('/')
       }
 
     }catch(error){
@@ -62,7 +61,9 @@ export default function Login() {
     }
   };
 
-    
+  if (currentUser) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <>

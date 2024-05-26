@@ -1,5 +1,6 @@
 //Problem-->to add credentials:include because in the server will get undefined from cookie
 import { useSelector,useDispatch } from "react-redux"
+import { useNavigate } from "react-router-dom";
 import {getDownloadURL, getStorage, uploadBytesResumable} from 'firebase/storage'
 //we use useRef to upload an image from computer
 import { useEffect, useRef, useState } from "react";
@@ -20,8 +21,8 @@ import {toast} from 'react-toastify'
 
 export default function ProfileDetails() {
   console.log("sunt in profile");
+  const navigate=useNavigate();
   const dispatch = useDispatch();
-
 
   const fileRef=useRef(null);
     //state pt aplicatie
@@ -30,7 +31,9 @@ export default function ProfileDetails() {
     const [imageError,setImageError]=useState(false);
     const [formData,setFormData]=useState({});
     const [updateSuccess,setUpdateSuccess]=useState(false);
-    const {currentUser}=useSelector(state=>state.user); 
+    const {currentUser}=useSelector(state=>state.user);
+    
+    console.log("user profile id",currentUser);
 
   //useefect for image after change
   useEffect(()=>{
@@ -97,6 +100,7 @@ const handleDeleteAccount=async () =>{
     }
 
     toast.success("User deleted cu success")
+    navigate('/login');
     dispatch(deleteUserSuccess());
   
   }catch(error){
@@ -115,45 +119,54 @@ const handleSignOut=async () =>{
       })
       dispatch(signOut());
       console.log("res from back",res);
+    
       toast.success('Delogare cu succes!');
+      navigate("/");
     }
     catch(error){
       toast.error("Delogare esuata!")
       console.log(error);
     }
 }
-console.log(process.env.REACT_APP_BACKEND_URL);
-
 
 //update data from profile
-const handleSubmit= async (e)=>{
+const handleSubmit = async (e) => {
   e.preventDefault();
-  try{
-      dispatch(updateUserStart());
-      const res=await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/update/${currentUser._id}`,{
-      method:'POST',
-      headers:{
-        'Content-Type':'application/json'
-      },
-      body:JSON.stringify(formData),
-      credentials: 'include'
-    })
+  try {
+    dispatch(updateUserStart());
+    
+    console.log(formData);
+    console.log(currentUser);
+    const token = localStorage.getItem('Bearer'); // Get the token from local storage
 
-    const data=await res.json();
-    console.log("data update",data);
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/update/${currentUser._id}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}` // Include the token in the Authorization header
+      },
+      body: JSON.stringify(formData),
+      credentials: 'include'
+    });
+    console.log(res);
+    const data =await res.json();
+    console.log("data update", data);
     
     if(data.success === false){
-      toast.error("Datele exista deja,pune-ti altele.")
+      toast.error("Datele exista deja, puneți altele.");
       dispatch(updateUserFailure(data));
       return;
     }
+    
     dispatch(updateUserSuccess(data));
     setUpdateSuccess(true);
     toast.success("Updated data with success!");
-  }catch(error){
+  } catch (error) {
     dispatch(updateUserFailure(error));
+    toast.error("Update failed!");
   }
 };
+
 
 
 

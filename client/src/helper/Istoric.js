@@ -1,23 +1,17 @@
 import { useSelector} from "react-redux";
-import { useDispatch } from "react-redux";
-import { resetState } from "../redux/cart/IncomeReducer";
 
 
 
 export const Istoric = () => {
     const { currentIncome } = useSelector(state => state.income);
-    console.log(currentIncome);
     const { currentExpense } = useSelector(state => state.expense);
-    console.log(currentExpense)
    // const dispatch=useDispatch();
     //dispatch(resetState());
 
     
     const history = [...currentIncome, ...currentExpense];
-    
     history.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-
-    return history.slice(0, 4);
+        return history.slice(0, 4);
 }
 
 export const IstoricExport = () => {

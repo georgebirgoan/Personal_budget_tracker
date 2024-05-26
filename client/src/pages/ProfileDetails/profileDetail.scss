@@ -1,13 +1,14 @@
-//de facut responsive pt ecranele mici
+
+@import "../../styles/responsive.scss";
 
 
 .containerProfile{
-    position: relative;
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 
@@ -24,6 +25,25 @@
     border: 2px solid rgba(255, 255, 255, 0.642);
     box-shadow: 0 0 40px rgba(8,7,16,0.6);
     padding: 50px 35px;
+
+    @include lg{
+      margin-left: 30px;
+      padding: 25px 15px;
+      height: 550px;
+      width: 365px;
+      top: 60%;
+      left: 60%;
+      }
+
+
+    @include sm{
+    margin-left: 30px;
+    padding: 25px 15px;
+    height: 535px;
+    width: auto;
+    top: 70%;
+    left: 50%;
+    }
      
 }
 .formProfile h3 {
@@ -32,6 +52,8 @@
     font-weight: 800;
     line-height: 25px;
     text-align: center;
+
+
 }
     
 
