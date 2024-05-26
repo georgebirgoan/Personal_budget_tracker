@@ -1,5 +1,5 @@
 import './login.scss';
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import  axios  from "axios"
 //pt toastify we need the library from react and css
@@ -7,17 +7,24 @@ import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
 import { signInStart,signInFailure,signInSuccess } from "../../redux/user/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import OAuth from '../../components/OAuth/OAuth';
+import { setLoading } from '../../redux/cart/IncomeReducer';
+import Loading from '../Loading/Loading';
+
 
 export default function Login() {
+  console.log("sunt in login");
   const [formData,setFormData] = useState({})
-  //useSelector bucati specifice de stare din store(Redux) pt aplicatie
-  console.log(process.env.REACT_APP_BACKEND_URL); 
-  const navigate=useNavigate();
+  const {loading}=useSelector((state)=>state.income);
 
-  //dispatch-reactualizeaza starea aplicatie folosind reduceri din redux
+  const navigate=useNavigate();
   const dispatch=useDispatch();
+  
+ useEffect(() => {
+    dispatch(setLoading(false));
+  }, [dispatch]);
+
 
   const handleChange=(e)=>{
     setFormData({...formData,[e.target.id]:e.target.value})
@@ -25,6 +32,7 @@ export default function Login() {
 
   const handleSubmit=async (e) =>{
     e.preventDefault();//dont refrest page until have data
+    dispatch(setLoading(true));
     try{
       dispatch(signInStart());
         const response= await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/signin`, formData,{withCredentials:true});
@@ -32,14 +40,16 @@ export default function Login() {
       if(response.success === false){
         console.log(response.message);
         toast.error("Token invalid");
+        dispatch(setLoading(false));
         dispatch(signInFailure(response.message))
         return;
       }
 
       console.log("raspuns login",response);
       if(response != null){
+      console.log("load inside",loading);
+      dispatch(setLoading(false));
       dispatch(signInSuccess(response.data));
-      console.log("ajunge");
 
       toast.success("Logare cu succes!");
       navigate('/')
@@ -47,9 +57,11 @@ export default function Login() {
 
     }catch(error){
       dispatch(signInFailure(error.message))
+      dispatch(setLoading(false));
       toast.error("Logare esuata,inregistrati-va intai! !");
     }
   };
+
     
 
   return (
@@ -77,7 +89,13 @@ export default function Login() {
           <input className='inputLogin'  onChange={handleChange}  type="password" placeholder="Password" id="password" />
 
 
-          <button >Login</button>
+          <button >
+          {loading ? (
+          <span>Loading...</span>
+          ):(
+            <span>Submit</span>
+          )} 
+          </button>
           
           <div className="social2">
             <OAuth/> 

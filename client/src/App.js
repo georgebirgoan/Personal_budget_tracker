@@ -1,3 +1,10 @@
+//protected routes for signup/in
+//Button loading
+//responsive for phone
+//update for user take token and put in local storage
+
+
+
 import {
   createBrowserRouter,
   RouterProvider,

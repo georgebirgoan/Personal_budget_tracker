@@ -23,6 +23,10 @@ const cartIncome=createSlice({
     reducers:{
     
        // resetState:()=>initialState,
+        
+        setLoading:(state,action)=>{
+            state.loading=action.payload;
+        },
 
         startIncome:(state,action)=>{
             state.loading=true;
@@ -181,8 +185,9 @@ export const {
     totEconomy,
     updateIncome,
     failureUpdate,
-    histBalance
-
+    histBalance,
+    setLoading
+    
 }=cartIncome.actions;
 
 export default cartIncome.reducer;

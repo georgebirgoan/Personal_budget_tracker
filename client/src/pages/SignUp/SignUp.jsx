@@ -5,16 +5,17 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import OAuth from '../../components/OAuth/OAuth';
+import { useSelector } from 'react-redux';
 
 
 export default function SignUp() {
   const navigate=useNavigate();
-  const [isLoading,setLoading]=useState(false);
   const [error,setError]=useState(false);
-  console.log(isLoading,error);
-  console.log(process.env.REACT_APP_BACKEND_URL)
+  const {loading}=useSelector((state)=>state.income);
   const [formData,setFormData] = useState({})
 
+
+  
   const handleChange=(e)=>{
     setFormData({...formData,[e.target.id]:e.target.value})
   }
@@ -24,13 +25,11 @@ export default function SignUp() {
     e.preventDefault();//dont refrest page until have data
     try{
 
-      setLoading(true);
       setError(false)
       const data=await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/signup`,formData);
       console.log("data client",data);
       
       if(data != null){
-        setLoading(false);
         setError(false);
         toast.success("Va-ti inregistrat cu succes!")
         navigate('/login')
@@ -39,7 +38,6 @@ export default function SignUp() {
       }
     
     }catch(error){
-      setLoading(false);
       setError(true)
       toast.error("Inregistrare esuata!");
     }
