@@ -18,12 +18,18 @@ export default function PrivateRoute() {
     useEffect(()=>{
         dispatch(setLoading(true));
         
+
+        if (currentUser && (location.pathname === "/login" || location.pathname === "/signup")) {
+            navigate('/');
+        }
+
         if(!currentUser){
             navigate('/login');
         }else{
-            navigate('/');
             dispatch(setLoading(false));
         }
+
+
 
     },[currentUser,dispatch,navigate]);
 
