@@ -73,7 +73,7 @@
 }
 
 .form2 {
-    height: 540px;
+    height: 550px;
     width: 400px;
     background-color: rgba(255,255,255,0.13);
     position: absolute;
@@ -87,7 +87,7 @@
     
 
     @include sm{
-      height: 540px;
+      height: 550px;
       width: 330px;
     }
   
@@ -175,12 +175,13 @@
   align-items: center;
   margin: 15px 0px;
   font-size: 17px;
+  text-wrap: nowrap;
   color: #fbfbfb;
   font-weight: 900;
   text-decoration: none;
 }
 
 .signUp2:hover {
-  color: #176ef1;
+  color: #1738f1;
 }
 }

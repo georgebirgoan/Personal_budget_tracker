@@ -17,6 +17,7 @@ import {
   signOut
   } from "../../redux/user/userSlice.js"
 import {toast} from 'react-toastify'
+import { setLoading } from "../../redux/cart/IncomeReducer.js";
 
 
 export default function ProfileDetails() {
@@ -25,12 +26,13 @@ export default function ProfileDetails() {
   const dispatch = useDispatch();
   console.log(process.env.REACT_APP_BACKEND_URL)
   const fileRef=useRef(null);
-    //state pt aplicatie
-    const [image,setImage]=useState(undefined);
-    const [imagePercent,setImagePercent]=useState(0);
-    const [imageError,setImageError]=useState(false);
-    const [formData,setFormData]=useState({});
-    const [updateSuccess,setUpdateSuccess]=useState(false);
+  //state pt aplicatie
+  const [image,setImage]=useState(undefined);
+  const [imagePercent,setImagePercent]=useState(0);
+  const [imageError,setImageError]=useState(false);
+  const [formData,setFormData]=useState({});
+  const [updateSuccess,setUpdateSuccess]=useState(false);
+  const {loading}=useSelector((state)=>state.income);
     const {currentUser}=useSelector(state=>state.user);
     
     console.log("user profile id",currentUser);
@@ -38,10 +40,11 @@ export default function ProfileDetails() {
   //useefect for image after change
   useEffect(()=>{
     if(image){
+      dispatch(setLoading(false));
       handleFileUpload(image)
       console.log("imagine efect0",image);
     }
-  },[image])
+  },[image,dispatch])
 
   useEffect(() => {
     console.log(`imagePercent updated: ${imagePercent}`);
@@ -132,11 +135,10 @@ const handleSignOut=async () =>{
 //update data from profile
 const handleSubmit = async (e) => {
   e.preventDefault();
+  dispatch(setLoading(true));
   try {
     dispatch(updateUserStart());
     
-    console.log(formData);
-    console.log(currentUser);
     const token = localStorage.getItem('Bearer'); // Get the token from local storage
 
       const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/update/${currentUser._id}`, {
@@ -148,20 +150,21 @@ const handleSubmit = async (e) => {
       body: JSON.stringify(formData),
       credentials: 'include'
     });
-    console.log(res);
     const data =await res.json();
-    console.log("data update", data);
     
     if(data.success === false){
-      toast.error("Datele exista deja, puneți altele.");
-      dispatch(updateUserFailure(data));
+        toast.error("Datele exista deja, puneți altele.");
+        console.log("data update", data);
+        dispatch(updateUserFailure(data));
       return;
     }
     
     dispatch(updateUserSuccess(data));
     setUpdateSuccess(true);
+    dispatch(setLoading(false));
     toast.success("Updated data with success!");
   } catch (error) {
+    dispatch(setLoading(false));
     dispatch(updateUserFailure(error));
     toast.error("Update failed!");
   }
@@ -239,7 +242,13 @@ const handleSubmit = async (e) => {
 
 
 
-          <button className='update'  >Update</button>
+          <button className="update" >
+            {loading ? (
+            <span>Loading...</span>
+            ):(
+              <span>Update</span>
+            )} 
+          </button>
 
           <div className='footerContainer3'>
             <span onClick={handleDeleteAccount}  className='delete'>Delete</span>

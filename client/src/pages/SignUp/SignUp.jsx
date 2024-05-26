@@ -5,41 +5,63 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import OAuth from '../../components/OAuth/OAuth';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { setLoading } from '../../redux/cart/IncomeReducer';
+
 
 
 export default function SignUp() {
+
   const navigate=useNavigate();
   const [error,setError]=useState(false);
   console.log(error);
   const {loading}=useSelector((state)=>state.income);
   const [formData,setFormData] = useState({})
   const { currentUser } = useSelector(state => state.user);
-  console.log(process.env.REACT_APP_BACKEND_URL);
-  
+  const dispatch=useDispatch();
+
   const handleChange=(e)=>{
     setFormData({...formData,[e.target.id]:e.target.value})
   }
 
+  useEffect(() => {
+    dispatch(setLoading(false));
+  }, [dispatch]);
+
+
+
 
   const handleSubmit=async (e) =>{
     e.preventDefault();//dont refrest page until have data
+    dispatch(setLoading(true));
     try{
 
       setError(false)
       const data=await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/signup`,formData);
       console.log("data client",data);
-      
+     
+      if(data.success === false){
+        toast.error("Eroare sign up");
+        dispatch(setLoading(false));
+        return;
+      }
+
+
+
       if(data != null){
         setError(false);
+        dispatch(setLoading(false));
         toast.success("Va-ti inregistrat cu succes!")
         navigate('/login')
       }else{
+        dispatch(setLoading(false));
         toast.error("Nu exista date primite de la client!")
       }
     
     }catch(error){
       setError(true)
+      dispatch(setLoading(false));
       toast.error("Inregistrare esuata!");
     }
 
@@ -79,7 +101,13 @@ export default function SignUp() {
           <input onChange={handleChange} className='inputSignIn' type="password" placeholder="Password" id="password" />
 
 
-          <button >Sign Up</button>
+           <button >
+          {loading ? (
+          <span>Loading...</span>
+          ):(
+            <span>Submit</span>
+          )} 
+          </button>
 
           
           <div className="social1">
