@@ -11,9 +11,11 @@ import { useSelector } from 'react-redux';
 export default function SignUp() {
   const navigate=useNavigate();
   const [error,setError]=useState(false);
+  console.log(error);
   const {loading}=useSelector((state)=>state.income);
   const [formData,setFormData] = useState({})
   const { currentUser } = useSelector(state => state.user);
+  console.log(process.env.REACT_APP_BACKEND_URL);
   
   const handleChange=(e)=>{
     setFormData({...formData,[e.target.id]:e.target.value})

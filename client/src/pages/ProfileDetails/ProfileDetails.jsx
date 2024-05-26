@@ -23,7 +23,7 @@ export default function ProfileDetails() {
   console.log("sunt in profile");
   const navigate=useNavigate();
   const dispatch = useDispatch();
-
+  console.log(process.env.REACT_APP_BACKEND_URL)
   const fileRef=useRef(null);
     //state pt aplicatie
     const [image,setImage]=useState(undefined);
