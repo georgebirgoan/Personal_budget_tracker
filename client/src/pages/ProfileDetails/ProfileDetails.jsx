@@ -171,7 +171,7 @@ const handleSubmit= async (e)=>{
                   accept="image/*" onChange={(e)=>setImage(e.target.files[0])} />
                 
                   {/*imagine profil mijloc*/}
-                  <img src={formData.profilePicture || currentUser.profilePicture} alt="profile" 
+                  <img src={formData?.profilePicture || currentUser?.profilePicture} alt="profile" 
                   className="" 
                   onClick={()=>fileRef.current.click()}
                   />
@@ -201,7 +201,7 @@ const handleSubmit= async (e)=>{
           </div>
 
             <div className="inputs">
-              <input  defaultValue={currentUser.username} onChange={handleChange}
+              <input  defaultValue={currentUser?.username} onChange={handleChange}
                className='input2' type="text" placeholder="Name " id="username" />
             </div>
 
@@ -210,7 +210,7 @@ const handleSubmit= async (e)=>{
               <span className='user' >Email</span>
             </div> 
           <div className="inputs">
-              <input   defaultValue={currentUser.email} onChange={handleChange}
+              <input   defaultValue={currentUser?.email} onChange={handleChange}
               className='input2' type="text" placeholder="Email " id="email"  />
             </div>
     

@@ -27,29 +27,21 @@
        
 
      
-     
-    
+   
 
         .logo{
             display: flex;
-            align-items: start;
+            align-items: center;
+            justify-content: space-between;
             padding: 10px;
             margin: 0px 10px;
              
-        }
 
 
-        
-        .middle{
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            
-        
             .circleName{
                 display: flex;
                 margin: 15px;
-
+    
                 @include sm{
                     display: flex;
                     align-items: center;
@@ -57,14 +49,28 @@
                 }
                
                 
-                span:nth-child(2){
-                    font-size: 20px;
-                    color: rgb(231, 230, 238);
+                .spanCategorie{
+                    font-size: 18px;
+                    color: rgb(255, 255, 255);
                     font-weight: 800;
                     margin-left: 10px;
+
+                    @include sm{
+                        font-size: 17px;
+                    }
                 }
         }
+        
+        }
 
+
+        .middle{
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            
+        
+          
         .list{
             display: flex;
             justify-content: space-between;
@@ -99,11 +105,19 @@
              }
 
             @include md{
-               display: flex;
-               align-items: start;
-               flex-direction: column;
-               align-items: start;
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+                justify-content: center;
                 gap: 7px;
+            }
+            
+            @include sm{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 12px;
             }
 
         span{
@@ -112,8 +126,8 @@
         }
         .price{
             display: flex;
-            align-items: center;
-            margin-left: 13px;
+            align-items: start;
+            justify-content: start;
         }
         
         .data{

@@ -33,10 +33,12 @@ export default function Chart() {
     plugins: {
       legend: {
         position: 'top',
+
       },
       title: {
         display: true,
         text: 'Expenses Chart',
+        color: '#FFFFFF',
       },
     },
   };

@@ -29,11 +29,17 @@ a {
   border-right: 2px solid $soft-bg;
 
   @include sm{
-    width: auto;
+    width: 70px;
+    padding: 5px 5px;
   }
 }
 
 .contentContainer {
   padding: 5px 20px;
   width: 100%;
+
+  @include sm{
+    padding: 5px 5px;
+    width: 100%;
+}
 }

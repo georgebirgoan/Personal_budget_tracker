@@ -24,6 +24,8 @@ import PrivateRoutes from './pages/PrivateRoute/PrivateRoutes'
 import { useEffect } from "react";
 import { generateToken, messaging } from "./firebase";
 import { onMessage } from "firebase/messaging";
+import ProfileDetails from "./pages/ProfileDetails/ProfileDetails";
+import Dasboard from "./pages/Dashboard/Dashboard";
  
 
 function App() {
@@ -62,7 +64,7 @@ function App() {
       children: [
         {
           path: "/",
-          element: <PrivateRoutes />,
+          element: <Dasboard />,
         },  
         
         {
@@ -74,8 +76,13 @@ function App() {
           element: <Expenses />,
         },
         {
-          path: "/profile",
-          element: <PrivateRoutes />, // Utilizează componenta pentru rutele private
+          element: <PrivateRoutes />,
+          children:[
+            {
+              path:'/profile',
+              element:<ProfileDetails/>
+            }
+          ]
         },
 
 

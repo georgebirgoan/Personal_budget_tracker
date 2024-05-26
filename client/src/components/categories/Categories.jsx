@@ -40,15 +40,17 @@ export default function Categories() {
                 currentIncome.map((income) => (
                     <div className="container" key={income.id}>
                         <div className="logo">
-                            {/* <li>{income.option}</li> */}
+
                             <CategoryIcon optionIn={income.option} />
+
+                            <div className="circleName">
+                                <CircleIcon style={{ color: 'green', fontSize: 13, marginTop: 7 }} />
+                                <span className='spanCategorie'>{income.category}</span>
+                            </div>
                         </div>
     
                         <div className="middle">
-                            <div className="circleName">
-                                <CircleIcon style={{ color: 'green', fontSize: 13, marginTop: 7 }} />
-                                <span>{income.category}</span>
-                            </div>
+                          
     
                             <div className="list">
                                 <div className="price">
@@ -84,14 +86,16 @@ export default function Categories() {
                     <div className="container" key={expense.id}>
                         <div className="logo">
                             <CategoryIcon optionEx={expense.option}/>
-                        </div>
-    
-                        <div className="middle">
+
                             <div className="circleName">
                                 <CircleIcon style={{ color: 'red', fontSize: 13, marginTop: 7 }} />
                                 <span>{expense.category}</span>
                             </div>
 
+                        </div>
+    
+                        <div className="middle">
+                        
     
                             <div className="list">
                                 <div className="price">

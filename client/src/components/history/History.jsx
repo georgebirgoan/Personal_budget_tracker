@@ -9,6 +9,7 @@ export default function History() {
   
   return (
     <div className='historyContainer'>
+      
       <div className='top'>
         <span className='histSpan'>Recent History </span>
       </div>

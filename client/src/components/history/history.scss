@@ -1,3 +1,10 @@
+
+@import "../../styles/variables.scss";
+@import "../../styles/responsive.scss";
+
+
+
+
 .historyContainer{
     display: flex;
     flex-direction: column;
@@ -15,23 +22,36 @@
         font-size: 25px;
         color: rgb(255, 255, 255);
         font-weight: bold;
+
+        @include sm{
+            font-size: 16px;
+            padding: 0;
+        }
+    
     }
     }
 .titleHist{
     display: flex;
     justify-content: space-between;
-    margin: 15px;
+    margin: 10px;
+
+    @include sm{
+        font-size: 12px;
+        width: auto;
+    }
 
     .categorie{
         display: flex;
-        align-items: center;
-        justify-content: center;
+        width: auto;
+        margin: 0px;
+        align-items: start;
+        justify-content: start;       
     }
-
     .pret{
         display: flex;
         align-items: center;
-        justify-content: start;
+        justify-content: center;
+        margin: 0px;
     }
 
 
@@ -56,6 +76,12 @@
         width: 100%;
         border: 0.5px solid white;
         border-radius: 5px;
+
+        @include sm{
+            margin: 0px;
+            padding: 5px;
+        }
+
     }
 
    
@@ -64,6 +90,12 @@
         text-wrap: nowrap;
         padding:5px;
         margin: 0px 30px;
+
+        @include sm{
+            margin: 0px;
+            padding: 3px;
+        }
+        
     }
 
 
