@@ -47,6 +47,7 @@ export default function Categories() {
                                 <CircleIcon style={{ color: 'green', fontSize: 13, marginTop: 7 }} />
                                 <span className='spanCategorie'>{income.category}</span>
                             </div>
+
                         </div>
     
                         <div className="middle">
@@ -89,7 +90,7 @@ export default function Categories() {
 
                             <div className="circleName">
                                 <CircleIcon style={{ color: 'red', fontSize: 13, marginTop: 7 }} />
-                                <span>{expense.category}</span>
+                                <span className='spanCategorie'>{expense.category}</span>
                             </div>
 
                         </div>
