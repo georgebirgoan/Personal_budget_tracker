@@ -1,39 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, Outlet, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import { setLoading } from "../../redux/cart/IncomeReducer";
 import Loading from "../Loading/Loading";
-import { Outlet } from "react-router-dom";
-import { Navigate } from "react-router-dom";
-
 
 export default function PrivateRoute() {
-    const location = useLocation();
-    const { currentUser } = useSelector(state => state.user);
-    const {loading}=useSelector((state)=>state.income);
-    console.log(loading);
+  const location = useLocation();
+  const { currentUser } = useSelector(state => state.user);
+  const { loading } = useSelector(state => state.income);
+  const dispatch = useDispatch();
 
-    const navigate = useNavigate();
-    const dispatch=useDispatch();
+  useEffect(() => {
+    dispatch(setLoading(true));
+    const checkUser = async () => {
+      // Simulate delay for authentication check
+      await new Promise(resolve => setTimeout(resolve, 200));
+      dispatch(setLoading(false));
+    };
+    checkUser();
+  }, [dispatch]);
 
-    useEffect(()=>{
-        dispatch(setLoading(true));  
-        
-      if (currentUser && (location.pathname === "/login" || location.pathname === "/signup")) {
-            navigate('/');
-        }else{
-            dispatch(setLoading(false)); 
-        }
-    },[currentUser,dispatch,navigate,location.pathname]);
+  if (loading) {
+    return <Loading />;
+  }
 
-    
-    if(loading){
-        console.log("merge")
-        return <Loading/>
-    }
-    
-    // Dacă este autentificat, afișează conținutul privat
-    return (
-        currentUser ? <Outlet/> : <Navigate to={'/login'}/>  
-    );
+  if (currentUser) {
+    return <Outlet />;
+  } else {
+    return <Navigate to="/login" state={{ from: location }} />;
+  }
 }

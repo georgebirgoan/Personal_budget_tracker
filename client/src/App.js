@@ -1,7 +1,4 @@
 //protected routes for signup/in
-
-
-
 import {
   createBrowserRouter,
   RouterProvider,
@@ -27,85 +24,72 @@ import Dasboard from "./pages/Dashboard/Dashboard";
 
 function App() {
 
-    useEffect(()=>{
-     // console.log('efectt')
-      generateToken();
-      onMessage(messaging,(payload)=>{
-        console.log(payload);
-      })
-    },[]);
-
-  const Layout = () => {
+  const ProtectedLayout = () => {
     return (
       <div className="main">
-            <Navbar />
+        <Navbar />
         <div className="container">
-
           <div className="menuContainer">
             <SideBar />
           </div>
-
           <div className="contentContainer">
-              <Outlet />
+            <Outlet />
           </div>
         </div>
-          <Footer/>
+        <Footer />
       </div>
     );
   };
-
+  
+  const PublicLayout = () => {
+    return (
+      <div className="main">
+        <Outlet />
+      </div>
+    );
+  };
+  
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Layout />,
-      children: 
-      [
+      element: <PublicLayout />,
+      children: [
         {
           path: "/",
           element: <PrivateRoutes />,
           children: [
             {
               path: "/",
-              element: <Dasboard/>, // Aici va fi componenta pentru dashboard
+              element: <Dasboard />,
             },
-         
-            
-          ]
-        },
-        {
-          path: "/income",
-          element: <Income />,
-        },
-        {
-          path: "/expense",
-          element: <Expenses />,
-        },  
-     
-       
             {
-              path:'/profile',
-              element:<ProfileDetails/>
+              path: "/income",
+              element: <Income />,
             },
-    
-      
-
-        {
-          path: "/edit",
-          element: <Outlet />,
-          children: [
-          {
-            path: "income/:id",
-            element: <EditIncome />, // Aici va fi componenta pentru editarea veniturilor
-          },
-
-          {
-            path: "expense/:id",
-            element: <EditExpense />, // Aici va fi componenta pentru editarea cheltuielilor
-          },
-        ],
-      },
-    
-       
+            {
+              path: "/expense",
+              element: <Expenses />,
+            },
+            {
+              path: "/profile",
+              element: <ProfileDetails />
+            },
+            {
+              path: "/edit",
+              element: <Outlet />,
+              children: [
+                {
+                  path: "income/:id",
+                  element: <EditIncome />,
+                },
+                {
+                  path: "expense/:id",
+                  element: <EditExpense />,
+                },
+              ],
+            },
+          ],
+        },
       ],
     },
     {

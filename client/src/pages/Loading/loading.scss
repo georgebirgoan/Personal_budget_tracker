@@ -1,7 +1,7 @@
 /*
  * Variables
  */
-
+/*
  :root {  
     --card-padding: 24px;
     --card-height: 740px;
@@ -32,10 +32,7 @@
     --blur-size: var(--blur-width) calc(var(--card-height) - var(--footer-height));
   }
   
-  /*
-   * Card Skeleton for Loading
-   */
-  
+ 
   .card {
     width:680px; //demo
     height: var(--card-height);
@@ -103,9 +100,7 @@
   }
   
   
-  /* 
-   * Demo Stuff
-   */
+  
   
    .bodyLoading {
     min-height:100vh;
@@ -113,4 +108,16 @@
     display:flex;
     justify-content:center;
     align-items:center;
+  }*/
+
+  
+  .bodyLoading{
+    min-height:100vh;
+    background-color:#FFF;
+
+  }
+
+  .card{
+    color: black;
+    font-size: 30px;
   }
