@@ -19,8 +19,8 @@ export default function OAuth() {
             const provider=new GoogleAuthProvider();
             const auth=getAuth(app);
             const result=await signInWithPopup(auth,provider);  
-
-            
+            //http://localhost:3001/api/google
+            //process.env.REACT_APP_BACKEND_URL
             const res=await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/google`,{
                 method:'POST',
                 headers:{

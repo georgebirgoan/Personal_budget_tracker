@@ -116,6 +116,7 @@ const handleDeleteAccount=async () =>{
 const handleSignOut=async () =>{
     try{
       //we don t need response
+      //process.env.REACT_APP_BACKEND_URL
       console.log("in signout  front")
       const res=await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/signout`,{
         method:'GET',
