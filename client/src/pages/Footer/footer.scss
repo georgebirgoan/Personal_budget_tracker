@@ -10,8 +10,10 @@
     align-items: center;
     padding: 20px;
     background-color:#384256;
-    height: 180px;
+    height: 140px;
     margin-top: 25px;
+    justify-content: space-around;
+
     width: 100%;
     
     @include sm{
@@ -25,12 +27,12 @@ span{
     
 
     &:nth-child(1){
-        font-size: 18px;
+        font-size: 15px;
         font-weight: bold;
     }
 
     &:nth-child(2){
-        font-size:18px;
+        font-size:15px;
         font-weight: bold;
     }
 

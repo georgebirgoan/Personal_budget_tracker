@@ -94,13 +94,12 @@ const handleDeleteAccount=async () =>{
     credentials: 'include'
   })
 
-    console.log("res from server ",res);
     if(res.success === false){
       dispatch(deleteUserFailure(res));
       return;
     }
 
-    toast.success("User deleted cu success")
+    toast.success("User deleted with success!")
     navigate('/login');
     dispatch(deleteUserSuccess());
   
