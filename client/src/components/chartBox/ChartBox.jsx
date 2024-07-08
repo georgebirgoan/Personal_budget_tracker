@@ -1,21 +1,9 @@
 import "./chartBox.scss";
-
 import { Link } from "react-router-dom";
-
-
 import React, { PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-
-
-
-
-
-
 const ChartBox = (props)=> {
-
-
-
   return (
     <div className="chartBox">
        <div className="boxInfo">
@@ -28,7 +16,6 @@ const ChartBox = (props)=> {
             View All
          </Link>
        </div>
-
 
         <div className="chartInfo">
             <div className="chart">

@@ -116,7 +116,7 @@ const handleSignOut=async () =>{
       //we don t need response
       //process.env.REACT_APP_BACKEND_URL
       console.log("in signout  front")
-      const res=await fetch(`http://localhost:3001/api/signout`,{
+      const res=await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/signout`,{
         method:'GET',
       })
       dispatch(signOut());

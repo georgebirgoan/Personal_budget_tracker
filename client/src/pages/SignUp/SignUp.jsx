@@ -39,7 +39,7 @@ export default function SignUp() {
 
       setError(false)
       //${process.env.REACT_APP_BACKEND_URL}
-      const data=await axios.post(`http://localhost:3001/api/signup`,formData);
+      const data=await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/signup`,formData);
       console.log("data client",data);
      
       if(data.success === false){

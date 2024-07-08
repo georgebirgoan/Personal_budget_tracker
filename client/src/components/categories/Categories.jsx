@@ -20,17 +20,13 @@ export default function Categories() {
   
     const {currentIncome} =useSelector((state)=>state.income);
     const {currentExpense} =useSelector((state)=>state.expense);
-    console.log("current expense",currentExpense);
 
     const handleDeleteIncome = (id) => {
-        console.log("id in function", id);
         dispatch(deleteIncome({ id: id }));
     }
 
     const handleDeleteExpense= (id) => {
-        console.log("id in function", id);
-        dispatch(deleteExpense({ id: id }));
-        
+        dispatch(deleteExpense({ id: id }));   
     }
 
     return (
@@ -126,7 +122,7 @@ export default function Categories() {
                         <DeleteSweepIcon style={{ fontSize: 30 }} />
                     </div>
 
-             </div>
+                    </div>
                     </div>
                 ))
             }

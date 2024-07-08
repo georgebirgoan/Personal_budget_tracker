@@ -17,9 +17,6 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { readdirSync } = require("fs");
 
-
-
-
 // Acces env
 dotenv.config();
 const app = express();
@@ -37,12 +34,12 @@ console.log('portul', port);
 app.use(cookieParser());
 
 // Middleware pentru parsarea JSON
-
 app.use(express.json());
+
 //https://personal-budget-tracker-d.onrender.com
 // Configurare CORS
 app.use(cors({
-    origin: "http://localhost:3000", // Permit accesul de la orice origin
+    origin: "https://personal-budget-tracker-d.onrender.com", // Permit accesul de la orice origin
     methods: "GET,PUT,POST,DELETE", // Specifică metodele acceptate
     credentials: true, // Permit trimiterea cookie-urilor de autentificare
 }));
@@ -60,43 +57,9 @@ mongoose.connect(process.env.MONGODB_URI, {
 // Montare rute
 
 readdirSync("./routes").map((r) => app.use("/api", require(`./routes/${r}`)));
-
-
     app.use('/', (req,res)=>{
         res.send("iei");
     });
-     //app.use('/api/auth', authRoutes);    
-
-
-/*
-const routesPath = "./routes";
-readdirSync(routesPath).forEach(file => {
-    if (file.endsWith('.js')) {
-        import(path.join(routesPath, file))
-            .then(module => {
-                const route = module.default;
-                app.use("/api", route);
-            })
-            .catch(error => {
-                console.error('Error loading route:', error);
-            });
-    }
-});
-*/
-// Middleware pentru gestionarea erorilor
-
-/*
-app.use((err, req, res, next) => {
-    console.log("middleware eoraere")
-    const statusCode = err.statusCode || 500;
-    const message = err.message || 'Internal server error';
-    return res.status(statusCode).json({
-        success: false,
-        message,
-        statusCode
-    });
-});*/
-
 
 // Pornire server
 const server = app.listen(port, () => {
