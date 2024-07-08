@@ -1,32 +1,26 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useLocation, Outlet, Navigate } from "react-router-dom";
-import { useEffect } from "react";
-import { setLoading } from "../../redux/cart/IncomeReducer";
-import Loading from "../Loading/Loading";
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { Navigate, Outlet } from 'react-router-dom';
+import Spinner from '../Spinner/Spinner';
 
-export default function PrivateRoute() {
-  const location = useLocation();
+
+const PrivateRoutes = ({ children }) => {
+  const [loading, setLoading] = useState(true);
   const { currentUser } = useSelector(state => state.user);
-  const { loading } = useSelector(state => state.income);
-  const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setLoading(true));
-    const checkUser = async () => {
-      // Simulate delay for authentication check
-      await new Promise(resolve => setTimeout(resolve, 200));
-      dispatch(setLoading(false));
-    };
-    checkUser();
-  }, [dispatch]);
+      setLoading(false);
+  }, []);
 
   if (loading) {
-    return <Loading />;
+    return <Spinner />; // Afișează ecranul de încărcare
   }
 
-  if (currentUser) {
-    return <Outlet />;
-  } else {
-    return <Navigate to="/login" state={{ from: location }} />;
+  if (!currentUser) {
+    return <Navigate to="/login" replace />; // Redirecționează utilizatorul neautentificat la pagina de login
   }
-}
+
+  return children ? children : <Outlet />;
+};
+
+export default PrivateRoutes;

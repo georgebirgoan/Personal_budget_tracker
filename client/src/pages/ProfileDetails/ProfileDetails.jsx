@@ -24,7 +24,7 @@ export default function ProfileDetails() {
   console.log("sunt in profile");
   const navigate=useNavigate();
   const dispatch = useDispatch();
-  console.log(process.env.REACT_APP_BACKEND_URL)
+
   const fileRef=useRef(null);
   //state pt aplicatie
   const [image,setImage]=useState(undefined);
@@ -33,16 +33,14 @@ export default function ProfileDetails() {
   const [formData,setFormData]=useState({});
   const [updateSuccess,setUpdateSuccess]=useState(false);
   const {loading}=useSelector((state)=>state.income);
-    const {currentUser}=useSelector(state=>state.user);
-    
-    console.log("user profile id",currentUser);
+  const {currentUser}=useSelector(state=>state.user);
 
   //useefect for image after change
   useEffect(()=>{
     if(image){
       dispatch(setLoading(false));
       handleFileUpload(image)
-      console.log("imagine efect0",image);
+      console.log("imagine efect",image);
     }
   },[image,dispatch])
 
@@ -118,13 +116,13 @@ const handleSignOut=async () =>{
       //we don t need response
       //process.env.REACT_APP_BACKEND_URL
       console.log("in signout  front")
-      const res=await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/signout`,{
+      const res=await fetch(`http://localhost:3001/api/signout`,{
         method:'GET',
       })
       dispatch(signOut());
       console.log("res from back",res);
     
-      toast.success('Delogare cu succes!');
+      toast.success('You have successfully signed out!');
       navigate("/");
     }
     catch(error){
@@ -140,7 +138,7 @@ const handleSubmit = async (e) => {
   try {
     dispatch(updateUserStart());
     
-    const token = localStorage.getItem('Bearer'); // Get the token from local storage
+      const token = localStorage.getItem('Bearer'); // Get the token from local storage
 
       const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/update/${currentUser._id}`, {
       method: 'POST',
@@ -154,8 +152,7 @@ const handleSubmit = async (e) => {
     const data =await res.json();
     
     if(data.success === false){
-        toast.error("Datele exista deja, puneți altele.");
-        console.log("data update", data);
+        toast.error("Already exist data.");
         dispatch(updateUserFailure(data));
       return;
     }
@@ -170,11 +167,6 @@ const handleSubmit = async (e) => {
     toast.error("Update failed!");
   }
 };
-
-
-
-
-
 
   return (
     <div className='containerProfile'>

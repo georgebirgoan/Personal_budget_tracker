@@ -21,7 +21,7 @@ export default function OAuth() {
             const result=await signInWithPopup(auth,provider);  
             //http://localhost:3001/api/google
             //process.env.REACT_APP_BACKEND_URL
-            const res=await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/google`,{
+            const res=await fetch(`http://localhost:3001/api/google`,{
                 method:'POST',
                 headers:{
                     "Content-Type":"application/json",
@@ -43,12 +43,11 @@ export default function OAuth() {
             localStorage.setItem('Bearer', token);
 
             dispatch(signInSuccess(data.user));
-            toast.success("Logare cu succes!");
+            toast.success("Succesfully login!");
             navigate("/");
 
         }catch(error){
-            toast.error("Logare eusata Google!");
-            console.log('could not login with google', error);
+            toast.error("Failed login with Google!");
             }
         
     }

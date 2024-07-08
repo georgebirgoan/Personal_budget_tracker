@@ -1,0 +1,59 @@
+/* Spinner.scss */
+
+.skeleton-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff; /* Culoarea de fundal a paginii */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Asigură că este peste tot conținutul */
+  }
+  
+  .skeleton-loader {
+    display: inline-block;
+    width: 100%;
+   // max-width: 1200px; /* Lățimea maximă a skeleton-ului */
+    height: 100vh; /* Înălțimea egală cu înălțimea vizibilă a ferestrei */
+    padding: 20px;
+    background-color: #f0f0f0; /* Culoarea de fundal a skeleton-ului */
+    border-radius: 8px; /* Colțuri rotunjite */
+    overflow: hidden; /* Ascunde overflow-ul din cauza animației */
+  }
+  
+  .skeleton-row {
+    width: 100%;
+    height: 20px; /* Înălțimea rândului de skeleton */
+    margin-bottom: 10px; /* Spațiul între rânduri */
+    background-color: #e0e0e0; /* Culoarea gri deschisă */
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .skeleton-animation {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.8),
+      transparent
+    ); /* Gradient pentru efectul de încărcare */
+    animation: slide 1.5s infinite; /* Animția pentru a muta gradientul */
+  }
+  
+  @keyframes slide {
+    0% {
+      left: -100%;
+    }
+    100% {
+      left: 100%;
+    }
+  }
+  

@@ -23,7 +23,7 @@ export default function History() {
 
         {istoric.length === 0 ? (
           // Afișează mesajul corespunzător în cazul în care istoricul este gol
-          <div className="emptyHistoryMessage">Nu există înregistrări în istoric</div>
+          <div className="emptyHistoryMessage">No records in history</div>
         ) : (
           // Iterează prin fiecare înregistrare din istoric și afișează-o
           istoric.map((item) => (

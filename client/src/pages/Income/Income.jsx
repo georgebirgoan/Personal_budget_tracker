@@ -82,6 +82,7 @@ export default function Income() {
               <input onChange={handleChange} className='input1' id='goals'  type='text' alt='goals'  placeholder='Add budget goals' />
               <input onChange={handleChange} className='input1' type='text' alt='reference' id='reference'  placeholder='Add a reference' />
               
+              {/* add income */}
                 <div className="buttonCheck">
                         <button>+ Add Income</button> 
                 </div>

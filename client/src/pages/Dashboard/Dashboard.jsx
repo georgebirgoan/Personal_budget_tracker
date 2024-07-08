@@ -5,12 +5,17 @@ import ChartBox from '../../components/chartBox/ChartBox'
 import { MyComponent } from '../../utils/data'
 import { MaxExpense, MaxSal, MinExpense, MinSal } from "../../helper/Istoric"
 import Chart2 from '../../components/Chart2/Chart2'
-import { resetState } from '../../redux/cart/IncomeReducer'
+import { useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
+import { useState,useEffect} from 'react'
+import Spinner from '../Spinner/Spinner'
+
 
 function Dasboard() {
   const {chartBoxIncome,chartBoxExpense,chartBoxBalance,chartBoxEconomy}=MyComponent();
  // const dispatch=useDispatch();
   //dispatch(resetState());
+
 
   return (
     <div className='home'>

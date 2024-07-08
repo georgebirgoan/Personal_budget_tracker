@@ -34,7 +34,6 @@ export default function Expenses() {
         dispatch(finalExpense(response));
         dispatch(totExpense());
        // dispatch(Istoric());
-        toast.success("Iieii data succes")
 
 
     }catch(error){

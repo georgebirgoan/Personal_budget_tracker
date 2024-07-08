@@ -13,9 +13,10 @@ export default function Totals() {
   const {totalIncome}=useSelector(state=>state.income)
   const {totalExpense}=useSelector(state=>state.expense)
 
-  const TotalBalance=()=>{
-    return totalIncome - totalExpense;
-  }
+  const TotalBalance=totalIncome-totalExpense;
+
+  console.log(TotalBalance);
+  console.log(totalIncome);
 
 
   return (

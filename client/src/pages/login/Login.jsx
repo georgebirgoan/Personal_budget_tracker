@@ -1,3 +1,5 @@
+
+
 import './login.scss';
 import { useEffect, useState } from "react"
 import { Link, Navigate } from "react-router-dom"
@@ -35,7 +37,8 @@ export default function Login() {
     dispatch(setLoading(true));
     try{
       dispatch(signInStart());
-        const response= await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/signin`, formData,{withCredentials:true});
+      //${process.env.REACT_APP_BACKEND_URL}
+        const response= await axios.post(`http://localhost:3001/api/signin`, formData,{withCredentials:true});
         const { token } = response.data;
 
       if(response.success === false){
@@ -50,14 +53,15 @@ export default function Login() {
         dispatch(setLoading(false));
         dispatch(signInSuccess(response.data.user));
         localStorage.setItem("Bearer",token);
-        toast.success("Logare cu succes!");
+        toast.success("Successfully logged in!");
         navigate('/')
       }
 
     }catch(error){
       dispatch(signInFailure(error.message))
       dispatch(setLoading(false));
-      toast.error("Logare esuata,inregistrati-va intai! !");
+      toast.error("Login failed, please register first!!");
+
     }
   };
 

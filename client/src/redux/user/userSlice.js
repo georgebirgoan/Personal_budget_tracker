@@ -15,7 +15,6 @@ const userSlice = createSlice({
     },
     
     signInSuccess: (state, action) => {
-      console.log(action.payload.data)
       console.log(action.payload)
       
       state.currentUser = action.payload;
@@ -28,6 +27,7 @@ const userSlice = createSlice({
       state.error = action.payload;
     },
     updateUserStart: (state) => {
+      console.log("in update start");
       state.loading = true;
     },
     updateUserSuccess: (state, action) => {

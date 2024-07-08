@@ -68,7 +68,10 @@ const cartIncome=createSlice({
         },
 
 
-        totIncome:(state,action)=>{
+        totIncome:(state)=>{
+
+            console.log("state curet Income",state.currentIncome);
+
             const TotalIncome=state.currentIncome.reduce((total,item)=>
             total + parseFloat(item.amount),0);
             console.log("total income",TotalIncome);

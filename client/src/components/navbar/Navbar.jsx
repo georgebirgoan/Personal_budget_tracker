@@ -13,6 +13,7 @@ import CsvData from '../CSV/CsvData';
 export default function Navbar() {
   const location = useLocation();
   const {currentUser}=useSelector(state=>state.user);
+  console.log(currentUser._id);
   console.log('usercurrent in navbar',currentUser);
 
 
@@ -44,7 +45,7 @@ export default function Navbar() {
               <div className="user">
                 {currentUser ? (
                   <>
-                    <Link to='/profile'>
+                    <Link to={`/profile/${currentUser._id}`}>
                       <img src={currentUser.profilePicture} alt='User profile' />
                       <span className='nume' >  {currentUser.username}</span>
                     </Link>

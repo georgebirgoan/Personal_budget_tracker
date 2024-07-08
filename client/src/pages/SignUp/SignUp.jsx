@@ -38,11 +38,12 @@ export default function SignUp() {
     try{
 
       setError(false)
-      const data=await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/signup`,formData);
+      //${process.env.REACT_APP_BACKEND_URL}
+      const data=await axios.post(`http://localhost:3001/api/signup`,formData);
       console.log("data client",data);
      
       if(data.success === false){
-        toast.error("Eroare sign up");
+        toast.error("Erorr signUp");
         dispatch(setLoading(false));
         return;
       }
@@ -52,11 +53,11 @@ export default function SignUp() {
       if(data != null){
         setError(false);
         dispatch(setLoading(false));
-        toast.success("Va-ti inregistrat cu succes!")
+        toast.success("You have registered successfully!")
         navigate('/login')
       }else{
         dispatch(setLoading(false));
-        toast.error("Nu exista date primite de la client!")
+        toast.error("No data received from the client!");
       }
     
     }catch(error){
@@ -87,18 +88,18 @@ export default function SignUp() {
           <div className="divspan">
             <span className='user2' >Username</span>
           </div>    
-            <input onChange={handleChange} className='inputSignIn' type="text" placeholder="Name " id="username" />
+            <input onChange={handleChange} className='inputSignIn' type="text" placeholder="Name " id="username" required />
                
             <div className="divspan">
               <span className='user2' >Email</span>
             </div>   
-          <input onChange={handleChange} className='inputSignIn' type="text" placeholder="Email or Phone" id="email" />
-
+          <input onChange={handleChange} className='inputSignIn' type="text" placeholder="Email or Phone" id="email" required />
+          
     
           <div className="divspan">
               <span className='user2' >Password</span>
             </div>   
-          <input onChange={handleChange} className='inputSignIn' type="password" placeholder="Password" id="password" />
+          <input onChange={handleChange} className='inputSignIn' type="password" placeholder="Password" id="password" required />
 
 
            <button >

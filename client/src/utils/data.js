@@ -157,17 +157,12 @@ export const menu = [
 
 export function MyComponent() {
     
-    const dispatch=useDispatch();
+    //const dispatch=useDispatch();
     const { currentIncome, totalIncome, totalEconomy, economyChanges, balanceChanges } = useSelector((state) => state.income);
     const { currentExpense, totalExpense } = useSelector((state) => state.expense);
-    
-    const balance=(totalIncome-totalExpense)-totalEconomy;
-
-   // console.log("data tot inc",totalIncome);
-   // console.log("tot econo",totalEconomy);
-   // console.log("data tot exp",totalExpense);
-    console.log("data tot changes",economyChanges);
-    console.log("balanceChange",balanceChanges);
+   console.log(totalIncome);
+  const balance=(totalIncome-totalExpense)-totalEconomy;
+  console.log(balance);
 
 //const currentDate=new Date();
 //dispatch(histBalance(balance,currentDate));
@@ -214,33 +209,25 @@ const chartBoxEconomy = {
 
 
 const chartDataIncome = currentIncome.reduce((acc, item) => {
-  // Verifică dacă există deja o intrare pentru această dată în acc
-  const existingEntry = acc.find(entry => entry.name === item.date);
-  // Dacă există, adaugă suma la intrarea existentă
+    const existingEntry = acc.find(entry => entry.name === item.date);
+    if (existingEntry) {
+        existingEntry.income += item.amount;
+    } else {
+        acc.push({ name: item.date, income: item.amount });
+    }
+    return acc;
+  }, []);
+
+
+const chartDataExpense = currentExpense.reduce((acc, item) => {
+const existingEntry = acc.find(entry => entry.name === item.date);
   if (existingEntry) {
-      existingEntry.income += item.amount;
+      existingEntry.expense += item.amount;
   } else {
-      // Dacă nu există, creează o nouă intrare
-      acc.push({ name: item.date, income: item.amount });
+      acc.push({ name: item.date, expense: item.amount });
   }
   return acc;
-}, []);
-
-
-console.log(chartDataIncome) ;
-console.log(totalIncome);
-const chartDataExpense = currentExpense.reduce((acc, item) => {
-// Verifică dacă există deja o intrare pentru această dată în acc
-const existingEntry = acc.find(entry => entry.name === item.date);
-// Dacă există, adaugă suma la intrarea existentă
-if (existingEntry) {
-    existingEntry.expense += item.amount;
-} else {
-    // Dacă nu există, creează o nouă intrare
-    acc.push({ name: item.date, expense: item.amount });
-}
-return acc;
-}, []);
+  }, []);
 
 
 

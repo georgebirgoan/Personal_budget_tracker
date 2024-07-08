@@ -1,12 +1,15 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { v4 as uuidv4 } from 'uuid';
+import { useSelector } from 'react-redux';
+
 
 
 const initialState={
     currentExpense:[],
     totalExpense:0,
     loading:false,
-    error:false
+    error:false,
+    userId:null
 }
 
 
@@ -23,10 +26,10 @@ const cartExpense=createSlice({
         finalExpense: (state, action) => {
             const newItem = {
                 ...action.payload,
-                id: uuidv4(),
                 type:'expense',
                 createdAt:Date.now()
             };
+      
             return {
                 ...state,
                 currentExpense: [...state.currentExpense, newItem]
@@ -43,6 +46,8 @@ const cartExpense=createSlice({
 
         deleteExpense: (state, action) => {
             const { id } = action.payload;
+            console.log(id);
+
             const updateExpense = state.currentExpense.filter(item => item.id !== id);
 
             const newTotalExpense=updateExpense.reduce((total,item)=>

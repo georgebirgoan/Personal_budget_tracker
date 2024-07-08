@@ -1,6 +1,5 @@
 import React from 'react';
 import './categories.scss';
-import SearchOutlined from '@mui/icons-material/SearchOutlined';
 import CircleIcon from '@mui/icons-material/Circle';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import { Link, useLocation } from 'react-router-dom';
@@ -51,29 +50,30 @@ export default function Categories() {
                         </div>
     
                         <div className="middle">
-                          
-    
                             <div className="list">
                                 <div className="price">
                                     <AttachMoneyIcon style={{fontSize:"18px"}}/>
                                     <span>{income.amount}</span>
                                 </div>
+
                                 <div className="data">
                                     <DateRangeIcon style={{fontSize:"18px"}}/>
                                     <span> {income.date}</span>
                                 </div>
+
                                 <div className="descriere">
                                     <TextsmsRoundedIcon style={{fontSize:"18px"}}/>
                                     <span> {income.reference}</span>
                                 </div>
+                                
                             </div>
                         </div>
                         
                         <div className="right">
                  
-                            <Link to={`/edit/income/${income.id}`}  >
-                                <EditIcon  style={{ fontSize: 25 }}  />
-                            </Link>
+                        <Link to={`/income/edit/${income.id}`}>
+                            <EditIcon style={{ fontSize: 25 }} />
+                        </Link>
 
                             {/*Button de stergere*/}
                             <div className="button" onClick={() => handleDeleteIncome(income.id)}>
@@ -117,9 +117,9 @@ export default function Categories() {
                         {/*Button de stergere*/}
                         <div className="right">
                  
-                    <Link to={`/edit/expense/${expense.id}`}  >
-                        <EditIcon  style={{ fontSize: 25 }}  />
-                    </Link>
+                        <Link to={`/expense/edit/${expense.id}`}>
+                            <EditIcon style={{ fontSize: 25 }} />
+                        </Link>
 
                     {/*Button de stergere*/}
                     <div className="button" onClick={() => handleDeleteExpense(expense.id)}>
