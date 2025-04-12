@@ -18,6 +18,8 @@ const cartExpense=createSlice({
     initialState,
     reducers:{
 
+        //resetState:()=>initialState,
+
         startExpense:(state)=>{
             state.loading=true;
         },
@@ -26,6 +28,7 @@ const cartExpense=createSlice({
         finalExpense: (state, action) => {
             const newItem = {
                 ...action.payload,
+                id: uuidv4(), // Generăm un ID unic pentru fiecare obiect adăugat
                 type:'expense',
                 createdAt:Date.now()
             };
@@ -46,7 +49,6 @@ const cartExpense=createSlice({
 
         deleteExpense: (state, action) => {
             const { id } = action.payload;
-            console.log(id);
 
             const updateExpense = state.currentExpense.filter(item => item.id !== id);
 
@@ -113,7 +115,8 @@ export const {
     deleteExpense,
     totExpense,
     updateExpense,
-    failureUpdateEx
+    failureUpdateEx,
+    resetState
 
 }=cartExpense.actions;
 

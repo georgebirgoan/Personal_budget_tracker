@@ -28,7 +28,7 @@ const userSlice = createSlice({
     },
     updateUserStart: (state) => {
       console.log("in update start");
-      state.loading = true;
+      state.loading = false;
     },
     updateUserSuccess: (state, action) => {
       console.log(action.payload);

@@ -11,7 +11,7 @@ export default function Footer() {
   return (
     displayFooter && (
       <div className="footer">
-        <span>Budget Tracker</span>
+        <span>Project Budget Tracker </span>
         <span>@Admin Dashboard George</span>
       </div>
     )

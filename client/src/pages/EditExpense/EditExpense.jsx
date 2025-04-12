@@ -9,6 +9,8 @@ export default function EditExpense() {
   const dispatch = useDispatch();
   const { id } = useParams(); // Get the specific expense ID from URL parameters
   const { currentExpense } = useSelector((state) => state.expense);
+  console.log(currentExpense);
+  console.log(id);
 
   const [editExpense, setEditExpense] = useState({
     category: '',
@@ -22,6 +24,7 @@ export default function EditExpense() {
   // Find the specific expense record based on the ID
   useEffect(() => {
     const expenseRecord = currentExpense.find((expense) => expense.id === id);
+    console.log(expenseRecord);
     if (expenseRecord) {
       setEditExpense({
         category: expenseRecord.category || '',

@@ -4,7 +4,7 @@ import CircleIcon from '@mui/icons-material/Circle';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteIncome } from '../../redux/cart/IncomeReducer'; // Asigură-te că această acțiune este importată corect
+import { deleteIncome,deleteEconomy } from '../../redux/cart/IncomeReducer'; // Asigură-te că această acțiune este importată corect
 import { deleteExpense } from '../../redux/cart/ExpenseReducer';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import DateRangeIcon from '@mui/icons-material/DateRange';
@@ -15,7 +15,6 @@ import EditIcon from '@mui/icons-material/Edit';
 export default function Categories() {
     const location = useLocation();
     const dispatch = useDispatch();
-
     const isIncome = location.pathname === '/income';
   
     const {currentIncome} =useSelector((state)=>state.income);
@@ -23,7 +22,10 @@ export default function Categories() {
 
     const handleDeleteIncome = (id) => {
         dispatch(deleteIncome({ id: id }));
+        // dispatch(deleteEconomy({id:id}));
     }
+
+console.log(currentExpense);    
 
     const handleDeleteExpense= (id) => {
         dispatch(deleteExpense({ id: id }));   
@@ -36,10 +38,14 @@ export default function Categories() {
                     <div className="container" key={income.id}>
                         <div className="logo">
 
-                            <CategoryIcon optionIn={income.option} />
+
+                            <CategoryIcon
+                            style={{ backgroundColor: 'white', padding: '10px', borderRadius: '50%' }} 
+                            optionIn={income.option} 
+                            />
 
                             <div className="circleName">
-                                <CircleIcon style={{ color: 'green', fontSize: 13, marginTop: 7 }} />
+                                <CircleIcon style={{ color: 'green', fontSize: 13, marginTop: 3 }} />
                                 <span className='spanCategorie'>{income.category}</span>
                             </div>
 
@@ -67,11 +73,12 @@ export default function Categories() {
                         
                         <div className="right">
                  
+                        {/*Buton de edit income */}
                         <Link to={`/income/edit/${income.id}`}>
                             <EditIcon style={{ fontSize: 25 }} />
                         </Link>
 
-                            {/*Button de stergere*/}
+                            {/*Button de stergere income*/}
                             <div className="button" onClick={() => handleDeleteIncome(income.id)}>
                                 <DeleteSweepIcon style={{ fontSize: 30 }} />
                             </div>
@@ -82,10 +89,14 @@ export default function Categories() {
                 currentExpense.map((expense) => (
                     <div className="container" key={expense.id}>
                         <div className="logo">
-                            <CategoryIcon optionEx={expense.option}/>
+                        <CategoryIcon
+                        style={{ color: 'black', backgroundColor: 'yellow', padding: '5px', borderRadius: '5px' }}
+                        optionEx={expense.option}
+                    />
+
 
                             <div className="circleName">
-                                <CircleIcon style={{ color: 'red', fontSize: 13, marginTop: 7 }} />
+                                <CircleIcon style={{ color: 'red', fontSize: 13, marginTop: 3}} />
                                 <span className='spanCategorie'>{expense.category}</span>
                             </div>
 
@@ -110,19 +121,25 @@ export default function Categories() {
                             </div>
                         </div>
     
-                        {/*Button de stergere*/}
+                        {/*Button de edit*/}
                         <div className="right">
                  
-                        <Link to={`/expense/edit/${expense.id}`}>
-                            <EditIcon style={{ fontSize: 25 }} />
-                        </Link>
 
-                    {/*Button de stergere*/}
-                    <div className="button" onClick={() => handleDeleteExpense(expense.id)}>
-                        <DeleteSweepIcon style={{ fontSize: 30 }} />
-                    </div>
+                            <Link to={`/expense/edit/${expense.id}`}>
+                                <EditIcon style={{ fontSize: 25 }} />
+                            </Link>
 
-                    </div>
+                         {/*Button de stergere*/}
+                            <div  
+                                className="button" 
+                                onClick={() => handleDeleteExpense(expense.id)}
+                                >
+                            <DeleteSweepIcon
+                            style={{ fontSize:30  }}
+                            />
+                        </div>
+
+                        </div>
                     </div>
                 ))
             }

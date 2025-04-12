@@ -2,15 +2,15 @@ import './expenses.scss';
 import Categories from '../../components/categories/Categories.jsx';
 import { useState } from 'react';
 import { useDispatch,useSelector } from 'react-redux';
-import {startExpense,failureExpense,finalExpense, totExpense} from '../../redux/cart/ExpenseReducer.js'
+import {startExpense,failureExpense,finalExpense, totExpense,resetState} from '../../redux/cart/ExpenseReducer.js'
 import { toast } from 'react-toastify';
 
 export default function Expenses() {
   const [expenseData,setExpense]=useState({});
   const {totalExpense}=useSelector((state)=>state.expense)
 
-  const dispatch=useDispatch();
-  //dispatch(resetState());
+   const dispatch=useDispatch();
+  // dispatch(resetState());
 
   const handleChange= ((e)=>{
     setExpense({...expenseData,[e.target.id]:e.target.value});
@@ -45,18 +45,23 @@ export default function Expenses() {
     <>
     <div className='Container2'>
 
-      <div className="box2 title2">
-        <span className='span-title2'>Expense</span>
+
+    <div className='box top2'>
+      
+        {/* <div className="box2 title2">
+          <span className='span-title2'>Expenses</span>
+        </div> */}
+
+
+      <div className="box2 totalExpense2">
+          <span>Total expense:</span>
+          <span className="price2">$ {totalExpense} </span>
       </div>
 
-
-    <div className="box2 totalExpense2">
-        <span>Total expense:</span>
-        <span className="price2">$ {totalExpense} </span>
     </div>
 
-
-        
+    
+    <div className='box allInMiddleExpense'>    
       <div className="box2 inputContainer2">
               <span className='titleInput2'>Add your expenses</span>
           <form onSubmit={handleSubmit} className='formExpense2'>
@@ -94,6 +99,7 @@ export default function Expenses() {
             <div className="box2 categories2">
               <Categories/>
             </div>
+        </div>
         </div>
 
 

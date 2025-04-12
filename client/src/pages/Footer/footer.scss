@@ -9,8 +9,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 20px;
-    background-color:#384256;
-    height: 140px;
+    background-color:#fbfcff;
+    height: 80px;
     margin-top: 25px;
     justify-content: space-around;
 
@@ -28,12 +28,13 @@ span{
 
     &:nth-child(1){
         font-size: 15px;
+        color: #525b75;
         font-weight: bold;
     }
 
     &:nth-child(2){
         font-size:15px;
-        font-weight: bold;
+        color: #3874ff;
     }
 
 }

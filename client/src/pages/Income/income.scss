@@ -6,15 +6,22 @@
 .Container {
     display: grid;
     gap: 10px;
-    grid-template-columns:1fr 1fr; 
-    grid-template-rows:minmax(80px,auto);
-    grid-gap:15px;
+    grid-template-columns: 1fr;  
+    grid-template-rows: minmax(100px, auto);
 
 
+    .top {
+        display: flex;
+        padding: 10px;
+        gap: 15px; 
+
+        @include md {
+            flex-direction: column;
+        } 
+    }
 
 .title {
-    grid-column:span  2/3;
-    margin: 25px 5px;
+    margin: 10px 5px;
     font-size: 25px;
     font-weight: bold;
 
@@ -24,6 +31,7 @@
     }
     @include sm{
       font-size: 20px;
+      margin-left: 20px;
     }
 
 }
@@ -43,30 +51,26 @@
 }
 
 .totalIncome {
-    grid-column: 1/3;
-    grid-row:span 1;
     display: flex;
-    margin-bottom: 45px;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    -webkit-box-shadow: 1px -1px 6px 1px rgba(197, 189, 197, 0.81);
-    -moz-box-shadow: 1px -1px 6px 1px rgba(211, 200, 211, 0.81);
-    box-shadow: 1px -1px 6px -3px rgba(209, 199, 209, 0.81);
-
+    width: 100%;
+    flex-grow: 1;
+    margin:0;
+    
     @include md{
-        grid-column: 1/2;
-        grid-row:span 3;
+        margin-left: 50px;
     }
         
     @include lg{
-        grid-column: 1/3;
-        grid-row:span 3;
+        display: flex;
     }
 
     span:nth-child(1){
+        display: flex;
         font-size: 23px;
-        color: rgb(255, 255, 255);
+        color: rgb(81 90 116 / 80%);
         font-weight: 700;
         padding: 3px;
 
@@ -82,26 +86,44 @@
 
 }
 
+.allInMiddle {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: auto;  
+    gap: 10px;  
+    padding: 6px;
+    background-color: white;
 
+
+    @include sm {
+        grid-template-columns: 1fr;
+    }
+    @include md {
+        grid-template-columns: 1fr;   
+    }
+    @include lg {
+        grid-template-columns: 1fr;   
+    }
+}
 
  .inputContainer{
         grid-column: 1/2;
-        grid-row:span 3;
+        grid-row:span 2;
         display: flex;
         text-decoration: none;
         flex-direction: column;
         gap: 15px;
         padding: 12px;
         margin-right: 10px;
-
+      
         @include md{
-            grid-column: 1;
-            grid-row:span 3;
+            grid-column: 1/-1;
+            grid-row:span 2;
         }
             
         @include lg{
-            grid-column: 1/3;
-            grid-row:span 3;
+            grid-column: 1/2;
+            grid-row:span 2;
         }
        
         .titleInput {
@@ -109,7 +131,7 @@
             margin-top: 12px;
             text-wrap:nowrap;
             font-size: 22px;
-            color: rgb(244, 247, 244);
+            color: rgb(51, 156, 51);
             font-weight: 500;
             text-transform: uppercase; 
             letter-spacing: 1px;
@@ -128,25 +150,31 @@
         .input1:nth-child(4){
             display: flex;
             align-self: end;
-            width: 125px;
-            
+            width: 125px;   
         }  
 
-      
-    
-        
-         
+      //border for income   
     .input1{
-        color: black;
+        border: none;
+        box-shadow: 1px 1px 5px 1px rgba(157,157,157,0.65);
+        -webkit-box-shadow: 1px 1px 5px 1px rgba(157,157,157,0.65);
+        -moz-box-shadow: 1px 1px 5px 1px rgba(157,157,157,0.65);
         text-wrap: wrap;
         border-radius: 7px;
         padding: 10px;
+        outline-color: rgb(154, 185, 232);
       
+        }
     }
-
-
-
-
+ 
+    .formIncome{
+    margin-top: 35px;
+    display: flex;
+    height:100%;
+    flex-direction: column;
+    position: relative;
+    gap:10px;
+    
     }
 
     .buttonCheck{
@@ -169,15 +197,5 @@
         }
 
     }
-  
-    .formIncome{
-    margin-top: 35px;
-    display: flex;
-    height:100%;
-    flex-direction: column;
-    position: relative;
-    gap:10px;
-    }
-
-
+ 
 }

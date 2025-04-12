@@ -14,8 +14,8 @@ a {
 
 .main {
   font-family: "Inter", sans-serif;
-  background-color: $main-bg;
-  color: $main-color;
+  background-color: #f5f7fa;
+  color: #0f111a;
 }
 
 .container {
@@ -25,8 +25,9 @@ a {
 
 .menuContainer {
   width: 250px;
-  padding: 5px 20px;
-  border-right: 2px solid $soft-bg;
+  padding: 5px 15px;
+  background-color:#fff;
+  border-right: 1px solid #cbd0dd;
 
   @include sm{
     width: 70px;

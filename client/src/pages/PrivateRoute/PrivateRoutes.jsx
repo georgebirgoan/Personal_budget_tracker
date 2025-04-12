@@ -17,9 +17,10 @@ const PrivateRoutes = ({ children }) => {
   }
 
   if (!currentUser) {
-    return <Navigate to="/login" replace />; // Redirecționează utilizatorul neautentificat la pagina de login
-  }
+    console.log('ajuge in protec')
+    return <Navigate to="/"  />;
 
+  }
   return children ? children : <Outlet />;
 };
 

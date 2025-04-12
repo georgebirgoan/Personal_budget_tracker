@@ -16,15 +16,17 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import PrivateRoutes from "./pages/PrivateRoute/PrivateRoutes"
 import EditIncome from "./pages/EditIncome/EditIncome"
 import EditExpense from "./pages/EditExpense/EditExpense"
+import Card from './pages/Card/Card';
+
 
 const MainLayout = () => {
   return (
     <div className="main">
       <Navbar />
       <div className="container">
-        <div className="menuContainer">
+        {/* <div className="menuContainer">
           <SideBar />
-        </div>
+        </div> */}
         <div className="contentContainer">
           <Outlet />
         </div>
@@ -34,13 +36,15 @@ const MainLayout = () => {
   );
 };
 
+
+
 const router = createBrowserRouter([
   {
     path: '/',
     element: (
-      <PrivateRoutes>
+     /* <PrivateRoutes>
+      </PrivateRoutes>*/
         <MainLayout />
-      </PrivateRoutes>
     ),
     children: [
       {
@@ -50,6 +54,10 @@ const router = createBrowserRouter([
       {
         path: '/income',
         element: <Income />,
+      },
+      {
+        path: '/card',
+        element: <Card name={'Andre'} isPacked={true}  />,
       },
       {
         path: '/income/edit/:id',

@@ -5,10 +5,6 @@ import ChartBox from '../../components/chartBox/ChartBox'
 import { MyComponent } from '../../utils/data'
 import { MaxExpense, MaxSal, MinExpense, MinSal } from "../../helper/Istoric"
 import Chart2 from '../../components/Chart2/Chart2'
-import { useSelector } from 'react-redux'
-import { Navigate } from 'react-router-dom'
-import { useState,useEffect} from 'react'
-import Spinner from '../Spinner/Spinner'
 
 
 function Dasboard() {
@@ -22,7 +18,8 @@ function Dasboard() {
 
       <div className="box box2">
         <ChartBox
-        {...chartBoxIncome}/>
+          {...chartBoxIncome}
+        />
       </div>
 
       <div className="box box3">

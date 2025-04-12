@@ -8,6 +8,7 @@ export default function EditIncome() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams(); // Get the specific user ID from URL parameters
+  console.log(id);
   const { currentIncome } = useSelector((state) => state.income);
 
   const [editIncome, setEditIncome] = useState({

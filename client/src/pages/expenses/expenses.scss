@@ -4,17 +4,26 @@
 .Container2 {
     display: grid;
     gap: 10px;
-    grid-template-columns:1fr 1fr; 
-    grid-template-rows:minmax(50px,auto);
+    grid-template-columns: 1fr;  
+    grid-template-rows: minmax(100px, auto);
     grid-gap:15px;
 
 
+    .top2 {
+        display: flex;
+        padding: 10px;
+        gap: 15px; 
+
+        @include md {
+            flex-direction: column;
+        } 
+    }
 
 
 
 .title2 {
         grid-column:span  2/3;
-        margin: 25px 5px;
+        margin: 10px 5px;
         font-size: 25px;
         font-weight: bold;
     
@@ -41,30 +50,26 @@
 
 .totalExpense2 {
     display: flex;
-    grid-column: 1/3;
-    grid-row:span 1;
-    margin-bottom: 45px;
     justify-content: center;
     align-items: center;
     border-radius: 5px;
-    -webkit-box-shadow: 1px -1px 6px 1px rgba(197, 189, 197, 0.81);
-    -moz-box-shadow: 1px -1px 6px 1px rgba(211, 200, 211, 0.81);
-    box-shadow: 1px -1px 6px -3px rgba(209, 199, 209, 0.81);
+    width: 100%;
+    flex-grow: 1;
+    margin:0;
 
 
     @include md{
-        grid-column: 1/2;
-        grid-row:span 3;
+        margin-left: 50px;
     }
         
     @include lg{
-        grid-column: 1/3;
-        grid-row:span 3;
+        display: flex;
     }
 
     span:nth-child(1){
+        display: flex;
         font-size: 23px;
-        color: rgb(255, 255, 255);
+        color: rgb(81 90 116 / 80%);
         font-weight: 700;
         padding: 3px;
 
@@ -73,11 +78,32 @@
     span:nth-child(2){
         font-size: 25px;
         text-wrap:nowrap;
-        color: rgba(244, 59, 59, 0.874);
+        color: rgb(246, 11, 11);
         font-weight: 700;
         padding: 8px;
     }
 
+}
+
+
+.allInMiddleExpense {
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    grid-template-rows: auto;  
+    gap: 10px;  
+    padding: 6px;
+    background-color: white;
+
+
+    @include sm {
+        grid-template-columns: 1fr;
+    }
+    @include md {
+        grid-template-columns: 1fr;   
+    }
+    @include lg {
+        grid-template-columns: 1fr;   
+    }
 }
 
 
@@ -86,7 +112,6 @@
         grid-column: 1/2;
         grid-row: span 3;
         display: flex;
-        text-decoration: none;
         flex-direction: column;
         gap: 15px;
         padding: 12px;
@@ -109,9 +134,8 @@
             margin-top: 12px;
             text-wrap:nowrap;
             font-size: 23px;
-            color: rgb(244, 247, 244);
+            color: rgb(106, 110, 106);
             font-weight: 500;
-            text-decoration: none;
             text-transform: uppercase; 
             letter-spacing: 1px;
             font-style: italic;
@@ -146,9 +170,9 @@
             font-size: 15px;
         }
          
+    //border for expenses
     .input2{
         text-wrap: wrap;
-        border-radius: 7px;
         padding: 10px;
       
     }
@@ -180,12 +204,15 @@
     }
   
     .formExpense2{
-    margin-top: 35px;
-    display: flex;
-    height:100%;
-    flex-direction: column;
-    position: relative;
-    gap:10px;
+        display: flex;
+        height:100%;
+        flex-direction: column;
+        position: relative;
+        margin-top: 35px;
+        gap:10px;
+
+  
+
     }
 
 

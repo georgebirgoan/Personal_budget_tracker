@@ -7,6 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import './profileDetail.scss'
 import { app } from "../../firebase.js";
 import { ref } from "firebase/storage";
+
 import { 
   updateUserStart,
   updateUserFailure,
@@ -32,8 +33,13 @@ export default function ProfileDetails() {
   const [imageError,setImageError]=useState(false);
   const [formData,setFormData]=useState({});
   const [updateSuccess,setUpdateSuccess]=useState(false);
+  const [showSuccesImage,setshowSuccesImage] = useState(true);
+
   const {loading}=useSelector((state)=>state.income);
   const {currentUser}=useSelector(state=>state.user);
+
+
+console.log("Loading in prifile",currentUser);
 
   //useefect for image after change
   useEffect(()=>{
@@ -44,8 +50,15 @@ export default function ProfileDetails() {
     }
   },[image,dispatch])
 
+
+
   useEffect(() => {
-    console.log(`imagePercent updated: ${imagePercent}`);
+    if(imagePercent === 100){
+      const timer = setTimeout(()=>{
+        setshowSuccesImage(false);
+      },2000);
+      return () => clearTimeout(timer);
+    }
   }, [imagePercent]);
   
   //change image in firebase ->get URL for the image
@@ -82,9 +95,12 @@ const handleChange =(e)=>{
 
 
 //delete an user
+//${process.env.REACT_APP_BACKEND_URL}
 const handleDeleteAccount=async () =>{
   try{
     console.log("delete user with",currentUser._id);
+  //${process.env.REACT_APP_BACKEND_URL}
+
     dispatch(deleteUserStart());
     const res=await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/delete/${currentUser._id}`,{
       method:'DELETE',
@@ -172,15 +188,15 @@ const handleSubmit = async (e) => {
       <div className="backProfile">
        
        <form onSubmit={handleSubmit} className="formProfile">
-          <h3>Profile</h3>
+          <h3>{currentUser?.username}</h3>
 
-            <div class="circular-image">
+            <div className="circular-image">
               <input type="file" ref={fileRef} hidden
                   accept="image/*" onChange={(e)=>setImage(e.target.files[0])} />
                 
                   {/*imagine profil mijloc*/}
                   <img src={formData?.profilePicture || currentUser?.profilePicture} alt="profile" 
-                  className="" 
+                  
                   onClick={()=>fileRef.current.click()}
                   />
 
@@ -193,8 +209,8 @@ const handleSubmit = async (e) => {
                     </span>
                   ) : imagePercent > 0 && imagePercent < 100 ? (
                     <span className='Uploading'>{`Uploading: ${imagePercent} %`}</span>
-                  ) : imagePercent === 100 ? (
-                    <span className='succes'>Image uploaded successfully</span>
+                  ) : imagePercent === 100  && showSuccesImage ? (
+                    <span className='succes'>Image uploaded successfully!</span>
                   ) : (
                     ''
                   )}

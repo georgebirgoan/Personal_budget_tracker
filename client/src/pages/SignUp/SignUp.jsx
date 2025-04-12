@@ -38,7 +38,8 @@ export default function SignUp() {
     try{
 
       setError(false)
-      //${process.env.REACT_APP_BACKEND_URL}
+      //${process.env.REACT_APP_BACKEND_URL} -- to make dynamic
+      console.log("inainte d eapi");
       const data=await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/signup`,formData);
       console.log("data client",data);
      

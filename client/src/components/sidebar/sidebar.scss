@@ -1,37 +1,25 @@
 @import "../../styles/variables.scss";
 @import "../../styles/responsive.scss";
 
-.menu {
 
+.menu {
   .item {
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
+    padding: 10px 0px;
+    gap: 15px;
+    margin-top: 20px;
 
     .title {
-      font-size: 16px;
-      font-weight: 900;
-      color: $soft-color;
+      font-size: 15px;
+      font-weight: 700;
+      color: #525b75;
+      margin-bottom: 20px;
+      padding: 2px 0px;
       text-transform: uppercase;
-
-      @include sm{
-        display: none;
-      }
+      border-bottom: 1px solid rgb(140, 134, 134);
+      box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.51);
     }
-
-    .da{
-      @include lg{
-        display: none;
-      }
-      @include md{
-        display: none;
-      }
-      @include sm{
-        display: none;
-      }
-    }
-   
 
     .listItem {
       display: flex;
@@ -39,18 +27,44 @@
       gap: 10px;
       padding: 10px;
       border-radius: 5px;
-      
-      
-      
-      &:hover {
-        background-color: $soft-bg;
+
+      img {
+        width: 25px;
+        height: 25px;
       }
 
-      .listItemTitle{
-        @include sm{
-          display: none;
-        }
+      span {
+        font-size: 14px;
+        color: rgb(82, 91, 117);
+        font-weight: 400;
+      }
+
+      &:hover {
+        background-color: $soft-color;
       }
     }
   }
+
+  // Stilizarea pentru Sign Out
+  .sign-out {
+    display: flex;
+    align-items: center;
+    padding: 10px; // spațiere standard
+  
+    img {
+      width: 30px;  // Dimensionează iconița
+      height: 30px; // Poți ajusta dimensiunile aici după nevoie
+      margin-right: 10px; // Distanța dintre icon și text
+    }
+  
+    span {
+      font-size: 14px;  // Dimensionează textul (poți ajusta mărimea după preferință)
+      font-weight: 500; // Modifică grosimea fontului dacă vrei un stil mai proeminent
+      color: rgb(82, 91, 117);    }
+  
+    &:hover {
+      background-color: $soft-color; // Schimbă culoarea la hover pentru întregul buton
+    }
+  }
+  
 }

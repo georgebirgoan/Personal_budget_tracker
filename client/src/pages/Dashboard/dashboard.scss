@@ -11,21 +11,22 @@
 .home{
     display: grid;
     gap: 15px;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 15px;
     grid-template-columns: repeat(4,1fr);
     grid-auto-rows: minmax(100px,auto);
 
 .box{
     padding: 10px;
     border-radius: 10px;
-    border:1px solid $soft-bg;
+    border:1px solid #cbd0dd;
     
 }
 
 .box2,.box3,.box5,.box6{
         grid-column:span 1/2,2/3,3/4,4/5;
         grid-row: span 1;
+        background-color:#fff;
+
 
     @include lg{
         grid-column: span 2;
@@ -40,17 +41,12 @@
         grid-column: span 4;
         grid-row: span 2;
     }
-    
-
-
 }
-
-
 
 .box1{
     grid-column:span 2; //width 1 unit
     grid-row: span 2;//coloana 3
-    
+    background-color: #fff;
     
     @include lg{
         grid-column: span 2;
@@ -64,14 +60,13 @@
         grid-column: span 4;
         grid-row: span 2;
     }
-
-
 }
 
 
 .box4{
     grid-column: span 2;
     grid-row: span 2;
+    background-color: #fff;
 
     @include lg{
         grid-column: span 2;
@@ -84,18 +79,17 @@
     @include sm{
         grid-column: span 4;
         grid-row: span 2;
-
-        
     }
-
-
 }
+
+
 .box7{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     grid-column: span 2;
     grid-row: span 2;
+    background-color: #fff;
 
     @include lg{
         grid-column: span 2;
@@ -109,6 +103,7 @@
         grid-column: span 4;
         grid-row: span 2;
     }
+    
 .salar{
 
     display: flex;
@@ -123,16 +118,17 @@
         
         :nth-child(1){
             font-size: 15px;
-            color: rgb(255, 255, 255);
+            color: rgb(132, 136, 151);
         }
 
         :nth-child(2){
             font-size:20px;
-            color: rgb(255, 255, 255);
+            color: rgb(109, 109, 110);
+            font-weight: 600;
         }
         :nth-child(3){
             font-size: 15px;
-            color: rgb(255, 255, 255);
+            color: rgb(82, 91, 117);
         }
 
     }
@@ -146,13 +142,14 @@
         align-items: center;
         margin: 5px 10px;
         padding: 7px;
-        border: 0.5px solid rgb(255, 255, 255);
+        border-bottom: 1px solid rgb(140, 134, 134);
+        box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.51);
         border-radius: 5px;
 
 
         :nth-child(1){
             display:flex ;
-            color: white;
+            color: rgb(119, 118, 118);
             font-weight: bold;
             align-items: center;
             padding: 1px;
@@ -160,16 +157,12 @@
 
         :nth-child(2){
             display:flex ;
-            color: white;
+            color: rgb(119, 118, 118);
             font-weight: bold;
             align-items: center;
             padding: 4px;
         }
     }
-
-
-
-
 
 
 .cheltuieli{
@@ -182,13 +175,14 @@
         margin: 5px 10px;
         justify-content: space-between;
         align-items: center;
+        border-bottom: 1px solid rgb(140, 134, 134);
+        box-shadow: 1px 0px 2px 0px rgba(0, 0, 0, 0.51);      
         padding: 5px;
-        border: 0.5px solid rgb(255, 255, 255);
         border-radius: 5px;
     
         :nth-child(1){
             display:flex ;
-            color: white;
+            color: rgb(119, 118, 118);
             font-weight: bold;
             align-items: center;
             padding: 1px;
@@ -196,9 +190,10 @@
 
         :nth-child(2){
             display:flex ;
-            color: white;
+             color: rgb(119, 118, 118);
             font-weight: bold;
             align-items: center;
+            
             padding: 4px;
         }
     }
@@ -210,16 +205,17 @@
         
         :nth-child(1){
             font-size: 15px;
-            color: rgb(255, 255, 255);
+            color: rgb(132, 136, 151);
         }
 
         :nth-child(2){
             font-size:20px;
-            color: rgb(255, 255, 255);
+            color: rgb(109, 109, 110);
+            font-weight: 600;
         }
         :nth-child(3){
             font-size: 15px;
-            color: rgb(255, 255, 255);
+            color: rgb(82, 91, 117);
         }
     }
 
@@ -229,6 +225,7 @@
 .box8{
     grid-column: span 2;
     grid-row: span 2;
+    background-color: #fff;
 
    
     @include lg{
