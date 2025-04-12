@@ -30,15 +30,15 @@ const routes = [
       { path: "card", element: <Card name="Andre" isPacked={true} /> },
     ],
   },
-  {
-    path: "/login",
-    element: <Login />,
-  },
-  {
-    path: "/signup",
-    element: <SignUp />,
-  },
-];
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "/signup",
+      element: <SignUp />,
+    },
+  ];
 
 const router = createBrowserRouter(routes);
 
