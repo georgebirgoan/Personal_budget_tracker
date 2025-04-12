@@ -37,10 +37,10 @@ app.use(express.json());
 //https://personal-budget-tracker-d.onrender.com
 // Configurare CORS
 app.use(cors({
-    //origin: "http://localhost:3000", // Permit accesul de la orice origin altfel eroarea asta
+    origin: "https://personal-budget-tracker-client-good.onrender.com", // Permit accesul de la orice origin altfel eroarea asta
     //Access to fetch at 'http://localhost:3001/api/google' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request 
     //doesn't pass access control check: The 'Access-Control-Allow-Origin' header has a value '
-      origin: "https://personal-budget-tracker-d.onrender.com",
+      //origin: "https://personal-budget-tracker-d.onrender.com",
     methods: "GET,PUT,POST,DELETE", // Specifică metodele acceptate
     credentials: true, // Permit trimiterea cookie-urilor de autentificare
 }));
