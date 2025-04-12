@@ -30,16 +30,17 @@ app.get("*",(req,res)=>{
 const port = process.env.PORT || 8000;
 console.log('portul', port);
 
-// Middleware pentru cookie parser
 app.use(cookieParser());
 
-// Middleware pentru parsarea JSON
 app.use(express.json());
 
 //https://personal-budget-tracker-d.onrender.com
 // Configurare CORS
 app.use(cors({
-    origin: "https://personal-budget-tracker-d.onrender.com", // Permit accesul de la orice origin
+    //origin: "http://localhost:3000", // Permit accesul de la orice origin altfel eroarea asta
+    //Access to fetch at 'http://localhost:3001/api/google' from origin 'http://localhost:3000' has been blocked by CORS policy: Response to preflight request 
+    //doesn't pass access control check: The 'Access-Control-Allow-Origin' header has a value '
+      origin: "https://personal-budget-tracker-d.onrender.com",
     methods: "GET,PUT,POST,DELETE", // Specifică metodele acceptate
     credentials: true, // Permit trimiterea cookie-urilor de autentificare
 }));
@@ -54,7 +55,6 @@ mongoose.connect(process.env.MONGODB_URI, {
     console.log('Not connected to database', err);
 });
 
-// Montare rute
 
 readdirSync("./routes").map((r) => app.use("/api", require(`./routes/${r}`)));
     app.use('/', (req,res)=>{

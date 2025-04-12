@@ -61,7 +61,7 @@ const google = async (req, res, next) => {
   console.log("ajunge in Google")
   try {
     const user = await User.findOne({ email: req.body.email });
-    console.log("user gog", user);
+    console.log("user google", user);
 
     if (user) {
       const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
