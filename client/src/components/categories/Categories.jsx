@@ -4,7 +4,7 @@ import CircleIcon from '@mui/icons-material/Circle';
 import DeleteSweepIcon from '@mui/icons-material/DeleteSweep';
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { deleteIncome,deleteEconomy } from '../../redux/cart/IncomeReducer'; // Asigură-te că această acțiune este importată corect
+import { deleteIncome,deleteEconomy, updateEconomy } from '../../redux/cart/IncomeReducer'; // Asigură-te că această acțiune este importată corect
 import { deleteExpense } from '../../redux/cart/ExpenseReducer';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import DateRangeIcon from '@mui/icons-material/DateRange';
@@ -22,10 +22,8 @@ export default function Categories() {
 
     const handleDeleteIncome = (id) => {
         dispatch(deleteIncome({ id: id }));
-        // dispatch(deleteEconomy({id:id}));
     }
 
-console.log(currentExpense);    
 
     const handleDeleteExpense= (id) => {
         dispatch(deleteExpense({ id: id }));   
@@ -37,7 +35,6 @@ console.log(currentExpense);
                 currentIncome.map((income) => (
                     <div className="container" key={income.id}>
                         <div className="logo">
-
 
                             <CategoryIcon
                             style={{ backgroundColor: 'white', padding: '10px', borderRadius: '50%' }} 

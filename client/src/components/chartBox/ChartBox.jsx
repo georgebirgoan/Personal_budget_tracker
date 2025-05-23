@@ -3,12 +3,10 @@ import { Link } from "react-router-dom";
 import React, { PureComponent } from 'react';
 import { LineChart, Line, Tooltip, ResponsiveContainer } from 'recharts';
 
-console.log("in chart box procent:")
 
 
 
 const ChartBox = (props)=> {
-  console.log("ChartBox Props:", props.percentage); // Log all props to the console
 
   return (
     <div className="chartBox">

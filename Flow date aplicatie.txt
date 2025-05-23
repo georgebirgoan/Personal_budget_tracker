@@ -1,0 +1,122 @@
+1. User Authentication
+Flow:
+
+
+User logs in (Google, email/pass, etc.)
+
+Frontend sends login request → Backend authenticates user
+
+Backend generates JWT token and sets it in a httpOnly cookie
+
+Token is stored only in httpOnly cookie (no localStorage)
+
+Protects from XSS attacks
+
+Sent automatically with each API request via credentials: 'include'
+
+Frontend Redux state
+
+Stores user info (NOT the token) for UI & state
+
+e.g., { currentUser: { id, name, email } }
+
+
+
+2. Loading Initial Data
+When user visits the app or reloads page:
+
+Frontend dispatches an action fetchUserData()
+
+Backend reads token from cookie, verifies it, and returns:
+{ user: {...}, incomes: [...], expenses: [...] }
+
+Redux stores all these in state:
+
+js
+Copy code
+{
+  auth: { currentUser: {...}, loading: false },
+  incomes: [...],
+  expenses: [...],
+}
+3. Adding / Editing / Deleting Incomes or Expenses
+User performs an action (e.g., adds income):
+
+Frontend:
+Dispatch Redux action, e.g. addIncome(incomeData)
+
+Optimistically update Redux state so UI is responsive
+(Add income item immediately)
+
+Send API POST request to backend with incomeData
+
+Request includes httpOnly token cookie automatically
+
+Backend:
+Verify token from cookie → authenticate user
+
+Save income/expense data to DB (with user ID)
+
+Respond with updated data or success status
+
+Frontend:
+If backend confirms success, no action needed (already updated)
+
+If backend fails (e.g., validation), dispatch action to rollback or show error
+
+4. State Shape Example in Redux
+js
+Copy code
+{
+  auth: {
+    currentUser: { id, name, email },
+    loading: false,
+    error: null,
+  },
+  incomes: [
+    { id, amount, category, date, userId },
+    ...
+  ],
+  expenses: [
+    { id, amount, category, date, userId },
+    ...
+  ],
+}
+5. API Example Endpoints
+Endpoint	Method	Description
+/api/auth/login	POST	Login, set token cookie
+/api/auth/logout	POST	Clear token cookie
+/api/user/data	GET	Get user info + incomes + expenses
+/api/incomes	POST	Add new income
+/api/incomes/:id	PUT	Edit income
+/api/incomes/:id	DELETE	Delete income
+/api/expenses	POST	Add new expense
+/api/expenses/:id	PUT	Edit expense
+/api/expenses/:id	DELETE	Delete expense
+
+All secured via httpOnly token cookie in headers.
+
+6. Typical Frontend Request Example
+js
+Copy code
+// Fetch all user data on app load
+fetch('https://your-api.com/api/user/data', {
+  method: 'GET',
+  credentials: 'include', // send token cookie
+})
+.then(res => res.json())
+.then(data => {
+  dispatch(setUser(data.user));
+  dispatch(setIncomes(data.incomes));
+  dispatch(setExpenses(data.expenses));
+});
+7. Security Highlights
+Token never exposed to JS (in cookie only)
+
+Backend validates token on every request
+
+User-related data always filtered by user ID in DB queries
+
+Frontend keeps token out of Redux and localStorage
+
+Use HTTPS in production

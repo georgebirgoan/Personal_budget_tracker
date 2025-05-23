@@ -1,7 +1,7 @@
 import React from 'react';
 import { CSVLink } from 'react-csv';
 import { Istoric as IstoricExport } from '../../helper/Istoric';
-import CsvIcon from '../../images/csv.svg'
+import CsvIcon from '../../assets/images/csv.svg'
 
 
 

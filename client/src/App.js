@@ -2,19 +2,17 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom';
-import Navbar from './components/navbar/Navbar';
-import Footer from './pages/Footer/Footer';
 import './styles/global.scss';
 import MainLayout from './router/MainLayout';  // Separate the layout into its own component
-import Dashboard from './pages/Dashboard/Dashboard';
-import Income from './pages/Income/Income';
-import Expenses from './pages/expenses/Expenses';
-import ProfileDetails from './pages/ProfileDetails/ProfileDetails';
-import EditIncome from './pages/EditIncome/EditIncome';
-import EditExpense from './pages/EditExpense/EditExpense';
-import Card from './pages/Card/Card';
-import Login from './pages/login/Login';
-import SignUp from './pages/SignUp/SignUp';
+import Dashboard from './features/dashboard/Dashboard';
+import Income from './features/income/income/Income';
+import Expenses from './features/expenses/expense/Expenses';
+import ProfileDetails from './features/profile/ProfileDetails';
+import EditIncome from './features/income/edit/EditIncome';
+import EditExpense from './features/expenses/edit/EditExpense';
+import Card from './components/Card/Card';
+import Login from './features/auth/login/Login';
+import SignUp from './features/auth/signup/SignUp';
 
 const routes = [
   {
@@ -47,3 +45,10 @@ function App() {
 }
 
 export default App;
+
+
+
+//Rute api locatii
+/*OAuth pt google
+Login 
+Profile details*/

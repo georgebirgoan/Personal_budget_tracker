@@ -1,15 +1,15 @@
-import homeImg from '../images/HomeSide.png';
-import incomeImg3 from '../images/IncomeSide.png';
-import expenseImg from '../images/ExpenseSide.png';
-import TotalIncome from '../images/incomeColor.png'
-import { useDispatch, useSelector } from 'react-redux';
-import totalExpenseImg from '../images/TotalExpense.png'
-import totalBalanceImg from '../images/TotalBalance.png'
-import totalEconomyImg from '../images/TotalEconomy.png'
+import homeImg from '../assets/images/HomeSide.png';
+import incomeImg3 from '../assets/images/IncomeSide.png';
+import expenseImg from '../assets/images/ExpenseSide.png';
+import TotalIncome from '../assets/images/incomeColor.png'
+import {  useSelector } from 'react-redux';
+import totalExpenseImg from '../assets/images/TotalExpense.png'
+import totalBalanceImg from '../assets/images/TotalBalance.png'
+import totalEconomyImg from '../assets/images/TotalEconomy.png'
 import { useState,useEffect, useMemo } from 'react';
-import loginImg from '../images/LoginSide.png'
-import LogOutSide from '../images/LogOutSide.png'
-import signImg from '../images/SignUpSide.png'
+import loginImg from '../assets/images/LoginSide.png'
+import LogOutSide from '../assets/images/LogOutSide.png'
+import signImg from '../assets/images/SignUpSide.png'
 
 export const menu = [
   {
@@ -67,8 +67,8 @@ export function MyComponent() {
     
 
     console.log("curentIncome",currentIncome);
-      console.log("E\CURRENT ECONOMY:",currentEconomy);
-      console.log("CURRENT EXPENSE",currentExpense);
+    console.log("CURRENT ECONOMY:",currentEconomy);
+    console.log("CURRENT EXPENSE",currentExpense);
     
     
     const balance = useMemo(() => (totalIncome - totalExpense) - totalEconomy, [totalIncome, totalExpense, totalEconomy]);
@@ -219,12 +219,12 @@ const existingEntry = acc.find(entry => entry.name === item.date);
 // Funcție pentru a filtra veniturile dintr-o anumită lună
 function filterAllValuesByMonth(entries, year, month) {
   if (month < 0) {
-    year -= 1; // Adjust for previous year when month is negative
-    month = 11; // December of the previous year
+    year -= 1;
+    month = 11;
   }
   if (!Array.isArray(entries)) {
     console.error("Expected an array, but got:", entries);
-    return []; // Return an empty array to prevent errors
+    return []; 
   }
   
   return entries.filter(entry => {
@@ -233,7 +233,9 @@ function filterAllValuesByMonth(entries, year, month) {
   });
 }
 
-// Funcție pentru a calcula venitul total dintr-o listă de venituri
+
+
+
 function calculateTotalForAll(entries) {
   return entries.reduce((total, entry) => total + parseFloat(entry.amount || 0), 0);
 }
@@ -258,10 +260,10 @@ const currentMonthBalance = filterAllValuesByMonth(balance, currentYear, current
 const currentMonthEconomy=filterAllValuesByMonth(currentEconomy,currentYear,currentMonth);
 
 
-console.log("currentMonthIncome",currentMonthIncome);
-console.log("currentMonthExpense",currentMonthExpense);
-console.log("currentMonthEconomy",currentMonthEconomy);
-console.log("currentMonthBalance",currentMonthBalance);
+//console.log("currentMonthIncome",currentMonthIncome);
+//console.log("currentMonthExpense",currentMonthExpense);
+//console.log("currentMonthEconomy",currentMonthEconomy);
+//console.log("currentMonthBalance",currentMonthBalance);
 
 
 
@@ -296,19 +298,19 @@ const totalPreviousMonthEconomy = calculateTotalForEconomy(previousMonthEconomy)
 
 
 
-console.log("totalCurrentMonthIncome",totalCurrentMonthIncome);
-console.log("totalPreviousMonthIncome",totalPreviousMonthIncome);
+// console.log("totalCurrentMonthIncome",totalCurrentMonthIncome);
+// console.log("totalPreviousMonthIncome",totalPreviousMonthIncome);
 
-console.log("totalCurrentMonthExpense",totalCurrentMonthExpense);
-console.log("totalPreviousMonthExpense",totalPreviousMonthExpense);
+// console.log("totalCurrentMonthExpense",totalCurrentMonthExpense);
+// console.log("totalPreviousMonthExpense",totalPreviousMonthExpense);
 
-console.log("totalCurrentMonthEconomy",totalCurrentMonthEconomy);
-console.log("totalPreviousMonthEconomy",totalPreviousMonthEconomy);
+// console.log("totalCurrentMonthEconomy",totalCurrentMonthEconomy);
+// console.log("totalPreviousMonthEconomy",totalPreviousMonthEconomy);
 
 
 
-console.log("totalCurrentMonthBalance",totalCurrentMonthBalance);
-console.log("totalPreviousMonthBalance",totalPreviousMonthBalance);
+// console.log("totalCurrentMonthBalance",totalCurrentMonthBalance);
+// console.log("totalPreviousMonthBalance",totalPreviousMonthBalance);
 
 
 
@@ -347,10 +349,10 @@ if (totalPreviousMonthIncome > 0 || totalPreviousMonthExpense > 0 || totalPrevio
 
 
 
-console.log(percentageChangeExpense.toFixed(2));
+// console.log(percentageChangeExpense.toFixed(2));
 
-console.log(`Venitul total din luna curentă: ${totalCurrentMonthEconomy}`);
-console.log(`Venitul total din luna anterioară: ${totalPreviousMonthEconomy}`);
+// console.log(`Venitul total din luna curentă: ${totalCurrentMonthEconomy}`);
+// console.log(`Venitul total din luna anterioară: ${totalPreviousMonthEconomy}`);
 
 
 const chartBoxEconomy = {
